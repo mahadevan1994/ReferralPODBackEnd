@@ -83,29 +83,6 @@ public class UserController {
 		return "404";
 	}
 	
-	@RequestMapping(value = "/fp", method = RequestMethod.GET)
-	public String findPasswordGet(@RequestParam(value = "email", required = false) String email, Model model){
-		if(email != null){
-			Customer customer = customerService.findByEmail(email);
-			
-			if(customer != null && roleRepository.findByAuthorityAndCustomer("ROLE_UNAUTH", customer) == null){
-				emailSenderService.sendResetPasswordCode(customer);
-			}
-		}
-		return "findPassword";
-	}
-	
-	@RequestMapping(value = "/rg/{codeStr}", method = RequestMethod.GET)
-	public String activeAccount(@PathVariable String codeStr, Model model){
-		
-		customerService.activeAccount(codeStr);
-		
-		model.addAttribute("title", "Congratulation!");
-		model.addAttribute("msg", "Your Account has been actived!<strong>Please Logout and Login again!</strong>");
-		
-		return "processSuccess";
-	}
-	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerCustomerPost(@Valid @ModelAttribute("user") Customer user, BindingResult result,
 			HttpServletRequest request, Model model) {
@@ -131,10 +108,8 @@ public class UserController {
         
         setToSession(request, customer);
         
-        emailSenderService.sendActiveCode(customer);
-        
-        model.addAttribute("title", "Register Successful!");
-        model.addAttribute("msg", "The active code has been sent to your Email box. Please check it out.");
+        model.addAttribute("title", "Registration Successful!");
+        model.addAttribute("msg", "Your Account has been actived!<strong>Please Logout and Login again!</strong>");
         return "processSuccess";
     }
 	

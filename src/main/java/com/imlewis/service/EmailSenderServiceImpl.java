@@ -1,8 +1,5 @@
 package com.imlewis.service;
 
-import java.util.Date;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +8,6 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
-import com.imlewis.model.Code;
 import com.imlewis.model.Customer;
 
 @Service
@@ -19,8 +15,6 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 
 	 Logger logger = LoggerFactory.getLogger(EmailSenderServiceImpl.class);
 	 
-	@Autowired
-	private CodeService codeService;
 	@Autowired
 	private MailSender mailSender;
 	@Value("${fromAddress}")
@@ -38,26 +32,6 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 	}
 	
 	public void sendActiveCode(Customer customer){
-		List<Code> codes = codeService.findByCodeTypeAndCustomer(0, customer);
-		String msgBody = "Click or copy this link to the browser -> http://" + websiteAddr + "/rg/";
-		for(Code code : codes){
-			msgBody = msgBody + code.getCodeStr();
-			break;
-		}
-		logger.info("To activate " + msgBody);
 		//sendMail(customer.getEmail(), "Active Your Account", msgBody);
-		
-	}
-	
-	public void sendResetPasswordCode(Customer customer){
-		Code code = new Code();
-		code.setCodeDate(new Date());
-		code.setCodeType(1);
-		code.setCustomer(customer);
-		
-		codeService.save(code);
-		String msgBody = websiteAddr + "/rp/" + code.getCodeStr();
-		logger.info("To activate " + msgBody);
-		//sendMail(customer.getEmail(), "Reset Your Passowrd", msgBody);
 	}
 }

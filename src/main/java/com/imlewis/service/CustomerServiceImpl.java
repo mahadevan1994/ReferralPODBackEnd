@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.imlewis.model.Cart;
-import com.imlewis.model.Code;
 import com.imlewis.model.Customer;
 import com.imlewis.model.OmniAccount;
 import com.imlewis.model.RichRelevanceMockForFashion;
@@ -28,8 +27,6 @@ public class CustomerServiceImpl implements CustomerService {
 	private CartRepository cartRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	@Autowired
-	private CodeService codeService;
 
 	public void save(Customer customer) {
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
@@ -51,38 +48,18 @@ public class CustomerServiceImpl implements CustomerService {
 			customerRepository.save(customer);
 			// save role
 			roleRepository.save(role);
-
-			// generate active code
-			Code code = new Code();
-			code.setCodeDate(new Date());
-			code.setCodeType(0);
-			code.setCustomer(customer);
-
-			codeService.save(code);
 			
 		} else {
 			customerRepository.save(customer);
 		}
-	}
-
-	public void activeAccount(String codeStr) {
-		Code code = codeService.findByCodeStr(codeStr);
-		if (code != null) {
-			Customer customer = code.getCustomer();
-			Role role = new Role();
-			if(customer.getEmail().equals("admin@gmail.com")) {
-				role.setAuthority("ROLE_ADMIN");
-			} else {
-				role.setAuthority("ROLE_USER");
-			}
-			role.setCustomer(customer);
-			role.setEmail(customer.getEmail());
-			roleRepository.save(role);
-			// delete role UNAUTH
-			roleRepository.delete(roleRepository.findByAuthorityAndCustomer("ROLE_UNAUTH", customer));
-			// delete active code
-			codeService.delete(code);
-		}
+		
+		Role role = new Role();
+		role.setAuthority("ROLE_USER");
+		role.setCustomer(customer);
+		role.setEmail(customer.getEmail());
+		roleRepository.save(role);
+		// delete role UNAUTH
+		roleRepository.delete(roleRepository.findByAuthorityAndCustomer("ROLE_UNAUTH", customer));
 	}
 
 	public Customer findByEmail(String email) {
