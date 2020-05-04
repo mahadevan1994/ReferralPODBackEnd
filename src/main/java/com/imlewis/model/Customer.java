@@ -3,6 +3,7 @@ package com.imlewis.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,19 +23,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Customer implements Serializable {
 
-    private static final long serialVersionUID = -1836726872479056197L;
+	private static final long serialVersionUID = -1836726872479056197L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long customerId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long customerId;
 
-    @NotEmpty (message = "Email can not be blank")
-    private String email;
-    
-    public String getLoyaltyPointMembershipId() {
-    	if(loyaltyPointMembershipId == null) {
-    		loyaltyPointMembershipId = "LEGACY_LOYALTY_MEMBERSHIP_1234567890";
-    	}
+	@NotEmpty(message = "Email can not be blank")
+	private String email;
+
+	public String getLoyaltyPointMembershipId() {
+		if (loyaltyPointMembershipId == null) {
+			loyaltyPointMembershipId = "MEMBERSHIP_" + String.format("%06d", new Random().nextInt(999999));
+		}
 		return loyaltyPointMembershipId;
 	}
 
@@ -43,12 +44,9 @@ public class Customer implements Serializable {
 	}
 
 	private String loyaltyPointMembershipId;
-    private double loyaltyPoints;
+	private double loyaltyPoints;
 
-    public double getLoyaltyPoints() {
-		if(loyaltyPoints == 0.00d) {
-			loyaltyPoints = 100.00d;
-    	}
+	public double getLoyaltyPoints() {
 		return loyaltyPoints;
 	}
 
@@ -56,19 +54,19 @@ public class Customer implements Serializable {
 		this.loyaltyPoints = loyaltyPoints;
 	}
 
-	@NotEmpty (message = "Password can not be blank")
-    private String password;
+	@NotEmpty(message = "Password can not be blank")
+	private String password;
 
-    @NotEmpty (message = "Name can not be blank")
-    private String customerName;
-    
-    @Column(columnDefinition="DATETIME")
-    private Date registerDate;
+	@NotEmpty(message = "Name can not be blank")
+	private String customerName;
 
-    private boolean enabled;
-    private boolean omniAccountEnabled;
+	@Column(columnDefinition = "DATETIME")
+	private Date registerDate;
 
-    public boolean isOmniAccountEnabled() {
+	private boolean enabled;
+	private boolean omniAccountEnabled;
+
+	public boolean isOmniAccountEnabled() {
 		return omniAccountEnabled;
 	}
 
@@ -77,21 +75,21 @@ public class Customer implements Serializable {
 	}
 
 	@OneToOne
-    @JoinColumn(name = "cartId")
-    @JsonIgnore
-    private Cart cart;
-    
-    @OneToMany(mappedBy = "customer")
-    private List<Role> roles;
-    
-    @OneToMany(mappedBy = "customer")
-    private List<ProductComment> productComments;
-    
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<ShippingAddress> shippingAddresses;
-    
-    @OneToMany(mappedBy = "customer")
-    private List<Code> codes;
+	@JoinColumn(name = "cartId")
+	@JsonIgnore
+	private Cart cart;
+
+	@OneToMany(mappedBy = "customer")
+	private List<Role> roles;
+
+	@OneToMany(mappedBy = "customer")
+	private List<ProductComment> productComments;
+
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private List<ShippingAddress> shippingAddresses;
+
+	@OneToMany(mappedBy = "customer")
+	private List<Code> codes;
 
 	public Long getCustomerId() {
 		return customerId;
@@ -180,5 +178,4 @@ public class Customer implements Serializable {
 	public void setCodes(List<Code> codes) {
 		this.codes = codes;
 	}
-
 }
