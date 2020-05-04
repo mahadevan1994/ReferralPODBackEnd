@@ -91,9 +91,6 @@
 									<c:if test="${pageContext.request.userPrincipal.name != null}">
 										<li><a href="#" style="cursor: default">Welcome:
 												${customerName_}</a></li>
-										<c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
-                                        <li><a href="/admin/">Admin</a></li>
-                                    </c:if>
                                     <li><a href="/customer/account" >My Account</a> </li>
                                     <li><a href="/logout" >Logout</a></li>
                                 </c:if>
