@@ -63,6 +63,8 @@
                 <li><a href="/admin/cu/m">Users</a></li>
                 <li><a href="/admin/cu/mm">Config</a></li>
                 <li><a href="/admin/ca/m">Category</a></li>
+                <li><a href="/admin/urf/m">User Referral Configuration</a></li>
+                <li><a href="/admin/grf/m">Generic Referral Configuration</a></li>
             </ul>
         </div>
 
