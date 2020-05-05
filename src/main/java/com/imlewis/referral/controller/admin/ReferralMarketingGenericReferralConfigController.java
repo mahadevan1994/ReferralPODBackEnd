@@ -15,6 +15,7 @@ public class ReferralMarketingGenericReferralConfigController {
 
 		ReferralMarketingGenericReferralConfigItem genericReferralConfigItem = new ReferralMarketingGenericReferralConfigItem();
     	model.addAttribute("genericReferral",genericReferralConfigItem);
+    	model.addAttribute("addConfiguration",genericReferralConfigItem);
     	
 		return "admin/referralMarketingGenericReferralConfig";
 		
