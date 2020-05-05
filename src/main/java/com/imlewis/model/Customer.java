@@ -28,6 +28,9 @@ public class Customer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long customerId;
 
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<CustomerOrder> customerOrders; 
+	
 	@NotEmpty(message = "Email can not be blank")
 	private String email;
 
@@ -155,5 +158,20 @@ public class Customer implements Serializable {
 
 	public void setCodes(List<Code> codes) {
 		this.codes = codes;
+	}
+	
+
+	public int getOrderCounts() {
+		List<CustomerOrder> orderList = customerOrders;
+		return orderList.size();
+	}
+
+	public double getOrderTotals() {
+		double orderValue = 0.00d;
+		List<CustomerOrder> orderList = customerOrders;
+		for (CustomerOrder customerOrder : orderList) {
+			orderValue += customerOrder.getOrderTotalPrice();
+		}
+		return orderValue;
 	}
 }
