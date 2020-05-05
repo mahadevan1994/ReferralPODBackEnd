@@ -28,8 +28,6 @@
 						</c:if>
 					</div>
 
-					<label for="email">Loyalty Account: </label>
-					<p id="name">${customer.loyaltyPointMembershipId}</p>
 					<label for="email">Total Loyalty Points: </label>
 					<p id="name">${customer.loyaltyPoints}</p>
 

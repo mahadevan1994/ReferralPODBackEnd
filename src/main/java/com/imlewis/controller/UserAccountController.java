@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.imlewis.model.Customer;
 import com.imlewis.model.CustomerOrder;
 import com.imlewis.model.ShippingAddress;
-import com.imlewis.repository.CustomerOrderRepository;
 import com.imlewis.service.CustomerAddressService;
 import com.imlewis.service.CustomerOrderService;
 import com.imlewis.service.CustomerService;
@@ -27,8 +26,6 @@ public class UserAccountController {
 
     @Autowired
     private CustomerService customerService;
-    @Autowired
-    private CustomerOrderRepository customerOrderRepository;
     @Autowired
     private CustomerAddressService customerAddressService;
     @Autowired
@@ -48,14 +45,7 @@ public class UserAccountController {
         
         model.addAttribute("customer",customer);
 
-//        List<ShippingAddress> customerBillingAddresses = customerAddressRepository.findByIsShippingAndCustomer(false, customer);
         List<ShippingAddress> customerShippingAddresses = customerAddressService.getAllShippingAddressByCustomerId(customerId);
-/*
-        for(ShippingAddress defaultBillingAddress : customerBillingAddresses){
-        	if(defaultBillingAddress.getIsDefault()){
-                model.addAttribute("billingAddress",customerBillingAddresses);
-        	}
-        }*/
         for(ShippingAddress defaultShippingAddress : customerShippingAddresses){
         	if(defaultShippingAddress.getIsDefault()){
                 model.addAttribute("shippingAddress",defaultShippingAddress);
@@ -71,7 +61,6 @@ public class UserAccountController {
         List<CustomerOrder> customerOrders = customerOrderService.getAllCustomerOrderByCustomer(customer);
         model.addAttribute("customerOrders", customerOrders);
 		
-
         return "myAccount";
     }
     

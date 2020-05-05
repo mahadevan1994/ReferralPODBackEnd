@@ -1,5 +1,6 @@
 package com.imlewis.controller.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.imlewis.model.Customer;
+import com.imlewis.referral.model.ReferralMarketingCustomer;
+import com.imlewis.referral.service.ReferralMarketingCustomerOrderService;
 import com.imlewis.service.CustomerService;
 
 @Controller
@@ -17,11 +20,25 @@ public class AdminCustomerController {
 
     @Autowired
     private CustomerService customerService;
+    
+    @Autowired
+    private ReferralMarketingCustomerOrderService referralMarketingCustomerOrderService;
 
     @RequestMapping("/m")
     public String customerManagement(Model model){
         List<Customer> customerList = customerService.getAllCustomer();
-        model.addAttribute("customerList", customerList);
+        List<ReferralMarketingCustomer> referralMarketingCustomerList = new ArrayList<ReferralMarketingCustomer>();
+        for (Customer customer : customerList) {
+        	ReferralMarketingCustomer referralMarketingCustomer = new ReferralMarketingCustomer();
+        	referralMarketingCustomer.setCustomerId(customer.getCustomerId());
+        	referralMarketingCustomer.setCustomerName(customer.getCustomerName());
+        	referralMarketingCustomer.setEmail(customer.getEmail());
+        	referralMarketingCustomer.setLoyaltyPoints(customer.getLoyaltyPoints());
+        	referralMarketingCustomer.setOrderCounts(referralMarketingCustomerOrderService.getOrderCounts(customer));
+        	referralMarketingCustomer.setOrderTotals(referralMarketingCustomerOrderService.getOrderTotals(customer));
+        	referralMarketingCustomerList.add(referralMarketingCustomer);
+		}
+        model.addAttribute("customerList", referralMarketingCustomerList);
 
         return "admin/customerManagement";
     }

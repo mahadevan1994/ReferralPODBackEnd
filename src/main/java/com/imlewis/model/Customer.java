@@ -3,7 +3,6 @@ package com.imlewis.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,18 +31,6 @@ public class Customer implements Serializable {
 	@NotEmpty(message = "Email can not be blank")
 	private String email;
 
-	public String getLoyaltyPointMembershipId() {
-		if (loyaltyPointMembershipId == null) {
-			loyaltyPointMembershipId = "MEMBERSHIP_" + String.format("%06d", new Random().nextInt(999999));
-		}
-		return loyaltyPointMembershipId;
-	}
-
-	public void setLoyaltyPointMembershipId(String loyaltyPointMembershipId) {
-		this.loyaltyPointMembershipId = loyaltyPointMembershipId;
-	}
-
-	private String loyaltyPointMembershipId;
 	private double loyaltyPoints;
 
 	public double getLoyaltyPoints() {
