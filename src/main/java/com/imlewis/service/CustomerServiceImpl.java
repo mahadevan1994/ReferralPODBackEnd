@@ -1,17 +1,13 @@
 package com.imlewis.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.imlewis.model.Cart;
 import com.imlewis.model.Customer;
-import com.imlewis.model.OmniAccount;
-import com.imlewis.model.RichRelevanceMockForFashion;
 import com.imlewis.model.Role;
 import com.imlewis.repository.CartRepository;
 import com.imlewis.repository.CustomerRepository;

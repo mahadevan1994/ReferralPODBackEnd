@@ -26,13 +26,6 @@ public class AdminCustomerController {
         return "admin/customerManagement";
     }
     
-    @RequestMapping("/mm")
-    public String configManagement(Model model){
-    	List<Customer> customerList = customerService.getAllCustomer();
-        model.addAttribute("customerList", customerList);
-        return "admin/omniAccountConfig";
-    }
-    
     @RequestMapping("/d")
     public String removeCustomer(@RequestParam(value="id", required=true) Long customerId){
     	customerService.delete(customerId);
@@ -45,22 +38,6 @@ public class AdminCustomerController {
     	customer.setEnabled(true);
     	customerService.save(customer);
     	return "redirect:/admin/cu/m";
-    }
-    
-    @RequestMapping("/ee")
-    public String enableOmniAccount(@RequestParam(value="id", required=true) Long customerId){
-    	Customer customer = customerService.findOne(customerId);
-    	customer.setOmniAccountEnabled(true);
-    	customerService.save(customer);
-    	return "redirect:/admin/cu/mm";
-    }
-    
-    @RequestMapping("/eee")
-    public String disableOmniAccount(@RequestParam(value="id", required=true) Long customerId){
-    	Customer customer = customerService.findOne(customerId);
-    	customer.setOmniAccountEnabled(false);
-    	customerService.save(customer);
-    	return "redirect:/admin/cu/mm";
     }
     
     @RequestMapping("/ds")
