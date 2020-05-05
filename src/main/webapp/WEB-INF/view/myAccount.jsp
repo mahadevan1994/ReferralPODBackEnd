@@ -28,21 +28,10 @@
 						</c:if>
 					</div>
 
-					<c:if test="${customer.omniAccountEnabled}">
-						<label for="email">Omni Account: </label>
-						<p id="name">${omniAccount.omniAccountId}</p>
-						<label for="email">Total Omni Account Loyalty Points: </label>
-						<p id="name">${omniAccount.omniAccountTotal}&nbsp;&nbsp;</p>
-						<p>P.S: Your loyalty points in
-							${customer.loyaltyPointMembershipId} - ${customer.loyaltyPoints}
-							has been transfered to Omni Account</p>
-					</c:if>
-					<c:if test="${!customer.omniAccountEnabled}">
-						<label for="email">Loyalty Account: </label>
-						<p id="name">${customer.loyaltyPointMembershipId}</p>
-						<label for="email">Total Loyalty Points: </label>
-						<p id="name">${customer.loyaltyPoints}</p>
-					</c:if>
+					<label for="email">Loyalty Account: </label>
+					<p id="name">${customer.loyaltyPointMembershipId}</p>
+					<label for="email">Total Loyalty Points: </label>
+					<p id="name">${customer.loyaltyPoints}</p>
 
 				</div>
 				<hr>
@@ -145,8 +134,7 @@
 									<br>
 									<div style="float: right">
 										<button class="btn btn-default">View Order</button>
-										<br>
-										<br>
+										<br> <br>
 										<button class="btn btn-default">
 											<a
 												href="/customer/account/order?d=${customerOrder.customerOrderId}">Delete

@@ -1,6 +1,5 @@
 <%@include file="/WEB-INF/view/template/header.jsp"%>
 <!-- Primary function library placed before the callback and Primary Code Block. -->
-<script src="//media.richrelevance.com/rrserver/js/1.2/p13n.js"></script>
 <!-- Start slider -->
 <!-- <button onclick="testMe('${_csrf.parameterName}=${_csrf.token}')">Click Me</button> -->
 
@@ -15,23 +14,6 @@ function getProfileName() {
 	   return "${pageContext.request.userPrincipal.name}";
 	}
 	
-  var R3_COMMON = new r3_common();
-  R3_COMMON.setApiKey('d26ffb2802370496');
-  R3_COMMON.setBaseUrl(window.location.protocol+'//integration.richrelevance.com/rrserver/');
-  R3_COMMON.setClickthruServer(window.location.protocol+"//"+window.location.host);
-  R3_COMMON.setSessionId(session_id());
-  R3_COMMON.setUserId(getProfileName);  // if no user ID is available, please leave this blank
-  
-//Use this code if you are not requesting placement(s) for personalization
-  R3_COMMON.addPlacementType('home_page');
-
-  // Replace placement_name with the placement name you set up in Dashboard.
-  // Call multiple times to display more than one placement.
-  R3_COMMON.addPlacementType('home_page.home_page_jlp');
-  
-  var R3_HOME = new r3_home();
-  rr_flush_onload();
-  r3();
 </script> 
 
 <script charset="utf-8" type="text/javascript">

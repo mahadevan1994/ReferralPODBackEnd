@@ -14,8 +14,6 @@ import com.imlewis.model.Customer;
 import com.imlewis.model.CustomerOrder;
 import com.imlewis.model.CustomerOrderItem;
 import com.imlewis.model.CustomerOrderShippingAddress;
-import com.imlewis.model.OmniAccount;
-import com.imlewis.model.RichRelevanceMockForFashion;
 import com.imlewis.model.ShippingAddress;
 import com.imlewis.repository.CartItemRepository;
 import com.imlewis.repository.CustomerOrderItemRepository;

@@ -1,6 +1,5 @@
 <%@include file="/WEB-INF/view/template/header.jsp"%>
 <!-- Primary function library placed before the callback and Primary Code Block. -->
-<script src="//media.richrelevance.com/rrserver/js/1.2/p13n.js"></script>
 
 <!-- Place this code inside the <body> element as close to the top as possible -->
 <script charset="utf-8" type="text/javascript">
@@ -17,37 +16,6 @@ function getProfileName() {
 		return "${category}";
 	}
 	
-  var R3_COMMON = new r3_common();
-  R3_COMMON.setApiKey('d26ffb2802370496');
-  R3_COMMON.setBaseUrl(window.location.protocol+'//integration.richrelevance.com/rrserver/');
-  R3_COMMON.setClickthruServer(window.location.protocol+"//"+window.location.host);
-  R3_COMMON.setSessionId(session_id());
-  R3_COMMON.setUserId(getProfileName);  // if no user ID is available, please leave this blank
- 
-  // Use this code if you are not requesting placement(s) for personalization
-  R3_COMMON.addPlacementType('category_page');
-
-  // Replace placement_name with the placement name you set up in Dashboard.
-  // Call multiple times to display more than one placement.
-  R3_COMMON.addPlacementType('category_page.placement_name');
-  
-  var R3_CATEGORY = new r3_category();
-  // Category ID must match a category id as passed in catalog feed
-  R3_CATEGORY.setId(getCategoryName()); 
-
-  // If you want, you can specify the category name as it should be displayed to customers.
-  // This is optional. If you pass a value, it will override the one provided in the Product Feed
-  // for this Category ID.
-  R3_CATEGORY.setName(getCategoryName()); 
- 
-  // Provide up to 15 Product IDs the for items displayed on this page.
-  // Call this method once per Product ID.
-  // If this item has a Parent ID, you can pass it as a second argument.
-  R3_COMMON.addItemId('21666189');
-
-  rr_flush_onload();
- 
-  r3(); 
 </script>
 
 <section id="aa-catg-head-banner">

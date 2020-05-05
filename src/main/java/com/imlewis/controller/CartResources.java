@@ -17,13 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.client.RestTemplate;
 
 import com.imlewis.model.Cart;
 import com.imlewis.model.CartItem;
 import com.imlewis.model.Customer;
 import com.imlewis.model.Product;
-import com.imlewis.model.RichRelevanceMockForFashion;
 import com.imlewis.repository.CartItemRepository;
 import com.imlewis.repository.CartRepository;
 import com.imlewis.repository.CustomerRepository;
