@@ -33,6 +33,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 	private MailSender mailSender;
 	@Value("${fromAddress}")
 	private String fromAddress;
+	@Value("${spring.mail.host}")
 	private String smtpHost;
 	@Value("${spring.mail.port}")
 	private int smtpPort;
