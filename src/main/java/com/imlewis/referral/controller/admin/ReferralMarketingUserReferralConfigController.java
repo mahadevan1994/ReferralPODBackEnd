@@ -35,11 +35,13 @@ public class ReferralMarketingUserReferralConfigController {
 	}
 	
 	@RequestMapping(value = "/s", method = RequestMethod.POST)
-	public String addUserReferralConfig(@Valid @ModelAttribute("userReferral") ReferralMarketingUserReferralConfigItem referralMarketingUserReferralConfigItem, BindingResult result){
+	public String addUserReferralConfig(@Valid @ModelAttribute("userReferral") ReferralMarketingUserReferralConfigItem referralMarketingUserReferralConfigItem, BindingResult result, Model model){
 		if (result.hasErrors()) {
 			return "admin/referralMarketingUserReferralConfig";
 		}
 		referralMarketingUserReferralConfigRepository.save(referralMarketingUserReferralConfigItem);
+		model.addAttribute("userReferral", new ReferralMarketingUserReferralConfigItem());
+		model.addAttribute("msg", "Success! User Referral Configuration details have been added");
 		return "admin/referralMarketingUserReferralConfig";
 	}
 	
