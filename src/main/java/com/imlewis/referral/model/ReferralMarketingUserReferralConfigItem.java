@@ -18,9 +18,17 @@ public class ReferralMarketingUserReferralConfigItem implements Serializable{
     @GeneratedValue
     private Long userReferralId;
 
-    private boolean referralEnablement;
+    private boolean referralEnablement = false;
     
-    private int referralFrequency;
+    public boolean isReferralEnablement() {
+		return referralEnablement;
+	}
+
+	public void setReferralEnablement(boolean referralEnablement) {
+		this.referralEnablement = referralEnablement;
+	}
+
+	private int referralFrequency;
     
     @NotNull(message = "Referral Enablement Date can not be blank")
     private Date referralEnablementDate;
@@ -35,14 +43,6 @@ public class ReferralMarketingUserReferralConfigItem implements Serializable{
 
     public void setUserReferralId(Long userReferralId) {
         this.userReferralId = userReferralId;
-    }
-
-    public boolean isReferralEnablement() {
-        return referralEnablement;
-    }
-
-    public void setRreferralEnablement(boolean referralEnablement) {
-        this.referralEnablement = referralEnablement;
     }
 
     public int getReferralFrequency() {
