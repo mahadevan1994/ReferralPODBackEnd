@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.imlewis.model.Customer;
 import com.imlewis.referral.service.ReferralMarketingCustomerService;
 import com.imlewis.referral.service.ReferralMarketingUserReferralConfigService;
+import com.imlewis.service.EmailSenderService;
 
 @Component
 public class ReferralMarketingScheduler {
@@ -22,15 +23,18 @@ public class ReferralMarketingScheduler {
     
     @Autowired
     private ReferralMarketingCustomerService referralMarketingCustomerService;
+
+    @Autowired
+    private EmailSenderService emailSenderService;
     
     @Scheduled(cron = "1 0 0-5 13 * *")
     private void execute() {
         //checking referral enabled
         if(referralMarketingUserReferralConfigService.isReferralEnablement()) {
             List<Customer> filteredCustomers = referralMarketingCustomerService.getFilteredCustomers();
-            //Proceed from here
+            for (Customer customer : filteredCustomers) {
+            	emailSenderService.sendEmail(customer);
+			}
         }
-
-        log.debug("Referral scheduled!");
     }
 }
