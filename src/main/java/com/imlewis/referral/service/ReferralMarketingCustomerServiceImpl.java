@@ -1,7 +1,7 @@
 package com.imlewis.referral.service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +29,10 @@ public class ReferralMarketingCustomerServiceImpl implements ReferralMarketingCu
 		List<Customer> customerList = customerService.getAllCustomer();
 
 		for (Customer customer : customerList) {
-			LocalDate referedDate = referralMarketingUserReferralConfigService.retrieveReferedDate();
+			Date referedDate = referralMarketingUserReferralConfigService.retrieveReferedDate();
 			// condition to check user registered date is after the referralEnablementDate
 			// condition to check customer order meets the minimum order count configured
-			if (customer.getRegisterDate().isAfter(referedDate)
+			if (null != (customer.getRegisterDate()) && customer.getRegisterDate().after(referedDate)
 					&& customer.getOrderCounts() >= referralMarketingGenericReferralConfigService
 							.findMinimumOrderCount()
 					&& customer.getOrderTotals() >= referralMarketingGenericReferralConfigService

@@ -1,5 +1,6 @@
 package com.imlewis.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
 			// update cartId in Customer
 			customer.setCart(cart);
 			customer.setEnabled(true);
+			customer.setRegisterDate(new Date());
 			customerRepository.save(customer);
 			// save role
 			roleRepository.save(role);

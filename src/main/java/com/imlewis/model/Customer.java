@@ -1,7 +1,6 @@
 package com.imlewis.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class Customer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long customerId;
 
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<CustomerOrder> customerOrders; 
 	
 	@NotEmpty(message = "Email can not be blank")
@@ -52,7 +51,7 @@ public class Customer implements Serializable {
 	private String customerName;
 
 	@Column(columnDefinition = "DATETIME")
-	private LocalDate registerDate;
+	private Date registerDate;
 
 	private boolean enabled;
 
@@ -125,11 +124,11 @@ public class Customer implements Serializable {
 		return cart;
 	}
 
-	public LocalDate getRegisterDate() {
+	public Date getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(LocalDate registerDate) {
+	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}
 

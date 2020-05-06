@@ -1,6 +1,6 @@
 package com.imlewis.referral.service;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class ReferralMarketingUserReferralConfigServiceImpl implements ReferralM
 		referralMarketingUserReferralConfigRepository.save(referralMarketingUserReferralConfigItem);
 	}
 	
-	public LocalDate retrieveReferedDate() {
+	public Date retrieveReferedDate() {
 		return referralMarketingUserReferralConfigRepository.retrieveReferedDate();
 	}
 	
