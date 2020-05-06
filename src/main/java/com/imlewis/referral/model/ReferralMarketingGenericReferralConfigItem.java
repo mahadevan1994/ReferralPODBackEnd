@@ -19,11 +19,6 @@ public class ReferralMarketingGenericReferralConfigItem implements Serializable{
     private int minimumOrderCount;
     
     private int totalBusiness;
-    
-    private String programType;
-    private String benefitType;
-    private String referralMessage;
-    private double referralAmount;
 
     public Long getGenericReferralId() {
         return genericReferralId;
@@ -49,38 +44,6 @@ public class ReferralMarketingGenericReferralConfigItem implements Serializable{
     public void setTotalBusiness(int totalBusiness) {
         this.totalBusiness = totalBusiness;
     }
-
-	public String getProgramType() {
-		return programType;
-	}
-
-	public void setProgramType(String programType) {
-		this.programType = programType;
-	}
-
-	public String getBenefitType() {
-		return benefitType;
-	}
-
-	public void setBenefitType(String benefitType) {
-		this.benefitType = benefitType;
-	}
-
-	public String getReferralMessage() {
-		return referralMessage;
-	}
-
-	public void setReferralMessage(String referralMessage) {
-		this.referralMessage = referralMessage;
-	}
-
-	public double getReferralAmount() {
-		return referralAmount;
-	}
-
-	public void setReferralAmount(double referralAmount) {
-		this.referralAmount = referralAmount;
-	}
     
 }
 
