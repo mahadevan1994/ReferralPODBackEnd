@@ -1,0 +1,104 @@
+@CHARSET "ISO-8859-1";
+
+.SITE_FOOTER_COLUMN_1 {
+	padding-left: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	list-style-type: disc;
+	margin-bottom: 1rem;
+	list-style-position: outside;
+	line-height: 1.5rem;
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	font-weight: 700;
+	font-size: .75rem;
+}
+
+.SITE_FOOTER_COLUMN_2 {
+	padding-left: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	list-style-type: disc;
+	margin-bottom: 1rem;
+	list-style-position: outside;
+	line-height: 1.5rem;
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	font-weight: 700;
+	font-size: .75rem;
+}
+
+.SITE_FOOTER_COLUMN_3 {
+	padding-left: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	list-style-type: disc;
+	margin-bottom: 1rem;
+	list-style-position: outside;
+	line-height: 1.5rem;
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	font-weight: 700;
+	font-size: .75rem;
+}
+
+.SITE_FOOTER_COLUMN_4 {
+	padding-left: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	list-style-type: disc;
+	margin-bottom: 1rem;
+	list-style-position: outside;
+	line-height: 1.5rem;
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	font-weight: 700;
+	font-size: .75rem;
+}
+
+.title {
+	font-weight: 700;
+	font-size: 1.875rem;
+	padding-top: 1.5625rem;
+	padding-bottom: .75rem text-decoration: none;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	line-height: 3.625em;
+	list-style: none !important;
+	text-align: left;
+	margin: 0;
+	padding: 0;
+	letter-spacing: .1px;
+}
+
+.footer-checkbox-item {
+	text-decoration: none;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	line-height: 1.625em;
+	font-size: .95rem;
+	list-style: none !important;
+	text-align: left
+}
