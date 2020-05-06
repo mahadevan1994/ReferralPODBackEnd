@@ -19,27 +19,23 @@ import java.util.List;
 public class ReferralMarketingScheduler {
 
     private static final Logger log = LoggerFactory.getLogger(ReferralMarketingScheduler.class);
-    @Autowired
     private final ReferralMarketingUserReferralConfigRepository userReferralMarketingRepo;
-    @Autowired
     private final ReferralMarketingGenericReferralConfigRepository genericReferalConfigRepo;
 
-    @Autowired
-    private final Customer customer;
-    @Autowired
+    private final Customer customer = new Customer();
     private final CustomerService customerService;
+    private final ReferralMarketingUserReferralConfigItem userReferal = new ReferralMarketingUserReferralConfigItem();
+    private final ReferralMarketingGenericReferralConfigItem referralMarketingGenericReferralConfigItem = new ReferralMarketingGenericReferralConfigItem();
+    
+    
     @Autowired
-    private final ReferralMarketingUserReferralConfigItem userReferal;
-
-    public ReferralMarketingScheduler(ReferralMarketingUserReferralConfigRepository userReferralMarketingRepo, ReferralMarketingGenericReferralConfigRepository genericReferalConfigRepo, ReferralMarketingGenericReferralConfigItem genericReferralMarketingRepo, Customer customer, CustomerService customerService, ReferralMarketingUserReferralConfigItem userReferal) {
+    public ReferralMarketingScheduler(ReferralMarketingUserReferralConfigRepository userReferralMarketingRepo, ReferralMarketingGenericReferralConfigRepository genericReferalConfigRepo, CustomerService customerService) {
         this.userReferralMarketingRepo = userReferralMarketingRepo;
         this.genericReferalConfigRepo = genericReferalConfigRepo;
-        this.customer = customer;
         this.customerService = customerService;
-        this.userReferal = userReferal;
     }
 
-    @Scheduled(cron = "[Seconds] [Minutes] [Hours] [Day of month] [Month] [Day of week] [Year]")
+    @Scheduled(cron = "1 0 0-5 13 * *")
     private void execute() {
         LocalDate referedDate = userReferralMarketingRepo.retrieveReferedDate();
         //checking referal enabled
