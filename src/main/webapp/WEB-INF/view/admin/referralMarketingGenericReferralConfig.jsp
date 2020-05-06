@@ -32,6 +32,12 @@
 				<input type="submit" value="submit" class="btn btn-default"/>
 			</div>
 		</form:form>
+
+		<div
+			style="width: 50%; float: left; vertical-align: middle; margin-top: 20px; margin-left: 220px;">
+			<span style="margin-left: -217px; color: green; font-size: 25;">${msg}</span>
+		</div>
+
 		<input type="submit" value="+ Add Configuration" class="form-group" style="width: 13%; margin: 50px 0; padding: 5px 0; float: left; text-align: center;" onclick="showConfigurationFields()" />
 		
 		<form:form action="/admin/grf/a?" method="post" commandName="addConfiguration" enctype="multipart/form-data">

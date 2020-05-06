@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.model.ReferralMarketingGenericReferralConfigItem;
+import com.imlewis.referral.model.ReferralMarketingUserReferralConfigItem;
 import com.imlewis.referral.repository.ReferralMarketingGenericReferralAddConfigRepository;
 import com.imlewis.referral.repository.ReferralMarketingGenericReferralConfigRepository;
 
@@ -47,6 +48,7 @@ public class ReferralMarketingGenericReferralConfigController {
 		ReferralMarketingGenericReferralAddConfigItem addConfigItem = new ReferralMarketingGenericReferralAddConfigItem();
     	model.addAttribute("genericReferral",genericReferralConfigItem);
     	model.addAttribute("addConfiguration",addConfigItem);
+		model.addAttribute("msg", "Success! Generic Referral Configuration details have been added");
 		return "admin/referralMarketingGenericReferralConfig";
 		
 	}

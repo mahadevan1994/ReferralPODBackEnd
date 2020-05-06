@@ -68,6 +68,11 @@
 				<input type="submit" value="submit" class="btn btn-default">
 			</div>
 
+			<div
+				style="width: 50%; float: left; vertical-align: middle; margin-top: 20px; margin-left: 220px;">
+				<span style="margin-left: -217px; color: green; font-size: 25;">${msg}</span>
+			</div>
+
 		</form:form>
 	</div>
 </div>
