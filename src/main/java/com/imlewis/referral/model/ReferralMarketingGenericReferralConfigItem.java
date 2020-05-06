@@ -18,7 +18,7 @@ public class ReferralMarketingGenericReferralConfigItem implements Serializable{
 
     private int minimumOrderCount;
     
-    private int totalBusiness;
+    private double totalBusiness;
 
     public Long getGenericReferralId() {
         return genericReferralId;
@@ -36,14 +36,11 @@ public class ReferralMarketingGenericReferralConfigItem implements Serializable{
         this.minimumOrderCount = minimumOrderCount;
     }
 
-
-    public int getTotalBusiness() {
+    public double getTotalBusiness() {
         return totalBusiness;
     }
 
-    public void setTotalBusiness(int totalBusiness) {
+    public void setTotalBusiness(double totalBusiness) {
         this.totalBusiness = totalBusiness;
     }
-    
 }
-

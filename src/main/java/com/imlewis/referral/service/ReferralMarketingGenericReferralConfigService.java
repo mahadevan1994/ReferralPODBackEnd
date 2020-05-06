@@ -6,5 +6,7 @@ public interface ReferralMarketingGenericReferralConfigService {
 
 	void save(ReferralMarketingGenericReferralConfigItem ReferralMarketingGenericReferralConfigItem);
 	
+	int findMinimumOrderCount();
 	
+	Double findMinimumOrderTotal();
 }
