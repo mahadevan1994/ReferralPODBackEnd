@@ -1,6 +1,7 @@
 package com.imlewis.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class Customer implements Serializable {
 	private String customerName;
 
 	@Column(columnDefinition = "DATETIME")
-	private Date registerDate;
+	private LocalDate registerDate;
 
 	private boolean enabled;
 
@@ -134,11 +135,11 @@ public class Customer implements Serializable {
 		return cart;
 	}
 
-	public Date getRegisterDate() {
+	public LocalDate getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(Date registerDate) {
+	public void setRegisterDate(LocalDate registerDate) {
 		this.registerDate = registerDate;
 	}
 

@@ -27,27 +27,31 @@ public class ReferralMarketingScheduler {
     @Autowired
     private final Customer customer;
     @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
     @Autowired
-    private ReferralMarketingUserReferralConfigItem userReferal;
+    private final ReferralMarketingUserReferralConfigItem userReferal;
 
-    public ReferralMarketingScheduler(ReferralMarketingUserReferralConfigRepository userReferralMarketingRepo, ReferralMarketingGenericReferralConfigRepository genericReferalConfigRepo, ReferralMarketingGenericReferralConfigItem genericReferralMarketingRepo, Customer customer) {
+    public ReferralMarketingScheduler(ReferralMarketingUserReferralConfigRepository userReferralMarketingRepo, ReferralMarketingGenericReferralConfigRepository genericReferalConfigRepo, ReferralMarketingGenericReferralConfigItem genericReferralMarketingRepo, Customer customer, CustomerService customerService, ReferralMarketingUserReferralConfigItem userReferal) {
         this.userReferralMarketingRepo = userReferralMarketingRepo;
         this.genericReferalConfigRepo = genericReferalConfigRepo;
         this.customer = customer;
+        this.customerService = customerService;
+        this.userReferal = userReferal;
     }
 
     @Scheduled(cron = "[Seconds] [Minutes] [Hours] [Day of month] [Month] [Day of week] [Year]")
     private void execute() {
-
+        LocalDate referedDate = userReferralMarketingRepo.retrieveReferedDate();
+        //checking referal enabled
         if(userReferal.isReferralEnablement()) {
+
+            //condition to check user registered date is after the referralEnablementDate
+            if(customer.getRegisterDate().isAfter(referedDate))
+                //condition to check customer order meets the minimum order count configured
             if (customer.getOrderCounts() >= genericReferalConfigRepo.findMinimumOrderCount()) {
                 List<Customer> customerList = customerService.getAllCustomer();
-                int ordercount = customer.getOrderCounts();
-                double orderTotal = customer.getOrderTotals();
                 for (int i = 0; i < customerList.size(); i++) {
-                    LocalDate referedDate = userReferralMarketingRepo.retrieveReferedDate();
-
+                    //checks refereddate is future date from today.
                     if (referedDate.isAfter(LocalDate.now())) {
 
                     }
