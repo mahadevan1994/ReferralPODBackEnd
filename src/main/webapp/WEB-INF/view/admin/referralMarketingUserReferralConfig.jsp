@@ -38,8 +38,7 @@
 				</div>
 				<div style="width: 70%; float: right">
 					<form:errors path="referralEnablementDate" cssStyle="color: red" />
-					<form:input path="referralEnablementDate"
-						id="referralEnablementDate" type="Date" class="form-Control" />
+					<form:input type="date" path="referralEnablementDate" id="referralEnablementDate" class="form-Control" />
 				</div>
 			</div>
 			<div class="form-group" style="margin: 20px 0; padding: 15px 0;">
@@ -59,6 +58,7 @@
 						Benefit Expire (in days)</label>
 				</div>
 				<div style="width: 70%; float: right">
+				<form:errors path="referralBenifitExpiry" cssStyle="color: red" />
 					<form:input id="referralBenifitExpiry" path="referralBenifitExpiry"
 						class="form-Control" />
 				</div>

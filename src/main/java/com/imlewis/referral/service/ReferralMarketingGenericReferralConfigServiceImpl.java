@@ -1,0 +1,16 @@
+package com.imlewis.referral.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.imlewis.referral.model.ReferralMarketingGenericReferralConfigItem;
+import com.imlewis.referral.repository.ReferralMarketingGenericReferralConfigRepository;
+
+public class ReferralMarketingGenericReferralConfigServiceImpl implements ReferralMarketingGenericReferralConfigService {
+
+	@Autowired
+	private ReferralMarketingGenericReferralConfigRepository referralMarketingGenericReferralConfigRepository;
+	
+	public void save(ReferralMarketingGenericReferralConfigItem referralMarketingGenericReferralConfigItem){
+		referralMarketingGenericReferralConfigRepository.save(referralMarketingGenericReferralConfigItem);
+	}
+}

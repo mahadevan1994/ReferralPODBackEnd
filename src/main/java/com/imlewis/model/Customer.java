@@ -71,6 +71,16 @@ public class Customer implements Serializable {
 
 	@OneToMany(mappedBy = "customer")
 	private List<Code> codes;
+	
+	private boolean omniAccountEnabled;
+
+	public boolean isOmniAccountEnabled() {
+		return omniAccountEnabled;
+	}
+
+	public void setOmniAccountEnabled(boolean omniAccountEnabled) {
+		this.omniAccountEnabled = omniAccountEnabled;
+	}
 
 	public Long getCustomerId() {
 		return customerId;

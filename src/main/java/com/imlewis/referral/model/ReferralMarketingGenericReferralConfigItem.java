@@ -5,10 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class ReferralMarketingGenericReferralConfigItem implements Serializable{
@@ -19,16 +16,14 @@ public class ReferralMarketingGenericReferralConfigItem implements Serializable{
     @GeneratedValue
     private Long genericReferralId;
 
-    @NotEmpty(message = "Please fill in minimumOrderCount")
     private int minimumOrderCount;
+    
     private int totalBusiness;
+    
     private String programType;
     private String benefitType;
     private String referralMessage;
     private double referralAmount;
-
-    @Transient
-    private MultipartFile sliderImage;
 
     public Long getGenericReferralId() {
         return genericReferralId;

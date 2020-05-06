@@ -6,9 +6,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class ReferralMarketingUserReferralConfigItem implements Serializable{
@@ -20,14 +19,16 @@ public class ReferralMarketingUserReferralConfigItem implements Serializable{
     private Long userReferralId;
 
     private boolean referralEnablement;
+    
     private int referralFrequency;
+    
+    @NotNull(message = "Referral Enablement Date can not be blank")
     private Date referralEnablementDate;
+    
     private int referralinkExpiry;
+    
     private int referralBenifitExpiry;
-
-    @Transient
-    private MultipartFile sliderImage;
-
+	
     public Long getUserReferralId() {
         return userReferralId;
     }
@@ -36,7 +37,7 @@ public class ReferralMarketingUserReferralConfigItem implements Serializable{
         this.userReferralId = userReferralId;
     }
 
-    public boolean getReferralEnablement() {
+    public boolean isReferralEnablement() {
         return referralEnablement;
     }
 
