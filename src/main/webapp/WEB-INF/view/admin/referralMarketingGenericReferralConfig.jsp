@@ -32,10 +32,10 @@
 				<input type="submit" value="submit" class="btn btn-default"/>
 			</div>
 		</form:form>
-		<input type="submit" value="+ Add Configuration" class="form-group" style="width: 13%; margin: 50px 0; padding: 5px 0; float: left; text-align: center;" onclick="toggleHideShow()" />
+		<input type="submit" value="+ Add Configuration" class="form-group" style="width: 13%; margin: 50px 0; padding: 5px 0; float: left; text-align: center;" onclick="showConfigurationFields()" />
 		
-		<div id="addConfig" style="display: none">
-			<form:form action="/admin/grf/a?" method="post" commandName="addConfiguration" enctype="multipart/form-data">
+		<form:form action="/admin/grf/a?" method="post" commandName="addConfiguration" enctype="multipart/form-data">
+			<div id="addConfig" style="display: none">
 				<table>
 				<tr>
 					<td><label for="programType">Program Type:</label></td>
@@ -62,18 +62,18 @@
 					<label class="checkbox-inline"><form:input path="referralAmount" id="referralAmount" value="" /></label>
 				</div><br/>
 				<input type="submit" value="Add" id="add" class="btn btn-default" style="margin-left: 110px" />
-			</form:form>
-          </div>
+			</div>
+		</form:form>
 	</div>
 </div>
 <script>
 	$("#add").prop("disabled",true);
 	$("#referralMsgAmt").hide();
 	
-	function toggleHideShow() {
-	  var x = document.getElementById("addConfig");
-	  if (x.style.display === "none") {
-	    x.style.display = "block";
+	function showConfigurationFields() {
+	  var divElement = document.getElementById("addConfig");
+	  if (divElement.style.display === "none") {
+	    divElement.style.display = "block";
 	  }
 	}
 	
@@ -85,22 +85,18 @@
 	    		case "loyalty": 
 	    			$("#referralAmountType").text("Loyalty Points");
 	    			$("#referralMessage").text("Hello <user>, Loyalty points with <points> can be availed by registering with us.");
-	    			//$("#referralAmount").val("<loyalty points>");
 	    		break;
 	    		case "voucher": 
 	    			$("#referralAmountType").text("Voucher Amount");
 	    			$("#referralMessage").text("Hello <user>, Voucher amount with <amount> will be emailed to your registered email id post the first order.");
-	    			//$("#referralAmount").val("<voucher amount>");
 			    break;
 	    		case "discount": 
 	    			$("#referralAmountType").text("Discount Amount");
 	    			$("#referralMessage").text("Hello <user>, Discount of <discount> is application on your first order.");
-	    			//$("#referralAmount").val("<discount amount>");
 			    break;
 	    		case "giftItem": 
 	    			$("#referralAmountType").text("Gift Item");
 	    			$("#referralMessage").text("Hello <user>, Gift Item <Gift Item Description> will be added to the cart post registration.");
-	    			//$("#referralAmount").val("<gift item>");
 			    break;
 	    	}
 	        $("#add").prop("disabled",false );
