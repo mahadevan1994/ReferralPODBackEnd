@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.imlewis</groupId>
-	<artifactId>MacysReferralApplication</artifactId>
+	<artifactId>NancysReferralApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>MacysReferralApplication</name>
-	<description>MacysReferralApplication</description>
+	<name>NancysReferralApplication</name>
+	<description>NancysReferralApplication</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

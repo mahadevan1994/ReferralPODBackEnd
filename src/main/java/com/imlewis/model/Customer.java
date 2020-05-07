@@ -1,6 +1,7 @@
 package com.imlewis.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,8 +30,8 @@ public class Customer implements Serializable {
 	private Long customerId;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<CustomerOrder> customerOrders; 
-	
+	private List<CustomerOrder> customerOrders;
+
 	@NotEmpty(message = "Email can not be blank")
 	private String email;
 
@@ -71,7 +72,7 @@ public class Customer implements Serializable {
 
 	@OneToMany(mappedBy = "customer")
 	private List<Code> codes;
-	
+
 	public Long getCustomerId() {
 		return customerId;
 	}
@@ -159,18 +160,29 @@ public class Customer implements Serializable {
 	public void setCodes(List<Code> codes) {
 		this.codes = codes;
 	}
-	
 
 	public int getOrderCounts() {
+		int count = 0;
+		List<Long> uniqueCustomerOrderList = new ArrayList<Long>();
 		List<CustomerOrder> orderList = customerOrders;
-		return orderList.size();
+		for (CustomerOrder customerOrder : orderList) {
+			if (!uniqueCustomerOrderList.contains(customerOrder.getCustomerOrderId())) {
+				count ++;
+			}
+			uniqueCustomerOrderList.add(customerOrder.getCustomerOrderId());
+		}
+		return count;
 	}
 
 	public double getOrderTotals() {
 		double orderValue = 0.00d;
+		List<Long> uniqueCustomerOrderList = new ArrayList<Long>();
 		List<CustomerOrder> orderList = customerOrders;
 		for (CustomerOrder customerOrder : orderList) {
-			orderValue += customerOrder.getOrderTotalPrice();
+			if (!uniqueCustomerOrderList.contains(customerOrder.getCustomerOrderId())) {
+				orderValue += customerOrder.getOrderTotalPrice();
+			}
+			uniqueCustomerOrderList.add(customerOrder.getCustomerOrderId());
 		}
 		return orderValue;
 	}

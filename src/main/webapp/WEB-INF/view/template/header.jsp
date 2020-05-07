@@ -56,7 +56,7 @@
 								<span class="redesign-header-media-content"> <span
 									data-cm-href="cm_sp=navigation-_-topnav-_-left-hand_domestic_4267022">FREE
 										SHIPPING WITH $25 PURCHASE.&nbsp; <a title="Exclusions"
-										href="https://www.macys.com/s/free-shipping/"> <span
+										href="https://www.Nancys.com/s/free-shipping/"> <span
 											style="text-decoration: underline;">EXCLUSIONS</span>
 									</a>
 								</span>
@@ -66,7 +66,7 @@
 								<span class="redesign-header-media-content"> <span
 									data-cm-href="cm_sp=navigation-_-topnav-_-right-hand_domestic_4265408">OUR
 										RESPONSE TO COVID-19. <a title="SEE FAQs"
-										href="https://www.macys.com/social/covid-19/" target="_blank"
+										href="https://www.Nancys.com/social/covid-19/" target="_blank"
 										rel="noopener">SEE FAQs</a>
 								</span>
 								</span>
@@ -81,7 +81,7 @@
 						<div class="redesign-header-links">
 							<div
 								class="redesign-header-links-col redesign-header-links-col-left text-left clearfix">
-								<div id="logo" class="redesign-header-logo" title="Macy's">
+								<div id="logo" class="redesign-header-logo" title="Nancy's">
 									<a href="#" id="logoFashion"><img
 										src="images/logos/commerce-and-shopping.svg" alt="Logo" /><span>Fashion</span></a>
 								</div>
@@ -89,7 +89,7 @@
 									<ul class="redesign-header-nav-list">
 										<li class="redesign-header-nav-list-item"><a
 											title="Stores"
-											href="https://l.macys.com/stores.html?cm_sp=navigation-_-top_nav-_-stores&amp;lid=glbtopnav_stores-us">Stores</a></li>
+											href="https://l.Nancys.com/stores.html?cm_sp=navigation-_-top_nav-_-stores&amp;lid=glbtopnav_stores-us">Stores</a></li>
 										<li class="redesign-header-nav-list-item"><a
 											title="Deals"
 											href="/shop/coupons-deals?cm_sp=navigation-_-top_nav-_-deals&amp;lid=glbtopnav_deals-us">Deals</a></li>

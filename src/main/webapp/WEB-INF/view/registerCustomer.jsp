@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="ca-header">
                     <div class="ca-header-title">
-                    <div class="icon-gen-secure-bk-huge macys-options-icon" id="iconSecure">
+                    <div class="icon-gen-secure-bk-huge Nancys-options-icon" id="iconSecure">
                         <h3>Secure create account</h3>
                       </div>
                       
@@ -92,9 +92,9 @@
                             </form:form>
                             <div class="grid-x policies-links">
                                 <div class="cell ca-profile-footer-links">
-                                    <p><a href="https://www.macys.com/cms/slp/3/112616doiwelcomeexclusions?cm_sp=simplified_account-_-create_profile-_-exclusions_apply" title="exclusions" class="ca-exclusions" target="_blank"><strong>*Exclusions apply.</strong></a></p>
-                                    <p>By selecting "create account" you agree that you are subject to Macy's Notice of <a href="https://www.customerservice-macys.com/app/answers/detail/a_id/40?cm_sp=simplified_account-_-create_profile-_-privacy_practices" title="privacy practices" class="ca-privacy-practice" target="_blank"><strong>Privacy
-                                      Practices</strong></a> and <a href="https://www.customerservice-macys.com/app/answers/detail/a_id/39?cm_sp=simplified_account-_-create_profile-_-legal_notice" title="legal notice" class="ca-legal-notice" target="_blank"><strong>Legal Notice</strong></a>.</p>
+                                    <p><a href="https://www.Nancys.com/cms/slp/3/112616doiwelcomeexclusions?cm_sp=simplified_account-_-create_profile-_-exclusions_apply" title="exclusions" class="ca-exclusions" target="_blank"><strong>*Exclusions apply.</strong></a></p>
+                                    <p>By selecting "create account" you agree that you are subject to Nancy's Notice of <a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/40?cm_sp=simplified_account-_-create_profile-_-privacy_practices" title="privacy practices" class="ca-privacy-practice" target="_blank"><strong>Privacy
+                                      Practices</strong></a> and <a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/39?cm_sp=simplified_account-_-create_profile-_-legal_notice" title="legal notice" class="ca-legal-notice" target="_blank"><strong>Legal Notice</strong></a>.</p>
                                 </div>
                               </div>
                         </div>
