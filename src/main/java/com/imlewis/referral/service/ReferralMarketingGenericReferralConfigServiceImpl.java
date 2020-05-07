@@ -23,4 +23,8 @@ public class ReferralMarketingGenericReferralConfigServiceImpl implements Referr
 	public Double findMinimumOrderTotal() {
 		return referralMarketingGenericReferralConfigRepository.findMinimumOrderTotal();
 	}
+
+	public ReferralMarketingGenericReferralConfigItem findFirst() {
+		return referralMarketingGenericReferralConfigRepository.findOne(1l);
+	}
 }

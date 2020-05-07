@@ -17,4 +17,6 @@ public interface ReferralMarketingUserReferralConfigService {
 	int getReferralLinkExpiryInDays();
 	
 	int getReferralBenefitExpiryInDays();
+	
+	ReferralMarketingUserReferralConfigItem findFirst();
 }

@@ -71,6 +71,7 @@
 					<li><a href="/admin/pd/m">Products</a></li>
 					<li><a href="/admin/urf/m">User Referral Configuration</a></li>
 					<li><a href="/admin/grf/m">Generic Referral Configuration</a></li>
+					<li><a href="/admin/irf/m">Individual Referral Configuration</a></li>
 				</ul>
 			</div>
 

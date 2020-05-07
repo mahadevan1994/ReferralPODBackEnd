@@ -9,4 +9,6 @@ public interface ReferralMarketingGenericReferralAddConfigService {
 	List<ReferralMarketingGenericReferralAddConfigItem> getAllGenericReferralConfigItems();
 	
 	ReferralMarketingGenericReferralAddConfigItem getAddConfigItem(long configurationId);
+	
+	void save(ReferralMarketingGenericReferralAddConfigItem referralMarketingGenericReferralAddConfigItem);
 }

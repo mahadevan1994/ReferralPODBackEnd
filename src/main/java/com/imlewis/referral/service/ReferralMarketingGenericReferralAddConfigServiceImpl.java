@@ -9,15 +9,22 @@ import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.repository.ReferralMarketingGenericReferralAddConfigRepository;
 
 @Service
-public class ReferralMarketingGenericReferralAddConfigServiceImpl implements ReferralMarketingGenericReferralAddConfigService  {
-	
+public class ReferralMarketingGenericReferralAddConfigServiceImpl
+		implements ReferralMarketingGenericReferralAddConfigService {
+
 	@Autowired
 	private ReferralMarketingGenericReferralAddConfigRepository referralMarketingGenericReferralAddConfigRepository;
 
 	public List<ReferralMarketingGenericReferralAddConfigItem> getAllGenericReferralConfigItems() {
-		return (List<ReferralMarketingGenericReferralAddConfigItem>) referralMarketingGenericReferralAddConfigRepository.findAll();
+		return (List<ReferralMarketingGenericReferralAddConfigItem>) referralMarketingGenericReferralAddConfigRepository
+				.findAll();
 	}
+
 	public ReferralMarketingGenericReferralAddConfigItem getAddConfigItem(long configurationId) {
 		return referralMarketingGenericReferralAddConfigRepository.getAddConfigItem(configurationId);
+	}
+
+	public void save(ReferralMarketingGenericReferralAddConfigItem referralMarketingGenericReferralAddConfigItem) {
+		referralMarketingGenericReferralAddConfigRepository.save(referralMarketingGenericReferralAddConfigItem);
 	}
 }

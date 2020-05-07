@@ -21,40 +21,44 @@ import com.imlewis.service.EmailSenderService;
 @Component
 public class ReferralMarketingScheduler {
 
-    private static final Logger log = LoggerFactory.getLogger(ReferralMarketingScheduler.class);
-    
-    @Autowired
-    private ReferralMarketingUserReferralConfigService referralMarketingUserReferralConfigService;
-    
-    @Autowired
-    private ReferralMarketingGenericReferralAddConfigService referralMarketingGenericReferralAddConfigService;
-    
-    @Autowired
-    private ReferralMarketingCustomerService referralMarketingCustomerService;
-    
-    @Autowired
-    private ReferralMarketingUserCommunicationConfigService referralMarketingUserCommunicationConfigService;
-    
-    @Autowired
-    private EmailSenderService emailSenderService;
-    
-    @Scheduled(cron = "0 0 1 * * ?")
-    private void execute() {
-        //checking referral enabled
-        if(referralMarketingUserReferralConfigService.isReferralEnablement()) {
-            List<Customer> filteredCustomers = referralMarketingCustomerService.getFilteredCustomers();
-            for (Customer customer : filteredCustomers) {
-            	ReferralMarketingUserCommunicationConfig referralMarketingUserCommunicationConfig = new ReferralMarketingUserCommunicationConfig();
-            	referralMarketingUserCommunicationConfig.setCommunicationId(new Random().nextInt(9999999) == 0 ? 1 : new Random().nextInt(9999999));
-            	referralMarketingUserCommunicationConfig.setCustomerId(customer.getCustomerId());
-            	referralMarketingUserCommunicationConfig.setGenerationDate(new Date());
-            	int addedConfigurationCount = referralMarketingGenericReferralAddConfigService.getAllGenericReferralConfigItems().size();
-            	referralMarketingUserCommunicationConfig.setReferralConfigurationId(Long.valueOf(new Random().nextInt(addedConfigurationCount)) == 0 ? 1 : Long.valueOf(new Random().nextInt(addedConfigurationCount)));
-            	referralMarketingUserCommunicationConfigService.save(referralMarketingUserCommunicationConfig);
-            	emailSenderService.sendEmail(customer, referralMarketingUserCommunicationConfig.getCommunicationId());
-            }
-        }
+	private static final Logger log = LoggerFactory.getLogger(ReferralMarketingScheduler.class);
 
-        log.debug("Referral scheduled!");
-    }
+	@Autowired
+	private ReferralMarketingUserReferralConfigService referralMarketingUserReferralConfigService;
+
+	@Autowired
+	private ReferralMarketingGenericReferralAddConfigService referralMarketingGenericReferralAddConfigService;
+
+	@Autowired
+	private ReferralMarketingCustomerService referralMarketingCustomerService;
+
+	@Autowired
+	private ReferralMarketingUserCommunicationConfigService referralMarketingUserCommunicationConfigService;
+
+	@Autowired
+	private EmailSenderService emailSenderService;
+
+	@Scheduled(cron = "0 0 1 * * ?")
+	private void execute() {
+		// checking referral enabled
+		if (referralMarketingUserReferralConfigService.isReferralEnablement()) {
+			List<Customer> filteredCustomers = referralMarketingCustomerService.getFilteredCustomers();
+			for (Customer customer : filteredCustomers) {
+				ReferralMarketingUserCommunicationConfig referralMarketingUserCommunicationConfig = new ReferralMarketingUserCommunicationConfig();
+				referralMarketingUserCommunicationConfig
+						.setCommunicationId(new Random().nextInt(9999999) == 0 ? 1 : new Random().nextInt(9999999));
+				referralMarketingUserCommunicationConfig.setCustomerId(customer.getCustomerId());
+				referralMarketingUserCommunicationConfig.setGenerationDate(new Date());
+				int addedConfigurationCount = referralMarketingGenericReferralAddConfigService
+						.getAllGenericReferralConfigItems().size();
+				referralMarketingUserCommunicationConfig
+						.setReferralConfigurationId(Long.valueOf(new Random().nextInt(addedConfigurationCount)) == 0 ? 1
+								: Long.valueOf(new Random().nextInt(addedConfigurationCount)));
+				referralMarketingUserCommunicationConfigService.save(referralMarketingUserCommunicationConfig);
+				emailSenderService.sendEmail(customer, referralMarketingUserCommunicationConfig.getCommunicationId());
+			}
+		}
+
+		log.debug("Referral scheduled!");
+	}
 }

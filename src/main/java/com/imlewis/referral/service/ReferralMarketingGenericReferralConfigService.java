@@ -9,4 +9,6 @@ public interface ReferralMarketingGenericReferralConfigService {
 	int findMinimumOrderCount();
 	
 	Double findMinimumOrderTotal();
+	
+	ReferralMarketingGenericReferralConfigItem findFirst();
 }

@@ -109,7 +109,7 @@ public class UserController {
         setToSession(request, customer);
         
         model.addAttribute("title", "Registration Successful!");
-        model.addAttribute("msg", "Your Account has been actived!<strong>Please Logout and Login again!</strong>");
+        model.addAttribute("msg", "Your Account has been activated!<strong>Please Logout and Login again!</strong>");
         return "processSuccess";
     }
 	
