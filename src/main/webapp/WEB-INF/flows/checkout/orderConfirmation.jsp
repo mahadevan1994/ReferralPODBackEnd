@@ -6,7 +6,7 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="container" style="margin-left: 0%">
-        <div class="page-header">
+        <div class="page-header orderConfirmation">
             <h1>Order</h1>
 
             <p class="lead">Order Confirmation</p>
@@ -51,7 +51,7 @@
                                 <thead>
                                 <tr>
                                     <th>Product</th>
-                                    <th>#</th>
+                                    <th>Quantity</th>
                                     <th class="text-center">Price</th>
                                     <th class="text-center">Total</th>
                                 </tr>
@@ -60,7 +60,7 @@
                                 <form:hidden path="orderTotalPrice" value="cart.grandTotal" />
                                 <form:hidden path="orderDate" value="${now}" />
                                 <c:forEach var="cartItem" items="${cart.cartItems}">
-                                    <tr>
+                                    <tr class="orderConfirmation_items">
                                         <td class="col-md-9"><em>${cartItem.product.productName}</em></td>
                                         <td class="col-md-1" style="text-align: center">${cartItem.quantity}</td>
                                         <td class="col-md-1" style="text-align: center">${cartItem.product.productPrice}</td>
@@ -71,7 +71,7 @@
                                 <tr>
                                     <td></td>
                                     <td></td>
-                                    <td class="text-right">
+                                    <td class="text-right orderConfirmation_GTotal">
                                         <h4><strong>Grand Total: </strong></h4>
                                     </td>
                                     <td class="text-center text-danger">
@@ -85,10 +85,12 @@
                         <input type="hidden" name="_flowExecutionKey">
 
                         <br><br>
-
-                        <button class="btn btn-default" name="_eventId_backToCollectCustomerInfo">Back</button>
-                        <input type="submit" value="Submit Order" class="btn btn-default" name="_eventId_orderConfirmed">
-                        <button class="btn btn-default" name="_eventId_cancel">Cancel</button>
+                        <div class="orderConfirmation_btnGrp">
+                            <button class="btn btn-default" name="_eventId_backToCollectCustomerInfo">Back</button>
+                            <input type="submit" value="Submit Order" class="btn btn-default" name="_eventId_orderConfirmed">
+                            <button class="btn btn-default" name="_eventId_cancel">Cancel</button>
+                        </div>
+                        
                     </div>
                 </form:form>
             </div>

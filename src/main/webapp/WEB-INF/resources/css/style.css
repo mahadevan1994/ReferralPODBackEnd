@@ -2795,7 +2795,7 @@ img {
   background-color: #fff;
   box-shadow: none;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.25;
   color: #2c2c37;
@@ -5100,4 +5100,56 @@ button {
 	font-size: .95rem;
 	list-style: none !important;
 	text-align: left
+}
+
+
+/*************Adding shipping address **************/
+.addShipAddr{
+  margin-left:20px;
+}
+.addShipAddr h1{
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+.shippingBtnGrp{
+  margin-left: 20px;
+}
+.shippingBtnGrp input {
+  width: 25%;
+  margin-right: 5%;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  height: 50px;
+  color: #000;
+}
+.shippingBtnGrp #addBtn{
+  background-color: #e01a2b;
+  border-color: #e01a2b;
+  color:#fff;
+}
+
+/**************Order confirmation in checkout page ***************/
+
+.orderConfirmation{
+  margin: 40px 6% 20px 9%;
+}
+.orderConfirmation h1{
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #000;
+}
+.orderConfirmation_GTotal h4 {
+  width: 140px;
+}
+tr.orderConfirmation_items {
+  font-size: 16px;
+  /* font-weight: 700; */
+  text-transform: uppercase;
+}
+.orderConfirmation_btnGrp button,.orderConfirmation_btnGrp input{
+  width:15%;
+  margin-right:2%;
+  padding:15px;
+}
+.orderConfirmation_btnGrp input{
+  background-color: #e01a2b;
+  border-color: #e01a2b;
+  color:#fff;
 }

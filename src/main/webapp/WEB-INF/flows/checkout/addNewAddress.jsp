@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="col-md-6 col-md-offset-3">
-        <div class="page-header">
+        <div class="page-header addShipAddr">
             <h1>Add Shipping Address</h1>
         </div>
 
@@ -40,9 +40,11 @@
             <input type="hidden" name="_flowExecutionKey">
 
             <br>
-
-            <input type="submit" value="Add" class="btn btn-default" name="_eventId_newAddressAdded">
-            <input type="submit" value="Back" class="btn btn-default" name="_eventId_backToCustomerInfo" />
+            <div class="shippingBtnGrp">
+                <input type="submit" value="Add" class="btn btn-default" name="_eventId_newAddressAdded" id="addBtn">
+                <input type="submit" value="Back" class="btn btn-default" name="_eventId_backToCustomerInfo" />
+            </div>
+            
         </form:form>
         <br>
     </div>
