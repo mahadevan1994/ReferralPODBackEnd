@@ -18,7 +18,7 @@ function getProfileName() {
 	
 </script>
 
-<section id="aa-catg-head-banner">
+<!-- <section id="aa-catg-head-banner">
 	<img src="<spring:url value="/img/fashion/fashion-header-bg-8.jpg" />"
 		alt="fashion img">
 	<div class="aa-catg-head-banner-area">
@@ -28,7 +28,7 @@ function getProfileName() {
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <script charset="utf-8" type="text/javascript">
   RR.jsonCallback = function(){
@@ -90,9 +90,10 @@ function getProfileName() {
 											<h4 class="aa-product-title">
 												<a href="/pd/p?id=${product.productId}">${product.productName}</a>
 											</h4>
-											<span class="aa-product-price">$${product.productPrice}</span><span
-												class="aa-product-price"><del>$999</del></span> <span
-												class="aa-product-descrip">${product.productSummary}</span>
+											<h6 class="aa-product-descrip">${product.productSummary}</h6>
+											<h6 class="aa-product-price">$${product.productPrice}</h6>
+											<h6 class="aa-product-price"><del>$999</del></h6> 
+											
 										</figcaption>
 									</figure> <!-- product badge --> <span class="aa-badge aa-sale" href="#">SALE!</span>
 									<!--<span class="aa-badge aa-sold-out" href="#">Sold Out!</span>
@@ -179,9 +180,10 @@ function getProfileName() {
 							- $60<br> <input type="radio" name="priceRage" max="80"
 								onclick="PriceRangeRadio(this,'<my:replaceParam name='lp' value='60' />');">$60
 							- $80<br>
-							<div>
-								<span style="cursor: hand;" onclick="customPriceRage()">Custom
-									Price Range</span>
+							<div class="pricing">
+								<div class="PriceBtn">
+									<h4 onclick="customPriceRage()">Custom Price Range </h4>
+								</div>
 								<div id="custom-price-range-div" hidden>
 									<br> <input id="skip-value-lower" class="aa-filter-btn"
 										style="background-color: white; color: black; text-align: center; cursor: default"
@@ -189,8 +191,8 @@ function getProfileName() {
 										id="skip-value-upper" class="aa-filter-btn"
 										style="background-color: white; color: black; text-align: center; cursor: default"
 										type="number" min="1" placeholder="max" />
-									<button class="aa-filter-btn" type="button"
-										onclick="customPriceRageGo('<my:replaceParam name='lp' value='' />')">Go</button>
+									<a class="aa-filter-btnGo" 
+										onclick="customPriceRageGo('<my:replaceParam name='lp' value='' />')">Go</a>
 								</div>
 
 							</div>

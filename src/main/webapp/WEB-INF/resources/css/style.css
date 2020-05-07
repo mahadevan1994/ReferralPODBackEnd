@@ -156,11 +156,16 @@ img {
   margin-right: 5px;
 }
 
-.aa-filter-btn {  
-  color: #fff;
+.aa-filter-btnGo {  
+  color: #626369;
   font-size: 15px;
   height: 30px;
-  width: 80px;
+  /* width: 80px; */
+  padding: 5px;
+  text-decoration: underline;
+  margin-top: 10px;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .aa-cart-view-btn {
@@ -1105,7 +1110,7 @@ img {
 .aa-product-catg li {
   display: block;
   float: left;
-  height: 380px;
+  height: 450px;
   text-align: center;
   margin: 0 0 20px 55px;
   /* width: 20.5%; */
@@ -1170,6 +1175,8 @@ img {
 .aa-product-catg li .aa-product-title {
   color: #333;
   margin-bottom: 5px;
+  text-align: left;
+  margin-left: 10px;
 }
 .aa-product-catg li .aa-product-title a {
   color: #333;
@@ -1178,14 +1185,20 @@ img {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+  font-weight: 700;
+  font-size:14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .aa-product-catg li .aa-product-price {
   font-weight: bold;
   letter-spacing: 0.5px;
   font-size: 16px;
+  text-align: left;
+  margin-left: 10px;
+  color:#e01a2b;
 }
 .aa-product-catg li .aa-product-price del {
-  margin-left: 5px;
+  margin-left: 0px;
 }
 .aa-product-catg li .aa-product-hvr-content {
   left: 0;
@@ -1812,6 +1825,11 @@ img {
 }
 #aa-product-category .aa-sidebar .aa-sidebar-widget h3 {
   padding-bottom: 10px;
+  color:#000000;
+  font-size: 18px;
+  text-transform: capitalize;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  border-bottom:1px solid #ccc;
 }
 #aa-product-category .aa-sidebar .aa-sidebar-widget .aa-catg-nav li a {
   display: block;
@@ -1844,6 +1862,29 @@ img {
   text-align: center;
   width: 100%;
 }
+.pricing{
+  display: inline-block;
+}
+.PriceBtn{
+  float:left;
+}
+.PriceBtn h4{
+  font-size: 14px;
+  color: #000;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+#custom-price-range-div{
+  display: inline-flex;
+}
+.aa-sidebar-price-range input{
+  margin-right:20px;
+}
+#custom-price-range-div{
+  width: 100%;
+}
+#custom-price-range-div input{
+  width: 30%;
+}
 #aa-product-category .aa-sidebar .aa-sidebar-widget .aa-sidebar-price-range .noUi-connect {
   box-shadow: none;
 }
@@ -1854,6 +1895,7 @@ img {
   height: 30px;
   margin-right: 10px;
   margin-top: 20px;
+  float:left;
   padding: 4px 10px;
 }
 #aa-product-category .aa-sidebar .aa-sidebar-widget .aa-color-tag {
@@ -2034,7 +2076,13 @@ img {
   width: 29.916%;
 }
 #aa-product-category .aa-product-catg-content .aa-product-catg-body .aa-product-catg li .aa-product-descrip {
-  display: none;
+  display: block;
+  font-size: 14px;
+  color:#000;
+  font-weight: 400;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  text-align: left;
+  margin-left:10px;
 }
 #aa-product-category .aa-product-catg-content .aa-product-catg-body .list li {
   width: 100%;
