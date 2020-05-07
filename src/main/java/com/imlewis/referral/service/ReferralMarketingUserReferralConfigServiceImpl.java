@@ -25,4 +25,8 @@ public class ReferralMarketingUserReferralConfigServiceImpl implements ReferralM
 	public Boolean isReferralEnablement() {
 		return referralMarketingUserReferralConfigRepository.isReferralEnablement();
 	}
+
+	public int getReferralFrequency() {
+		return referralMarketingUserReferralConfigRepository.getReferralFrequency();
+	}
 }

@@ -11,4 +11,6 @@ public interface ReferralMarketingUserReferralConfigService {
 	Date retrieveReferedDate();
 	
 	Boolean isReferralEnablement();
+
+	int getReferralFrequency();
 }

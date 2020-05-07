@@ -1,6 +1,7 @@
 package com.imlewis.referral.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -30,13 +31,17 @@ public class ReferralMarketingCustomerServiceImpl implements ReferralMarketingCu
 
 		for (Customer customer : customerList) {
 			Date referedDate = referralMarketingUserReferralConfigService.retrieveReferedDate();
+			Calendar referedCal = Calendar.getInstance();
+			referedCal.setTime(referedDate);
+			referedCal.add(Calendar.DAY_OF_MONTH,referralMarketingUserReferralConfigService.getReferralFrequency());
+
 			// condition to check user registered date is after the referralEnablementDate
 			// condition to check customer order meets the minimum order count configured
 			if (null != (customer.getRegisterDate()) && customer.getRegisterDate().after(referedDate)
 					&& customer.getOrderCounts() >= referralMarketingGenericReferralConfigService
 							.findMinimumOrderCount()
 					&& customer.getOrderTotals() >= referralMarketingGenericReferralConfigService
-							.findMinimumOrderTotal()) {
+							.findMinimumOrderTotal() && referedCal.getTime().after(new Date())) {
 				filteredList.add(customer);
 			}
 		}
