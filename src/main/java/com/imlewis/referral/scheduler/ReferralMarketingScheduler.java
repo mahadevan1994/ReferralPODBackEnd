@@ -51,7 +51,7 @@ public class ReferralMarketingScheduler {
             	referralMarketingUserCommunicationConfig.setGenerationDate(new Date());
             	referralMarketingUserCommunicationConfig.setReferralConfigurationId(referralMarketingGenericReferralAddConfigService.getAllGenericReferralConfigItems().get(0).getConfigurationId());
             	referralMarketingUserCommunicationConfigService.save(referralMarketingUserCommunicationConfig);
-            	emailSenderService.sendEmail(customer);
+            	emailSenderService.sendEmail(customer, referralMarketingUserCommunicationConfig.getCommunicationId());
             }
         }
 

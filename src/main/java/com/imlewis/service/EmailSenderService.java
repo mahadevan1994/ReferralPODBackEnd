@@ -6,5 +6,5 @@ public interface EmailSenderService {
 
 	void sendActiveCode(Customer customer);
 	
-	void sendEmail(Customer customer);
+	void sendEmail(Customer customer, int communicationId);
 }

@@ -88,7 +88,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 		return velocityEngineFactory.createVelocityEngine();
 	}
 
-	public void sendEmail(Customer customer) {
+	public void sendEmail(Customer customer, int communicationId) {
 		MimeMessage mimeMessage = getMailSender().createMimeMessage();
 		try {
 			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
@@ -97,7 +97,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 			mimeMessageHelper.setTo(customer.getEmail());
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("customerName", customer.getCustomerName());
-			model.put("websiteAddr", websiteAddr);
+			model.put("websiteAddr", websiteAddr + Integer.toString(communicationId));
 			mimeMessageHelper.setText(geContentFromTemplate(model), true);
 			getMailSender().send(mimeMessageHelper.getMimeMessage());
 		} catch (Exception e) {
