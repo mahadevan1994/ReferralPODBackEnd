@@ -43,31 +43,8 @@
             </div>
 
             <div class="form-group">
-                <label for="productDescription">Description</label><br><form:errors path="productDescription" cssStyle="color: red" />
-                <form:textarea path="productDescription" id="productDescription" class="form-Control" />
-            </div>
-
-            <div class="form-group">
                 <label for="price">Price</label> <br><form:errors path="productPrice" cssStyle="color: red" />
                 <form:input type="Number" step="0.01" path="productPrice" id="price" class="form-Control" min="0"/>
-            </div>
-
-            <div class="form-group">
-                <label for="condition">Condition</label><form:errors path="productCondition" cssStyle="color: red"/>
-                <label class="checkbox-inline"><form:radiobutton path="productCondition" id="condition"
-                                                     checked="checked" value="new" />New</label>
-                <label class="checkbox-inline"><form:radiobutton path="productCondition" id="condition"
-                                                                 value="used" />Used</label>
-            </div>
-
-            <div class="form-group">
-                <label for="unitInStock">Unit In Stock</label><br><form:errors path="unitInStock" cssStyle="color: red" />
-                <form:input type="Number" min="0" path="unitInStock" id="unitInStock" class="form-Control" />
-            </div>
-
-            <div class="form-group">
-                <label for="productTags">Tags (Separate with ";")</label><br><form:errors path="productTags" cssStyle="color: red" />
-                <form:input path="productTagsW" id="productTags" class="form-Control" />
             </div>
 
             <input type="submit" value="submit" class="btn btn-default">

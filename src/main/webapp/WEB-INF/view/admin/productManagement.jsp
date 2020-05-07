@@ -13,14 +13,8 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>SubCategory</th>
-                <th>Condition</th>
-                <th>Description</th>
                 <th>Summary</th>
                 <th>Price</th>
-                <th>Tag</th>
-                <th>Stock</th>
-                <th>Date</th>
-                <th>Views</th>
                 <th></th>
             </tr>
             </thead>
@@ -32,13 +26,8 @@
                     <td>${product.productName}</td>
                     <td>${product.productCategory.mainCategoryName}</td>
                     <td>${product.productCategory.subCategoryName}</td>
-                    <td>${product.productCondition}</td>
-                    <td>${product.productDescription}</td>
                     <td>${product.productSummary}</td>
                     <td>${product.productPrice}</td>
-                    <td>${product.productTagsW}</td>
-                    <td>${product.unitInStock}</td>
-                    <td>${fn:substringBefore(product.productViews/2, '.')}</td>
                     <td>
                         <a href="/pd/p/view?id=${product.productId}">
                             <span class="glyphicon glyphicon-info-sign"></span></a>

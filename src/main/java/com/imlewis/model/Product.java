@@ -41,21 +41,12 @@ public class Product implements Serializable, Comparable<Product>{
     @Length(max = 255, message = "The field must be less than 255 characters")
     private String productTagsW;
     
-    @Column(columnDefinition = "TEXT")
-    private String productDescription;
-    
     @Column(name = "productViews", nullable = false, columnDefinition = "bigint(20) default 0")
     private long productViews = 0;
 
     @Min(value = 0, message = "Product price must no be less then zero.")
     private double productPrice;
     
-    @NotEmpty(message = "Condition must not be null")
-    private String productCondition;
-
-    @Min(value = 0, message = "Product unit must no be less then zero.")
-    private int unitInStock;
-
     @Transient
     private MultipartFile productImage;
 
@@ -128,14 +119,6 @@ public class Product implements Serializable, Comparable<Product>{
 		this.productSummary = productSummary;
 	}
 
-	public String getProductDescription() {
-		return productDescription;
-	}
-
-	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
-	}
-
 	public long getProductViews() {
 		return productViews;
 	}
@@ -150,22 +133,6 @@ public class Product implements Serializable, Comparable<Product>{
 
 	public void setProductPrice(double productPrice) {
 		this.productPrice = productPrice;
-	}
-
-	public String getProductCondition() {
-		return productCondition;
-	}
-
-	public void setProductCondition(String productCondition) {
-		this.productCondition = productCondition;
-	}
-
-	public int getUnitInStock() {
-		return unitInStock;
-	}
-
-	public void setUnitInStock(int unitInStock) {
-		this.unitInStock = unitInStock;
 	}
 
 	public MultipartFile getProductImage() {
