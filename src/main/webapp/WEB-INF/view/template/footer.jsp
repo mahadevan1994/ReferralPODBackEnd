@@ -238,8 +238,8 @@
 					</c:if>
 
 					<div class="form-group">
-						<label for="email">Email Address<span>*</span></label> <input id="email"
-							type="text" name="email" placeholder="Email address"
+						<label for="email">Email Address<span>*</span></label> <input
+							id="email" type="text" name="email" placeholder="Email address"
 							class="form-control" />
 					</div>
 
@@ -248,14 +248,14 @@
 							id="password" type="password" name="password"
 							placeholder="Password" class="form-control">
 					</div>
-					
+
 					<div class="rememberGrp">
 						<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" /> <label class="rememberme"
-						for="rememberme"><input type="checkbox" id="rememberme">
-						Remember me </label>
+							value="${_csrf.token}" /> <label class="rememberme"
+							for="rememberme"><input type="checkbox" id="rememberme">
+							Remember me </label>
 					</div>
-					
+
 					<div class="aa-lost-password">
 						<a href="/fp">Forgot your password?</a>
 					</div>

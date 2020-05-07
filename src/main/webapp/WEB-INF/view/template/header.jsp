@@ -83,7 +83,7 @@
 								class="redesign-header-links-col redesign-header-links-col-left text-left clearfix">
 								<div id="logo" class="redesign-header-logo" title="Macy's">
 									<a href="#" id="logoFashion"><img
-										src="../images/logos/commerce-and-shopping.svg" alt="Logo" /><span>ShopNSave</span></a>
+										src="images/logos/commerce-and-shopping.svg" alt="Logo" /><span>Fashion</span></a>
 								</div>
 								<nav class="redesign-header-nav">
 									<ul class="redesign-header-nav-list">
@@ -124,11 +124,14 @@
 								<nav class="redesign-header-nav">
 									<ul class="redesign-header-nav-list">
 										<c:if test="${pageContext.request.userPrincipal.name != null}">
-											<li class="redesign-header-nav-list-item"><a href="#" style="cursor: default">Welcome:
-													${customerName_}</a></li>
-											<li class="redesign-header-nav-list-item"><a href="/admin/">Admin</a></li>
-											<li class="redesign-header-nav-list-item"><a href="/customer/account">My Account</a></li>
-											<li class="redesign-header-nav-list-item"><a href="/logout">Logout</a></li>
+											<li class="redesign-header-nav-list-item"><a href="#"
+												style="cursor: default">Welcome: ${customerName_}</a></li>
+											<li class="redesign-header-nav-list-item"><a
+												href="/admin/">Admin</a></li>
+											<li class="redesign-header-nav-list-item"><a
+												href="/customer/account">My Account</a></li>
+											<li class="redesign-header-nav-list-item"><a
+												href="/logout">Logout</a></li>
 										</c:if>
 										<ul class="redesign-header-nav-list">
 											<li
@@ -155,7 +158,7 @@
 						</div>
 					</div>
 				</section>
-				
+
 				<section id="search-category-rail" class="rail search-category-rail">
 					<div class="redesign-header-core" id="core">
 						<div id="shopByDepartmentDropdown" role="navigation"
@@ -203,40 +206,46 @@
 							</div>
 						</div>
 						<div class="aa-cartbox" ng-controller="cartCtrl">
-								<a class="aa-cart-link"
-									href="<spring:url value="/customer/cart" />"> <span
-									class="fa fa-shopping-basket"></span> <span
-									class="aa-cart-title">SHOPPING CART</span> <c:if
-										test="${pageContext.request.userPrincipal.name != null}">
-										<div ng-init="refreshCart()"></div>
-										<span class="aa-cart-notify">{{cart.cartItems.length}}</span>
-									</c:if>
-								</a>
-								<c:if test="${pageContext.request.userPrincipal.name != null}">
-									<div class="aa-cartbox-summary">
-										<ul>
-											<li ng-repeat="item in cart.cartItems"><a
-												class="aa-cartbox-img"><img
-													src="/images/{{item.product.productId}}/0.png" alt="img"></a>
+							<a class="aa-cart-link"
+								href="<spring:url value="/customer/cart" />"> <span
+								class="fa fa-shopping-basket"></span> <span
+								class="aa-cart-title">SHOPPING CART</span> <c:if
+									test="${pageContext.request.userPrincipal.name != null}">
+									<div ng-init="refreshCart()"></div>
+									<span class="aa-cart-notify">{{cart.cartItems.length}}</span>
+								</c:if>
+							</a>
+							<c:if test="${pageContext.request.userPrincipal.name != null}">
+								<div class="aa-cartbox-summary" style="width: 400px">
+									<ul>
+										<li ng-repeat="item in cart.cartItems"><a
+											class="aa-cartbox-img"><img class="aa-cartbox-img-source"
+												src="/images/{{item.product.productId}}/0.png" alt="img"></a>
+											<div style="display: inline-flex; margin-left: 40px">
 												<div class="aa-cartbox-info">
 													<h4>
 														<a href="/products/viewProduct/{{item.product.productId}}">{{item.product.productName}}</a>
 													</h4>
 													<p>{{item.quantity}} x $ {{item.product.productPrice}}</p>
-												</div> <a class="aa-remove-product" href="#"
-												ng-click="removeFromCart(item.cartItemId,'${_csrf.parameterName}=${_csrf.token}')">
-													<span class="fa fa-times"></span>
-											</a></li>
-											<li><span class="aa-cartbox-total-title">Total</span> <span
-												class="aa-cartbox-total-price">$ {{calGrandTotal()}}</span>
-											</li>
-										</ul>
-										<a class="aa-cartbox-checkout aa-primary-btn" href="/checkout">Checkout</a>
-									</div>
-								</c:if>
-							</div>
+												</div>
+												<a class="aa-remove-product" href="#"
+													ng-click="removeFromCart(item.cartItemId,'${_csrf.parameterName}=${_csrf.token}')"
+													style="margin-left: inherit"> <span
+													class="aa-primary-btn" style="background: #fff">Remove</span>
+												</a>
+											</div></li>
+										<li><div
+												style="text-align: center; padding-top: 10px; margin-top: 10px">
+												<span class="aa-cartbox-total-title">Total</span> <span
+													class="aa-cartbox-total-price">$ {{calGrandTotal()}}</span>
+											</div></li>
+									</ul>
+									<a class="aa-cartbox-checkout aa-primary-btn" href="/checkout">Checkout</a>
+								</div>
+							</c:if>
+						</div>
 					</div>
-					
+
 				</section>
 			</div>
 

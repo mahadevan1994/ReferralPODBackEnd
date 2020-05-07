@@ -5,22 +5,20 @@
 
 <!-- Place this code inside the <body> element as close to the top as possible -->
 <script charset="utf-8" type="text/javascript">
-
-function session_id() {
-    return /SESS\w*ID=([^;]+)/i.test(document.cookie) ? RegExp.$1 : false;
-}
-
-function getProfileName() {
-	   return "${pageContext.request.userPrincipal.name}";
+	function session_id() {
+		return /SESS\w*ID=([^;]+)/i.test(document.cookie) ? RegExp.$1 : false;
 	}
-	
-</script> 
+
+	function getProfileName() {
+		return "${pageContext.request.userPrincipal.name}";
+	}
+</script>
 
 <script charset="utf-8" type="text/javascript">
-  RR.jsonCallback = function(){
-    // Place your rendering logic here. Actual code varies depending on your website implementation.
-    console.dir(RR.data.JSON.placements);
-  };
+	RR.jsonCallback = function() {
+		// Place your rendering logic here. Actual code varies depending on your website implementation.
+		console.dir(RR.data.JSON.placements);
+	};
 </script>
 
 <!-- / slider -->

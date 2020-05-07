@@ -8,7 +8,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Web Commerce Shop for - homeware, furniture and fashion | Home</title>
+<title>Web Commerce Shop for - homeware, furniture and fashion |
+	Home</title>
 
 <!-- Font awesome -->
 <link href="/css/font-awesome.css" rel="stylesheet">
@@ -91,12 +92,13 @@
 									<c:if test="${pageContext.request.userPrincipal.name != null}">
 										<li><a href="#" style="cursor: default">Welcome:
 												${customerName_}</a></li>
-                                    <li><a href="/customer/account" >My Account</a> </li>
-                                    <li><a href="/logout" >Logout</a></li>
-                                </c:if>
-                                <c:if test="${pageContext.request.userPrincipal.name == null}">
-                                    <li><a href="" data-toggle="modal" data-target="#login-modal" class="btn dropdown-toggle">Login</a></li>
-                                </c:if>
+										<li><a href="/customer/account">My Account</a></li>
+										<li><a href="/logout">Logout</a></li>
+									</c:if>
+									<c:if test="${pageContext.request.userPrincipal.name == null}">
+										<li><a href="" data-toggle="modal"
+											data-target="#login-modal" class="btn dropdown-toggle">Login</a></li>
+									</c:if>
 								</ul>
 							</div>
 						</div>
@@ -117,7 +119,8 @@
 								<!-- Text based logo -->
 								<a href="/"> <span class="fa fa-shopping-cart"></span>
 									<p>
-										Online shop for <strong>homeware, furniture and fashion</strong> <span>Your Shopping Partner</span>
+										Online shop for <strong>homeware, furniture and
+											fashion</strong> <span>Your Shopping Partner</span>
 									</p>
 								</a>
 							</div>
@@ -192,13 +195,13 @@
 					<div class="navbar-collapse collapse">
 						<!-- Left nav -->
 						<ul class="nav navbar-nav">
-						
+
 							<li><a href="/">Christmas</a></li>
 							<li><a href="/">Gifts</a></li>
 							<li><a href="/">Home & Garden</a></li>
 							<li><a href="/">Furniture & Lights</a></li>
 							<li><a href="/">Electricals</a></li>
-								
+
 							<li><a href="<spring:url value="/pd/s?mc=women"/>">Women
 									<span class="caret"></span>
 							</a>
@@ -207,7 +210,7 @@
 									<li><a href="/pd/s?mc=women&sc=jeans">Jeans</a></li>
 									<li><a href="/pd/s?mc=women&sc=shoes">Shoes</a></li>
 								</ul></li>
-								
+
 							<li><a href="/pd/s?mc=men">Men <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="/pd/s?mc=men&sc=trousers">Trousers</a></li>
@@ -220,13 +223,13 @@
                                     </ul>
                                 </li>-->
 								</ul></li>
-								
-								<li><a href="/">Beauty</a></li>
-								<li><a href="/">Baby & Child</a></li>
-								<li><a href="/">Sports & Leisure</a></li>
-								<li><a href="/">Offers</a></li>
-								
-								<li><a href="/contact">Contact</a></li>
+
+							<li><a href="/">Beauty</a></li>
+							<li><a href="/">Baby & Child</a></li>
+							<li><a href="/">Sports & Leisure</a></li>
+							<li><a href="/">Offers</a></li>
+
+							<li><a href="/contact">Contact</a></li>
 							<li><a href="#">Pages <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="<spring:url value="/pd/s" />">All
