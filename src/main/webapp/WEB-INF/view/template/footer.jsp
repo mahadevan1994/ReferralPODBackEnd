@@ -170,7 +170,7 @@
 						<div class="copyright">
 							<div class="col-sm-12">
 								<p>
-									© 2020 nancys.com is a registered trademark. All rights
+									ï¿½ 2020 nancys.com is a registered trademark. All rights
 									reserved. Nancys.com, LLC, 151 West 34th Street, New York, NY
 									10001. Nancy's Credit and Customer Service, PO Box 8113, Mason,
 									Ohio 45040. Request our <a
@@ -224,7 +224,10 @@
 			<div class="modal-body">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-hidden="true">&times;</button>
-				<h4>Login or Register</h4>
+				<div id="ul-header" class="hide-for-small-only">
+					<span class="icon-gen-secure-bk-huge secure-icon"></span>
+					<h1 class="inline-header">Secure Sign In</h1>
+				</div>
 				<c:if test="${not empty msg}">
 					<div class="msg" style="color: red">${msg}</div>
 				</c:if>
@@ -235,7 +238,7 @@
 					</c:if>
 
 					<div class="form-group">
-						<label for="email">Email<span>*</span></label> <input id="email"
+						<label for="email">Email Address<span>*</span></label> <input id="email"
 							type="text" name="email" placeholder="Email address"
 							class="form-control" />
 					</div>
@@ -245,15 +248,21 @@
 							id="password" type="password" name="password"
 							placeholder="Password" class="form-control">
 					</div>
-
-					<button type="submit" class="aa-browse-btn">Login</button>
-					<input type="hidden" name="${_csrf.parameterName}"
+					
+					<div class="rememberGrp">
+						<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" /> <label class="rememberme"
 						for="rememberme"><input type="checkbox" id="rememberme">
 						Remember me </label>
-					<p class="aa-lost-password">
-						<a href="/fp">Lost your password?</a>
-					</p>
+					</div>
+					
+					<div class="aa-lost-password">
+						<a href="/fp">Forgot your password?</a>
+					</div>
+					<div class="buttonGrp">
+						<button type="submit" class="aa-browse-btn">Login</button>
+					</div>
+					<br>
 					<div class="aa-register-now">
 						Don't have an account?<a href="<spring:url value="/register" />">Register
 							now!</a>

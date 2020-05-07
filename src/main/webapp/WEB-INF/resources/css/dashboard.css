@@ -103,3 +103,62 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+/********************** generic referral **********************/
+#programType,#benefitType{
+  margin-right:10px;
+}
+.totalBusi label {
+  margin: 0% 10% 1%;
+  width: 15%;
+}
+.minOrder label {
+  margin: 5% 10% 1%;
+  width: 15%;
+}
+.btnGrp{
+  text-align: center;
+  width: 60%;
+}
+.btnGrp input, #add{
+  border-color: #428bca;
+  background-color: #428bca;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 30px;
+  text-transform: capitalize;
+  border-radius: 10px;
+}
+#addCongfigBtn{
+  margin-left: 55%;
+  border-color: #428bca;
+  background-color: #428bca;
+  color:#fff;
+  font-weight: 400;
+  padding: 10px 30px;
+  text-transform: capitalize;
+  border-radius: 10px;
+}
+.horizontalLine{
+  color:#d6d6d6;
+  width:90%;
+}
+#pType, #bType {
+  margin: 6% 10% 1%;
+  font-size: 14px;
+  width: 100%;
+}
+#addConfig{
+  margin: 1% 0 0 9%;
+}
+td {
+  width: 25%;
+}
+input#add {
+  margin-left: 17%;
+}
+#referralMsgAmt{
+  margin-left:1.5%;
+}
+#referralMsgAmt label{
+  width:13%;
+}

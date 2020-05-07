@@ -11,7 +11,6 @@
 <title>Web Commerce Shop for - homeware, furniture and fashion |
 	Home</title>
 
-<link rel="stylesheet" href="css/header/header.css" />
 
 <!-- Font awesome -->
 <link href="/css/font-awesome.css" rel="stylesheet">
@@ -116,20 +115,20 @@
 									</ul>
 								</nav>
 							</div>
-							<div
+							<!-- <div
 								class="redesign-header-links-col redesign-header-links-col-center">
 								<div id="header-store-info-desktop"></div>
-							</div>
+							</div> -->
 							<div
 								class="redesign-header-links-col redesign-header-links-col-right text-right">
 								<nav class="redesign-header-nav">
-									<ul class="aa-head-top-nav-right">
+									<ul class="redesign-header-nav-list">
 										<c:if test="${pageContext.request.userPrincipal.name != null}">
-											<li><a href="#" style="cursor: default">Welcome:
+											<li class="redesign-header-nav-list-item"><a href="#" style="cursor: default">Welcome:
 													${customerName_}</a></li>
-											<li><a href="/admin/">Admin</a></li>
-											<li><a href="/customer/account">My Account</a></li>
-											<li><a href="/logout">Logout</a></li>
+											<li class="redesign-header-nav-list-item"><a href="/admin/">Admin</a></li>
+											<li class="redesign-header-nav-list-item"><a href="/customer/account">My Account</a></li>
+											<li class="redesign-header-nav-list-item"><a href="/logout">Logout</a></li>
 										</c:if>
 										<ul class="redesign-header-nav-list">
 											<li
