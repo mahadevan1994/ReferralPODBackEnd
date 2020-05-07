@@ -83,7 +83,7 @@
 								class="redesign-header-links-col redesign-header-links-col-left text-left clearfix">
 								<div id="logo" class="redesign-header-logo" title="Macy's">
 									<a href="#" id="logoFashion"><img
-										src="images/logos/commerce-and-shopping.svg" alt="Logo" /><span>Fashion</span></a>
+										src="../images/logos/commerce-and-shopping.svg" alt="Logo" /><span>ShopNSave</span></a>
 								</div>
 								<nav class="redesign-header-nav">
 									<ul class="redesign-header-nav-list">
