@@ -15,8 +15,12 @@ public interface ReferralMarketingUserReferralConfigRepository extends CrudRepos
     @Query(value = "SELECT Referral_Enablement from REFERRAL_MARKETING_USER_REFERRAL_CONFIG_ITEM" , nativeQuery = true)
     Boolean isReferralEnablement();
 
-    @Query(value = "SELECT referralFrequency from REFERRAL_MARKETING_USER_REFERRAL_CONFIG_ITEM" , nativeQuery = true)
+    @Query(value = "SELECT referral_frequency from REFERRAL_MARKETING_USER_REFERRAL_CONFIG_ITEM" , nativeQuery = true)
     int getReferralFrequency();
     
-    //Boolean findProfileEnabled();
+    @Query(value = "SELECT referrallink_expiry from REFERRAL_MARKETING_USER_REFERRAL_CONFIG_ITEM" , nativeQuery = true)
+    int getReferralLinkExpiryInDays();
+    
+    @Query(value = "SELECT referral_benefit_expiry from REFERRAL_MARKETING_USER_REFERRAL_CONFIG_ITEM" , nativeQuery = true)
+    int getReferralBenefitExpiryInDays();
 }

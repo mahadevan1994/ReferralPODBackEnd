@@ -80,19 +80,19 @@
 	    	switch(radioValue){
 	    		case "loyalty": 
 	    			$("#referralAmountType").text("Loyalty Points");
-	    			$("#referralMessage").text("Hello <user>, Loyalty points with <points> can be availed by registering with us.");
+	    			$("#referralMessage").text("Hello there, Loyalty points with <points> can be availed by registering with us.");
 	    		break;
 	    		case "voucher": 
 	    			$("#referralAmountType").text("Voucher Amount");
-	    			$("#referralMessage").text("Hello <user>, Voucher amount with <amount> will be emailed to your registered email id post the first order.");
+	    			$("#referralMessage").text("Hello there, Voucher amount with <amount> will be emailed to your registered email id post the first order.");
 			    break;
 	    		case "discount": 
 	    			$("#referralAmountType").text("Discount Amount");
-	    			$("#referralMessage").text("Hello <user>, Discount of <discount> is applicable on your first order.");
+	    			$("#referralMessage").text("Hello there, Discount of <discount> is applicable on your first order.");
 			    break;
 	    		case "giftItem": 
 	    			$("#referralAmountType").text("Gift Item");
-	    			$("#referralMessage").text("Hello <user>, Gift Item <Gift Item Description> will be added to the cart post registration.");
+	    			$("#referralMessage").text("Hello there, Gift Item <Gift Item Description> will be added to the cart post registration.");
 			    break;
 	    	}
 	        $("#add").prop("disabled",false );

@@ -43,13 +43,13 @@ public class ReferralMarketingScheduler {
         //checking referral enabled
         if(referralMarketingUserReferralConfigService.isReferralEnablement()) {
             List<Customer> filteredCustomers = referralMarketingCustomerService.getFilteredCustomers();
-            //Proceed from here
             for (Customer customer : filteredCustomers) {
             	ReferralMarketingUserCommunicationConfig referralMarketingUserCommunicationConfig = new ReferralMarketingUserCommunicationConfig();
-            	referralMarketingUserCommunicationConfig.setCommunicationId(new Random().nextInt(9999999));
+            	referralMarketingUserCommunicationConfig.setCommunicationId(new Random().nextInt(9999999) == 0 ? 1 : new Random().nextInt(9999999));
             	referralMarketingUserCommunicationConfig.setCustomerId(customer.getCustomerId());
             	referralMarketingUserCommunicationConfig.setGenerationDate(new Date());
-            	referralMarketingUserCommunicationConfig.setReferralConfigurationId(referralMarketingGenericReferralAddConfigService.getAllGenericReferralConfigItems().get(0).getConfigurationId());
+            	int addedConfigurationCount = referralMarketingGenericReferralAddConfigService.getAllGenericReferralConfigItems().size();
+            	referralMarketingUserCommunicationConfig.setReferralConfigurationId(Long.valueOf(new Random().nextInt(addedConfigurationCount)) == 0 ? 1 : Long.valueOf(new Random().nextInt(addedConfigurationCount)));
             	referralMarketingUserCommunicationConfigService.save(referralMarketingUserCommunicationConfig);
             	emailSenderService.sendEmail(customer, referralMarketingUserCommunicationConfig.getCommunicationId());
             }

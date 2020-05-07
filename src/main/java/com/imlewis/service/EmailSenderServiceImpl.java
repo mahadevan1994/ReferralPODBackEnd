@@ -24,6 +24,7 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.imlewis.model.Customer;
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
+import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
 import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
 import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 
@@ -55,8 +56,10 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 	private String mailSubjectReferrer;
 	@Value("${mailSubjectReferred}")
 	private String mailSubjectReferred;
-	@Value("${websiteAddr}")
-	private String websiteAddr;
+	@Value("${ambassadorWebsiteAddr}")
+	private String ambassadorWebsiteAddr;
+	@Value("${referredWebsiteAddr}")
+	private String referredWebsiteAddr;
 	
 	public void sendMail(String toAddress, String subject, String msgBody){
 		SimpleMailMessage msg = new SimpleMailMessage();
@@ -109,7 +112,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 			mimeMessageHelper.setTo(customer.getEmail());
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("customerName", customer.getCustomerName());
-			model.put("websiteAddr", websiteAddr + Integer.toString(communicationId));
+			model.put("websiteAddr", ambassadorWebsiteAddr + Integer.toString(communicationId));
 			mimeMessageHelper.setText(geContentFromTemplate(model,"ambassador"), true);
 			getMailSender().send(mimeMessageHelper.getMimeMessage());
 		} catch (Exception e) {
@@ -117,7 +120,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 		}
 	}
 	
-	public void sendEmail(Customer customer, String referredEmail) {
+	public void sendEmail(ReferralMarketingUserCommunicationConfig userCommunicationConfigItem, String referredEmail) {
 		MimeMessage mimeMessage = getMailSender().createMimeMessage();
 		Map<String, Object> model = new HashMap<String, Object>();
 		try {
@@ -125,10 +128,9 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 			mimeMessageHelper.setFrom(fromAddress);
 			mimeMessageHelper.setSubject(mailSubjectReferred);
 			mimeMessageHelper.setTo(referredEmail);
-			long configurationId = communicationConfigService.getReferralConfigId(customer.getCustomerId());
-			ReferralMarketingGenericReferralAddConfigItem addConfigItem = addConfigService.getAddConfigItem(configurationId);
+			ReferralMarketingGenericReferralAddConfigItem addConfigItem = addConfigService.getAddConfigItem(userCommunicationConfigItem.getReferralConfigurationId());
 			String benefitType = addConfigItem.getBenefitType();
-			model.put("user", referredEmail);
+			model.put("websiteAddr", referredWebsiteAddr + Integer.toString(userCommunicationConfigItem.getCommunicationId()));
 			switch(benefitType) {
 				case "loyalty": 
 					model.put("points", addConfigItem.getReferralAmount());

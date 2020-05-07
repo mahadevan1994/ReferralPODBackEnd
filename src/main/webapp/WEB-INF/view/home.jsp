@@ -20,7 +20,9 @@
 		console.dir(RR.data.JSON.placements);
 	};
 </script>
-
+<c:if test="${not empty error}">
+   <div style="font-size:4rem;font-weight:bold;color:red;text-align: center">${error}</div>
+</c:if>
 <!-- / slider -->
 <!-- Start Promo section -->
 <section id="aa-promo">

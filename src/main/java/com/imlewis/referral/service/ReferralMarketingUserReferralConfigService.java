@@ -13,4 +13,8 @@ public interface ReferralMarketingUserReferralConfigService {
 	Boolean isReferralEnablement();
 
 	int getReferralFrequency();
+	
+	int getReferralLinkExpiryInDays();
+	
+	int getReferralBenefitExpiryInDays();
 }

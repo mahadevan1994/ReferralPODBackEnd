@@ -20,6 +20,8 @@
 									<form:errors path="email" cssStyle="color: red" />
 									<form:input type="email" path="email" id="email"
 										class="form-Control" />
+									<form:input type="hidden" path="communicationId" id="communicationId"
+									class="form-Control" />
 								</div>
 								<input type="submit" value="Submit" id="register-submit"
 									class="btn btn-default">

@@ -73,6 +73,7 @@ public class ReferralMarketingGenericReferralConfigController {
 		str = str.replace(">", "}");
 		str = str.replaceFirst("Hello", "<!DOCTYPE html><html><head></head><body><p>Hello");
 		str = str.replace(",", ",</p>");
+		str = str.concat("<p>Please register using the link ${websiteAddr}</p>");
 		str = str.concat("<p>Regards,<br/>Nancy's Business Team</p></body></html>");
 		try {
 			switch(addConfigItem.getBenefitType()) {

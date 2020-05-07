@@ -29,4 +29,11 @@ public class ReferralMarketingUserReferralConfigServiceImpl implements ReferralM
 	public int getReferralFrequency() {
 		return referralMarketingUserReferralConfigRepository.getReferralFrequency();
 	}
+	
+	public int getReferralLinkExpiryInDays() {
+		return referralMarketingUserReferralConfigRepository.getReferralLinkExpiryInDays();
+	}
+	public int getReferralBenefitExpiryInDays() {
+		return referralMarketingUserReferralConfigRepository.getReferralBenefitExpiryInDays();
+	}
 }

@@ -1,6 +1,7 @@
 package com.imlewis.service;
 
 import com.imlewis.model.Customer;
+import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
 
 public interface EmailSenderService {
 
@@ -8,5 +9,5 @@ public interface EmailSenderService {
 	
 	void sendEmail(Customer customer, int communicationId);
 	
-	void sendEmail(Customer customer, String referredEmail);
+	void sendEmail(ReferralMarketingUserCommunicationConfig userCommunicationConfigItem, String referredEmail);
 }
