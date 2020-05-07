@@ -5,7 +5,7 @@
 
 	<div class="container">
 
-		<form:form action="/admin/urf/s?" method="post"
+		<form:form action="/admin/urf/s?" method="post" onsubmit="return validate()"
 			commandName="userReferral" enctype="multipart/form-data">
 			<div class="form-group" style="margin: 20px 0; padding: 15px 0;">
 				<div style="width: 30%; float: left; vertical-align: middle;">
@@ -28,7 +28,7 @@
 				<div style="width: 70%; float: right">
 					<form:errors path="referralFrequency" cssStyle="color: red" />
 					<form:input path="referralFrequency" id="referralFrequency"
-						class="form-Control" />
+						class="form-Control" required="required"/>
 				</div>
 			</div>
 			<div class="form-group" style="margin: 20px 0; padding: 15px 0;">
@@ -38,7 +38,7 @@
 				</div>
 				<div style="width: 70%; float: right">
 					<form:errors path="referralEnablementDate" cssStyle="color: red" />
-					<form:input type="date" path="referralEnablementDate" id="referralEnablementDate" class="form-Control" />
+					<form:input type="date" path="referralEnablementDate" id="referralEnablementDate" class="form-Control" required="required"/>
 				</div>
 			</div>
 			<div class="form-group" style="margin: 20px 0; padding: 15px 0;">
@@ -49,7 +49,7 @@
 				<div style="width: 70%; float: right">
 					<form:errors path="referralinkExpiry" cssStyle="color: red" />
 					<form:input path="referralinkExpiry" id="referralinkExpiry"
-						class="form-Control" />
+						class="form-Control" required="required"/>
 				</div>
 			</div>
 			<div class="form-group" style="margin: 20px 0; padding: 15px 0;">
@@ -60,7 +60,7 @@
 				<div style="width: 70%; float: right">
 				<form:errors path="referralBenifitExpiry" cssStyle="color: red" />
 					<form:input id="referralBenifitExpiry" path="referralBenifitExpiry"
-						class="form-Control" />
+						class="form-Control" required="required"/>
 				</div>
 			</div>
 			<div
@@ -76,4 +76,5 @@
 		</form:form>
 	</div>
 </div>
+<script type="text/javascript" src="/js/validation.js"></script>
 <%@include file="/WEB-INF/view/admin/template/footer.jsp"%>

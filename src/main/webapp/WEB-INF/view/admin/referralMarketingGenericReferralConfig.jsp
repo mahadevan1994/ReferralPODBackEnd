@@ -5,14 +5,14 @@
 
 	<div class="container">
 
-		<form:form action="/admin/grf/s?" method="post"
+		<form:form action="/admin/grf/s?" method="post" 
 			commandName="genericReferral" enctype="multipart/form-data">
 			<div class="form-group">
 				<div class="minOrder">
 					<label for="minimumOrderCount">Minimum Order Count</label>
 					<form:errors path="minimumOrderCount" cssStyle="color: red" />
 					<form:input path="minimumOrderCount" id="minimumOrderCount"
-						class="form-Control" />
+						class="form-Control" required="required"/>
 				</div>
 			</div>
 			<div class="form-group">
@@ -20,11 +20,15 @@
 					<label for="totalBusiness">Total Business (in $)</label>
 					<form:errors path="totalBusiness" cssStyle="color: red" />
 					<form:input path="totalBusiness" id="totalBusiness"
-						class="form-Control" />
+						class="form-Control" required="required"/>
 				</div>
 			</div>
 			<div class="btnGrp">
 				<input type="submit" value="submit" class="btn btn-default"/>
+			</div>
+			<div
+				style="width: 50%; float: left; vertical-align: middle; margin-top: 20px; margin-left: 220px;">
+				<span style="margin-left: -217px; color: green; font-size: 25;">${msg}</span>
 			</div>
 		</form:form>
 		<input type="submit" value="+ Add Configuration" class="form-group" onclick="showConfigurationFields()" id="addCongfigBtn"/>
