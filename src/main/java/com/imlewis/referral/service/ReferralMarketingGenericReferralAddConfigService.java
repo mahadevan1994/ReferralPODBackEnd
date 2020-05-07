@@ -7,4 +7,6 @@ import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 public interface ReferralMarketingGenericReferralAddConfigService {
 
 	List<ReferralMarketingGenericReferralAddConfigItem> getAllGenericReferralConfigItems();
+	
+	ReferralMarketingGenericReferralAddConfigItem getAddConfigItem(long configurationId);
 }

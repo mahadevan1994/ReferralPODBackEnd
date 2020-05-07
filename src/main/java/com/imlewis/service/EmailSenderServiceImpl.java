@@ -23,6 +23,9 @@ import org.springframework.ui.velocity.VelocityEngineFactory;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import com.imlewis.model.Customer;
+import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
+import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
+import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 
 @Service
 public class EmailSenderServiceImpl implements EmailSenderService{
@@ -31,6 +34,13 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 	 
 	@Autowired
 	private MailSender mailSender;
+	
+	@Autowired
+	private ReferralMarketingGenericReferralAddConfigService addConfigService;
+	
+	@Autowired
+	private ReferralMarketingUserCommunicationConfigService communicationConfigService;
+	
 	@Value("${fromAddress}")
 	private String fromAddress;
 	@Value("${spring.mail.host}")
@@ -41,8 +51,10 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 	private String mailUserName;
 	@Value("${spring.mail.password}")
 	private String mailPassword;
-	@Value("${mailSubject}")
-	private String mailSubject;
+	@Value("${mailSubjectReferrer}")
+	private String mailSubjectReferrer;
+	@Value("${mailSubjectReferred}")
+	private String mailSubjectReferred;
 	@Value("${websiteAddr}")
 	private String websiteAddr;
 	
@@ -93,25 +105,78 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 		try {
 			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
 			mimeMessageHelper.setFrom(fromAddress);
-			mimeMessageHelper.setSubject(mailSubject);
+			mimeMessageHelper.setSubject(mailSubjectReferrer);
 			mimeMessageHelper.setTo(customer.getEmail());
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("customerName", customer.getCustomerName());
 			model.put("websiteAddr", websiteAddr + Integer.toString(communicationId));
-			mimeMessageHelper.setText(geContentFromTemplate(model), true);
+			mimeMessageHelper.setText(geContentFromTemplate(model,"ambassador"), true);
+			getMailSender().send(mimeMessageHelper.getMimeMessage());
+		} catch (Exception e) {
+			logger.error("Sending email failed!", e);
+		}
+	}
+	
+	public void sendEmail(Customer customer, String referredEmail) {
+		MimeMessage mimeMessage = getMailSender().createMimeMessage();
+		Map<String, Object> model = new HashMap<String, Object>();
+		try {
+			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+			mimeMessageHelper.setFrom(fromAddress);
+			mimeMessageHelper.setSubject(mailSubjectReferred);
+			mimeMessageHelper.setTo(referredEmail);
+			long configurationId = communicationConfigService.getReferralConfigId(customer.getCustomerId());
+			ReferralMarketingGenericReferralAddConfigItem addConfigItem = addConfigService.getAddConfigItem(configurationId);
+			String benefitType = addConfigItem.getBenefitType();
+			model.put("user", referredEmail);
+			switch(benefitType) {
+				case "loyalty": 
+					model.put("points", addConfigItem.getReferralAmount());
+					break;
+				case "voucher": 
+					model.put("amount", addConfigItem.getReferralAmount());
+					break;
+				case "discount": 
+					model.put("discount", addConfigItem.getReferralAmount());
+					break;
+				case "giftItem": 
+					model.put("itemName", addConfigItem.getReferralAmount());
+					break;
+			}
+			mimeMessageHelper.setText(geContentFromTemplate(model,benefitType), true);
 			getMailSender().send(mimeMessageHelper.getMimeMessage());
 		} catch (Exception e) {
 			logger.error("Sending email failed!", e);
 		}
 	}
 
-	public String geContentFromTemplate(Map<String, Object> model) {
+	public String geContentFromTemplate(Map<String, Object> model, String benefitType) {
 		StringBuffer content = new StringBuffer();
 		try {
-			content.append(VelocityEngineUtils.mergeTemplateIntoString(getVelocityEngine(),
-					"/sendReferralLinkToCustomer.vm", model));
+			switch(benefitType) {
+			case "loyalty": 
+				content.append(VelocityEngineUtils.mergeTemplateIntoString(getVelocityEngine(),
+						"/loyaltyPointsReferralMessage.vm", model));
+				break;
+			case "voucher": 
+				content.append(VelocityEngineUtils.mergeTemplateIntoString(getVelocityEngine(),
+						"/voucherReferralMessage.vm", model));
+				break;
+			case "discount": 
+				content.append(VelocityEngineUtils.mergeTemplateIntoString(getVelocityEngine(),
+						"/discountReferralMessage.vm", model));
+				break;
+			case "giftItem": 
+				content.append(VelocityEngineUtils.mergeTemplateIntoString(getVelocityEngine(),
+						"/giftItemReferralMessage.vm", model));
+				break;
+			case "ambassador": 
+				content.append(VelocityEngineUtils.mergeTemplateIntoString(getVelocityEngine(),
+						"/sendReferralLinkToCustomer.vm", model));
+				break;
+			}	
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error occured while getting the content of the template", e);
 		}
 		return content.toString();
 	}

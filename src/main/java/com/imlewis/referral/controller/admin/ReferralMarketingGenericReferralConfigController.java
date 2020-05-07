@@ -1,7 +1,13 @@
 package com.imlewis.referral.controller.admin;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.model.ReferralMarketingGenericReferralConfigItem;
-import com.imlewis.referral.model.ReferralMarketingUserReferralConfigItem;
 import com.imlewis.referral.repository.ReferralMarketingGenericReferralAddConfigRepository;
 import com.imlewis.referral.repository.ReferralMarketingGenericReferralConfigRepository;
 
 @Controller
 @RequestMapping("/admin/grf")
 public class ReferralMarketingGenericReferralConfigController {
+	
+	Logger logger = LoggerFactory.getLogger(ReferralMarketingGenericReferralConfigController.class);
 	
 	@Autowired
     private ReferralMarketingGenericReferralConfigRepository referralMarketingGenericReferralConfigRepository;
@@ -58,7 +65,37 @@ public class ReferralMarketingGenericReferralConfigController {
 		if (result.hasErrors()) {
 			return "admin/referralMarketingGenericReferralConfig";
 		}
+		BufferedWriter writer = null;
 		referralMarketingGenericReferralAddConfigRepository.save(addConfigItem);
+		
+		String str = addConfigItem.getReferralMessage();
+		str = str.replace("<", "${");
+		str = str.replace(">", "}");
+		str = str.replaceFirst("Hello", "<!DOCTYPE html><html><head></head><body><p>Hello");
+		str = str.replace(",", ",</p>");
+		str = str.concat("<p>Regards,<br/>Macy's Business Team</p></body></html>");
+		try {
+			switch(addConfigItem.getBenefitType()) {
+				case "loyalty": 
+					writer = new BufferedWriter(new FileWriter("src/main/resources/loyaltyPointsReferralMessage.vm"));
+					break;
+				case "voucher": 
+					writer = new BufferedWriter(new FileWriter("src/main/resources/voucherReferralMessage.vm"));
+					break;
+				case "discount": 
+					writer = new BufferedWriter(new FileWriter("src/main/resources/discountReferralMessage.vm"));
+					break;
+				case "giftItem": 
+					writer = new BufferedWriter(new FileWriter("src/main/resources/giftItemReferralMessage.vm"));
+					break;
+			}
+			if(null != writer) {
+				writer.write(str);
+				writer.close();
+			}
+		} catch (IOException e) {
+			logger.error("Error occured while writing " + addConfigItem.getBenefitType() + " VM file", e);
+		}
 		
 		ReferralMarketingGenericReferralConfigItem genericReferralConfigItem = new ReferralMarketingGenericReferralConfigItem();
     	model.addAttribute("genericReferral",genericReferralConfigItem);

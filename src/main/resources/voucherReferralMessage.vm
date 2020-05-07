@@ -1,0 +1,1 @@
+<!DOCTYPE html><html><head></head><body><p>Hello ${user},</p> Voucher amount with ${amount} will be emailed to your registered email id post the first order.<p>Regards,<br/>Macy's Business Team</p></body></html>

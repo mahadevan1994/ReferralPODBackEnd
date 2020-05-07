@@ -84,7 +84,7 @@
 			    break;
 	    		case "discount": 
 	    			$("#referralAmountType").text("Discount Amount");
-	    			$("#referralMessage").text("Hello <user>, Discount of <discount> is application on your first order.");
+	    			$("#referralMessage").text("Hello <user>, Discount of <discount> is applicable on your first order.");
 			    break;
 	    		case "giftItem": 
 	    			$("#referralAmountType").text("Gift Item");

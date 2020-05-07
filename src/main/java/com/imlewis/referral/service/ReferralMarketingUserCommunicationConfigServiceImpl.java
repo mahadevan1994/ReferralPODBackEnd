@@ -12,8 +12,11 @@ public class ReferralMarketingUserCommunicationConfigServiceImpl implements Refe
 	@Autowired
 	ReferralMarketingUserCommunicationConfigRepository referralMarketingUserCommunicationConfigRepository;
 	
-	
 	public void save(ReferralMarketingUserCommunicationConfig referralMarketingUserCommunicationConfig){
 		referralMarketingUserCommunicationConfigRepository.save(referralMarketingUserCommunicationConfig);
+	}
+	
+	public long getReferralConfigId(long customerId) {
+		return referralMarketingUserCommunicationConfigRepository.getReferralConfigId(customerId);
 	}
 }

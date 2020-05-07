@@ -6,4 +6,6 @@ public interface ReferralMarketingUserCommunicationConfigService {
 
 	void save(ReferralMarketingUserCommunicationConfig ReferralMarketingUserCommunicationConfig);
 	
+	long getReferralConfigId(long customerId);
+	
 }

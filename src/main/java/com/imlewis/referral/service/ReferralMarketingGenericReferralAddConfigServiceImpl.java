@@ -17,5 +17,7 @@ public class ReferralMarketingGenericReferralAddConfigServiceImpl implements Ref
 	public List<ReferralMarketingGenericReferralAddConfigItem> getAllGenericReferralConfigItems() {
 		return (List<ReferralMarketingGenericReferralAddConfigItem>) referralMarketingGenericReferralAddConfigRepository.findAll();
 	}
-	
+	public ReferralMarketingGenericReferralAddConfigItem getAddConfigItem(long configurationId) {
+		return referralMarketingGenericReferralAddConfigRepository.getAddConfigItem(configurationId);
+	}
 }
