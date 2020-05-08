@@ -1,122 +1,157 @@
 <!-- footer -->
-<link rel="stylesheet" href="css/footer.css">
+<!-- <link rel="stylesheet" href="css/footer.css"> -->
 <footer id="aa-footer">
-	<!-- footer top -->
-	<div class="row">
-		<div class="col-sm-2">
-			<ul class="SITE_FOOTER_COLUMN_1">
-				<li class="title">Customer Service</li>
-				<li class="footer-checkbox-item"><a
-					href="https://www.customerservice-Nancys.com/app?cm_sp=navigation-_-bottom_nav-_-help_%26_faqs&amp;lid=glbbtmnav_help_%26_faqs-us">Help
+    <!-- footer top -->
+    <div class="row footerMain">
+        <div class="col-sm-2 col1 footerMain_column">
+            <ul class="SITE_FOOTER_COLUMN_1">
+                <li class="footertitle">Customer Service</li>
+                <li class="footer-checkbox-item"><a href="https://www.customerservice-Nancys.com/app?cm_sp=navigation-_-bottom_nav-_-help_%26_faqs&amp;lid=glbbtmnav_help_%26_faqs-us">Help
 						&amp; FAQs</a></li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/service/order-status?cm_sp=navigation-_-bottom_nav-_-order_lookup&amp;lid=glbbtmnav_order_lookup-us">Order
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/service/order-status?cm_sp=navigation-_-bottom_nav-_-order_lookup&amp;lid=glbbtmnav_order_lookup-us">Order
 						Lookup</a></li>
-				<li class="footer-checkbox-item"><a
-					href="https://www.customerservice-Nancys.com/app/answers/list/c/3/?cm_sp=navigation-_-bottom_nav-_-shipping_%26_delivery&amp;lid=glbbtmnav_shipping_%26_delivery-us">Shipping
+                <li class="footer-checkbox-item"><a href="https://www.customerservice-Nancys.com/app/answers/list/c/3/?cm_sp=navigation-_-bottom_nav-_-shipping_%26_delivery&amp;lid=glbbtmnav_shipping_%26_delivery-us">Shipping
 						&amp; Delivery</a></li>
-				<li class="footer-checkbox-item"><a
-					href="https://www.customerservice-Nancys.com/app/answers/list/c/4?cm_sp=navigation-_-bottom_nav-_-returns&amp;lid=glbbtmnav_returns-us">Returns</a>
-				</li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/service/contactus/index.jsp?cm_sp=navigation-_-bottom_nav-_-contact_us&amp;lid=glbbtmnav_contact_us-us">Contact
+                <li class="footer-checkbox-item"><a href="https://www.customerservice-Nancys.com/app/answers/list/c/4?cm_sp=navigation-_-bottom_nav-_-returns&amp;lid=glbbtmnav_returns-us">Returns</a>
+                </li>
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/service/contactus/index.jsp?cm_sp=navigation-_-bottom_nav-_-contact_us&amp;lid=glbbtmnav_contact_us-us">Contact
 						Us</a></li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/service/index_es.jsp?cm_sp=navigation-_-bottom_nav-_-para_ayuda&amp;lid=glbbtmnav_para_ayuda-us">Para
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/service/index_es.jsp?cm_sp=navigation-_-bottom_nav-_-para_ayuda&amp;lid=glbbtmnav_para_ayuda-us">Para
 						Ayuda</a></li>
-				<li class="footer-checkbox-item">
-					<div class="footer-flag">
-						<img id="footerFlag"
-							src="//www.Nancys.com/feature/footer/latest/images/flags/US.gif"
-							title="US" alt="US current selected country"> <a
-							id="href_changeCountry"
-							href="//www.Nancys.com/international/context?cm_sp=navigation-_-bottom_nav-_-change_country&amp;lid=glbbtmnav_change_country-us">Change
+                <li class="footer-checkbox-item">
+                    <div class="footer-flag">
+                        <img id="footerFlag" src="//www.Nancys.com/feature/footer/latest/images/flags/US.gif" title="US" alt="US current selected country"> <a id="href_changeCountry" href="//www.Nancys.com/international/context?cm_sp=navigation-_-bottom_nav-_-change_country&amp;lid=glbbtmnav_change_country-us">Change
 							Location</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="col-sm-2">
-			<ul class="SITE_FOOTER_COLUMN_2">
-				<li class="title">Nancy's Credit Card</li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/my-credit/gateway/?acquisitionOrigin=GlbNavFooterGateway&amp;cm_sp=creditcardlanding_credit_gateway-_-bottom_nav-_-Nancys_credit_card&amp;lid=glbbtmnav_Nancy%27s_card_services-us">Nancy's
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-2 footerMain_column">
+            <ul class="SITE_FOOTER_COLUMN_2">
+                <li class="footertitle">Nancy's Credit Card</li>
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/my-credit/gateway/?acquisitionOrigin=GlbNavFooterGateway&amp;cm_sp=creditcardlanding_credit_gateway-_-bottom_nav-_-Nancys_credit_card&amp;lid=glbbtmnav_macy%27s_card_services-us">Nancy's
 						Card Services</a></li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/creditservice/creditacct/paybill?cm_sp=creditcardlanding_credit_gateway-_-bottom_nav-_-pay_bill_online&amp;lid=glbbtmnav_pay_your_credit_card_bill-us">Pay
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/creditservice/creditacct/paybill?cm_sp=creditcardlanding_credit_gateway-_-bottom_nav-_-pay_bill_online&amp;lid=glbbtmnav_pay_your_credit_card_bill-us">Pay
 						Your Credit Card Bill</a></li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/p/credit-service/benefits/?acquisitionOrigin=GlbNavFooterBenefits&amp;cm_sp=navigation-_-bottom_nav-_-cardholder_benefits&amp;lid=glbbtmnav_cardholder_benefits-us">Cardholder
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/p/credit-service/benefits/?acquisitionOrigin=GlbNavFooterBenefits&amp;cm_sp=navigation-_-bottom_nav-_-cardholder_benefits&amp;lid=glbbtmnav_cardholder_benefits-us">Cardholder
 						Benefits</a></li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/p/credit-service/learn-and-apply/?acquisitionOrigin=GlbNavFooterLnApply&amp;cm_sp=Nancys_account-_-Nancys_credit_card-_-apply_and_learn&amp;lid=glbbtmnav_apply_for_Nancy%27s_credit_card-us">Apply
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/p/credit-service/learn-and-apply/?acquisitionOrigin=GlbNavFooterLnApply&amp;cm_sp=Nancys_account-_-Nancys_credit_card-_-apply_and_learn&amp;lid=glbbtmnav_apply_for_macy%27s_credit_card-us">Apply
 						for Nancy's Credit Card</a></li>
-			</ul>
-		</div>
-		<div class="col-sm-2">
-			<ul class="SITE_FOOTER_COLUMN_3">
-				<li class="title">Our Stores</li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/shop/store?cm_sp=navigation-_-bottom_nav-_-stores_%26_services&amp;lid=glbbtmnav_stores_%26_services-us">Stores
+            </ul>
+        </div>
+        <div class="col-sm-2 footerMain_column">
+            <ul class="SITE_FOOTER_COLUMN_3">
+                <li class="footertitle">Our Stores</li>
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/shop/store?cm_sp=navigation-_-bottom_nav-_-stores_%26_services&amp;lid=glbbtmnav_stores_%26_services-us">Stores
 						&amp; Services</a></li>
-				<li class="footer-checkbox-item"><a
-					href="https://l.Nancys.com/stores.html?cm_sp=navigation-_-bottom_nav-_-locations_%26_hours&amp;lid=glbbtmnav_locations_%26_hours-us">Locations
+                <li class="footer-checkbox-item"><a href="https://l.Nancys.com/stores.html?cm_sp=navigation-_-bottom_nav-_-locations_%26_hours&amp;lid=glbbtmnav_locations_%26_hours-us">Locations
 						&amp; Hours</a></li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/social/events/?cm_sp=navigation-_-bottom_nav-_-store_events&amp;lid=glbbtmnav_store_events-us">Store
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/social/events/?cm_sp=navigation-_-bottom_nav-_-store_events&amp;lid=glbbtmnav_store_events-us">Store
 						Events</a></li>
-				<li class="footer-checkbox-item"><a
-					href="http://catalogs.Nancys.com/flyer_selector/Nancys?cm_sp=navigation-_-bottom_nav-_-catalogs&amp;lid=glbbtmnav_catalogs-us">Catalogs</a></li>
-				<li class="footer-checkbox-item"><a
-					href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/4055?cm_sp=navigation-_-bottom_nav-_-tell_us_what_you_think&amp;lid=glbbtmnav_tell_us_what_you_think-us">Tell
+                <li class="footer-checkbox-item"><a href="http://catalogs.Nancys.com/flyer_selector/Nancys?cm_sp=navigation-_-bottom_nav-_-catalogs&amp;lid=glbbtmnav_catalogs-us">Catalogs</a></li>
+                <li class="footer-checkbox-item"><a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/4055?cm_sp=navigation-_-bottom_nav-_-tell_us_what_you_think&amp;lid=glbbtmnav_tell_us_what_you_think-us">Tell
 						Us What You Think</a></li>
-				<li class="footer-checkbox-item"><a
-					href="https://www.Nancysbackstage.com/home?cm_sp=navigation-_-bottom_nav-_-Nancy%27s_backstage&amp;lid=glbbtmnav_Nancy%27s_backstage-us">Nancy's
+                <li class="footer-checkbox-item"><a href="https://www.Nancysbackstage.com/home?cm_sp=navigation-_-bottom_nav-_-macy%27s_backstage&amp;lid=glbbtmnav_macy%27s_backstage-us">Nancy's
 						Backstage</a></li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/social/personal-stylist/?cm_sp=navigation-_-bottom_nav-_-personal_stylist&amp;lid=glbbtmnav_personal_stylist-us">Personal
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/social/personal-stylist/?cm_sp=navigation-_-bottom_nav-_-personal_stylist&amp;lid=glbbtmnav_personal_stylist-us">Personal
 						Stylist</a></li>
-			</ul>
-		</div>
-		<div class="col-sm-2">
-			<ul class="SITE_FOOTER_COLUMN_4">
-				<li class="title">Nancy's Inc.</li>
+            </ul>
+        </div>
+        <div class="col-sm-2 footerMain_column">
+            <ul class="SITE_FOOTER_COLUMN_4">
+                <li class="footertitle">Nancy's Inc.</li>
 
-				<li class="footer-checkbox-item"><a
-					href="http://www.Nancysinc.com/?cm_sp=navigation-_-bottom_nav-_-corporate_site&amp;lid=glbbtmnav_corporate_site-us">Corporate
+                <li class="footer-checkbox-item"><a href="http://www.Nancysinc.com/?cm_sp=navigation-_-bottom_nav-_-corporate_site&amp;lid=glbbtmnav_corporate_site-us">Corporate
 						Site</a></li>
-				<li class="footer-checkbox-item"><a
-					href="javascript:pop('http://www.Nancysjobs.com/Nancys/index_flash.asp')">NancysJOBS</a></li>
-				<li class="footer-checkbox-item"><a
-					href="javascript:pop('http://www.Nancysinc.com/press-room/')">Press
+                <li class="footer-checkbox-item"><a href="javascript:pop('http://www.Nancysjobs.com/Nancys/index_flash.asp')">NancysJOBS</a></li>
+                <li class="footer-checkbox-item"><a href="javascript:pop('http://www.Nancysinc.com/press-room/')">Press
 						Room</a></li>
-				<li class="footer-checkbox-item"><a
-					href="javascript:pop('https://www.Nancysinc.com/investors')">Investors</a></li>
-				<li class="footer-checkbox-item"><a
-					href="https://c2c.Nancysinc.com/community-articles/?articles=sustainability&amp;cm_sp=navigation-_-bottom_nav-_-green_living&amp;lid=glbbtmnav_green_living-us">Green
+                <li class="footer-checkbox-item"><a href="javascript:pop('https://www.Nancysinc.com/investors')">Investors</a></li>
+                <li class="footer-checkbox-item"><a href="https://c2c.Nancysinc.com/community-articles/?articles=sustainability&amp;cm_sp=navigation-_-bottom_nav-_-green_living&amp;lid=glbbtmnav_green_living-us">Green
 						Living</a></li>
-				<li class="footer-checkbox-item"><a
-					href="//www.Nancys.com/social/Nancys-gives/?cm_sp=navigation-_-bottom_nav-_-Nancy%27s_gives&amp;lid=glbbtmnav_Nancy%27s_gives-us">Nancy's
+                <li class="footer-checkbox-item"><a href="//www.Nancys.com/social/Nancys-gives/?cm_sp=navigation-_-bottom_nav-_-macy%27s_gives&amp;lid=glbbtmnav_macy%27s_gives-us">Nancy's
 						Gives</a></li>
-			</ul>
-		</div>
+            </ul>
+        </div>
+        <div id="stayconnected" class="col-sm-2">
+            <div id="stayconnected-social-panel">
+                <div class="appdownloads-section">
+                    <div class="footertitle">Nancy's App</div>
+                </div>
+                <div class="social email">
+                    <a href="https://emails.Nancys.com/pub/rf?_ri_=X0Gzc2X%3DYQpglLjHJlTQGjYzezgdzgFmafpLshzdrXaXI5v0lf7hIOTwVwjpnpgHlpgneHmgJoXX0Gzc2X%3DYQpglLjHJlTQGribd0fNzbs2EbuCkKzdRzcFzghN97mv2qzazc&amp;SRCC=60&amp;RDN=1&amp;lid=glbbtmnav_sign_up_for_emails-us" title="sign up for email">
+                        <div class="icon-email-o-bk-large"></div>
+                        <div class="social-description">
+                            <span class="text">Email &amp; Notifications Signup</span>
+                        </div>
+                    </a>
+                </div>
 
 
-	</div>
-	<!-- footer-bottom -->
-	<div class="aa-footer-bottom">
-		<div class="aa-footer-bottom">
-			<div class="container">
-				<div class="row">
-					<div class="aa-footer-bottom-area">
-						<div class="col-sm-12">
-							<p>
-								<a title="eSSENTIAL Accessibility"
-									href="/m/accessibility/index?cm_sp=navigation-_-bottom_nav-_-accessibility">
+                <div class="social card">
 
-									<svg width="58.7px" height="21.1px" viewBox="0 0 429 163"
-										version="1.1" xmlns="http://www.w3.org/2000/svg"
-										xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <a href="https://www.Nancys.com/p/credit-service/learn-and-apply/?acquisitionOrigin=GlbNavFooterLnApply&amp;cm_sp=Nancys_account-_-Nancys_credit_card-_-apply_and_learn&amp;lid=glbbtmnav_apply_for_card-us" title="apply for the card">
+                        <div class="icon-credit-card-o-bk-large"></div>
+                        <div class="social-description">
+                            <span class="text">Apply for card</span>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="social starrewards">
+                    <a href="https://www.Nancys.com/mystarrewards?lid=glbbtmnav_star_rewards_signup-us" title="star rewards signup">
+                        <div class="icon-star-o-bk-large"></div>
+                        <div class="social-description">
+                            <span class="text">Star Rewards signup</span>
+
+                        </div>
+                    </a>
+                </div>
+
+                <ul id="social-icons-list">
+                    <li>
+                        <a href="http://www.facebook.com/Nancys" title="facebook">
+                            <span class="social icon-social-facebook-large">Facebook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.instagram.com/Nancys/" title="instagram">
+                            <span class="social icon-social-instagram-large">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://twitter.com/Nancys" title="twitter">
+                            <span class="social icon-social-twitter-large">Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.pinterest.com/Nancysofficial/" title="pinterest">
+                            <span class="social icon-social-pinterest-large">Pinterest</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.youtube.com/user/Nancys" title="youtube">
+                            <span class="social icon-social-youtube-large">Youtube</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- footer-bottom -->
+    <hr class="footerSeperation">
+    <div class="aa-footer-bottom">
+        <div class="aa-footer-bottom">
+            <div class="container footerBottom">
+                <div class="row">
+                    <div class="aa-footer-bottom-area">
+                        <div class="col-sm-12 bottomFooter">
+                            <p>
+                                <a title="eSSENTIAL Accessibility" href="/m/accessibility/index?cm_sp=navigation-_-bottom_nav-_-accessibility">
+
+                                    <svg width="58.7px" height="21.1px" viewBox="0 0 429 163" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <polygon id="path-1"
 											points="428.208 81.7185 428.208 162.94 0.351 162.94 0.351 0.497 428.208 0.497"></polygon>
@@ -161,118 +196,84 @@
     </g>
 </svg>
 
-								</a>
-							</p>
-							<div id="easyBrowsingSVG">Easy web browsing for visually
-								impaired customers</div>
-							<p></p>
-						</div>
-						<div class="copyright">
-							<div class="col-sm-12">
-								<p>
-									� 2020 nancys.com is a registered trademark. All rights
-									reserved. Nancys.com, LLC, 151 West 34th Street, New York, NY
-									10001. Nancy's Credit and Customer Service, PO Box 8113, Mason,
-									Ohio 45040. Request our <a
-										href="https://www.Nancys.com/service/contact/index.ognc?defaultSubject=MAIN&amp;DefaultRegarding=ADDRESS#formstart">corporate
+                                </a>
+                            </p>
+                            <div id="easyBrowsingSVG">Easy web browsing for visually impaired customers</div>
+                            <p></p>
+                        </div>
+                        <div class="copyright">
+                            <div class="col-sm-12">
+                                <p>
+                                    &copy; 2020 nancys.com is a registered trademark. All rights reserved. Nancys.com, LLC, 151 West 34th Street, New York, NY 10001. Nancy's Credit and Customer Service, PO Box 8113, Mason, Ohio 45040. Request our <a href="https://www.Nancys.com/service/contact/index.ognc?defaultSubject=MAIN&amp;DefaultRegarding=ADDRESS#formstart">corporate
 										name &amp; address by email.</a>
-								</p>
-							</div>
-						</div>
-						<div class="legal">
-							<div class="col-sm-12">
-								<a
-									href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/40/"
-									class="standard">Privacy Notice |</a><a
-									href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/595#donotsellmyinfo"
-									class="standard"> Do Not Sell My Info |</a> <a
-									href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/595#adv"
-									class="standard">Interest Based Ads |</a> <a
-									href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/595#california"
-									class="standard">CA Privacy Rights |</a> <a
-									href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/39/"
-									class="standard">Legal Notice |</a> <a
-									href="http://Nancysinc.com/social-responsibility/customer-bill-of-rights/default.aspx"
-									class="standard">Customer Bill of Rights |</a> <a
-									href="http://Nancysinc.com/social-responsibility/human-trafficking/default.aspx"
-									class="standard">CA Transparency in Supply Chains |</a> <a
-									href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/137"
-									class="standard">Product Recalls |</a> <a
-									href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/14/"
-									class="standard">Pricing Policy |</a> <a
-									href="//www.Nancys.com/shop/sitemap-index?id=199462"
-									class="standard">Site Map</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="legal">
+                            <div class="col-sm-12">
+                                <a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/40/" class="standard">Privacy Notice |</a><a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/595#donotsellmyinfo" class="standard"> Do Not Sell My Info |</a>                                <a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/595#adv" class="standard">Interest Based Ads |</a> <a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/595#california" class="standard">CA Privacy Rights |</a>                                <a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/39/" class="standard">Legal Notice |</a> <a href="http://Nancysinc.com/social-responsibility/customer-bill-of-rights/default.aspx" class="standard">Customer Bill of Rights |</a>                                <a href="http://Nancysinc.com/social-responsibility/human-trafficking/default.aspx" class="standard">CA Transparency in Supply Chains |</a> <a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/137" class="standard">Product Recalls |</a>                                <a href="https://www.customerservice-Nancys.com/app/answers/detail/a_id/14/" class="standard">Pricing Policy |</a> <a href="//www.Nancys.com/shop/sitemap-index?id=199462" class="standard">Site Map</a>
 
-								<p></p>
+                                <p></p>
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </footer>
 <!-- / footer -->
 
 <!-- Login Modal -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="true">&times;</button>
-				<div id="ul-header" class="hide-for-small-only">
-					<span class="icon-gen-secure-bk-huge secure-icon"></span>
-					<h1 class="inline-header">Secure Sign In</h1>
-				</div>
-				<c:if test="${not empty msg}">
-					<div class="msg" style="color: red">${msg}</div>
-				</c:if>
-				<form class="aa-login-form" action="<c:url value='/login' />"
-					method="post">
-					<c:if test="${not empty error}">
-						<div class="error" style="color: red">${error}</div>
-					</c:if>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div id="ul-header" class="hide-for-small-only">
+                    <span class="icon-gen-secure-bk-huge secure-icon"></span>
+                    <h1 class="inline-header">Secure Sign In</h1>
+                </div>
+                <c:if test="${not empty msg}">
+                    <div class="msg" style="color: red">${msg}</div>
+                </c:if>
+                <form class="aa-login-form" action="<c:url value='/login' />" method="post">
+                    <c:if test="${not empty error}">
+                        <div class="error" style="color: red">${error}</div>
+                    </c:if>
 
-					<div class="form-group">
-						<label for="email">Email Address<span>*</span></label> <input
-							id="email" type="text" name="email" placeholder="Email address"
-							class="form-control" />
-					</div>
+                    <div class="form-group">
+                        <label for="email">Email Address<span>*</span></label> <input id="email" type="text" name="email" placeholder="Email address" class="form-control" />
+                    </div>
 
-					<div class="form-group">
-						<label for="password">Password<span>*</span></label> <input
-							id="password" type="password" name="password"
-							placeholder="Password" class="form-control">
-					</div>
+                    <div class="form-group">
+                        <label for="password">Password<span>*</span></label> <input id="password" type="password" name="password" placeholder="Password" class="form-control">
+                    </div>
 
-					<div class="rememberGrp">
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" /> <label class="rememberme"
-							for="rememberme"><input type="checkbox" id="rememberme">
-							Remember me </label>
-					</div>
+                    <div class="rememberGrp">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> <label class="rememberme" for="rememberme"><input type="checkbox" id="rememberme">
+						Remember me </label>
+                    </div>
 
-					<div class="aa-lost-password">
-						<a href="/fp">Forgot your password?</a>
-					</div>
-					<div class="buttonGrp">
-						<button type="submit" class="aa-browse-btn">Login</button>
-					</div>
-					<br>
-					<div class="aa-register-now">
-						Don't have an account?<a href="<spring:url value="/register" />">Register
+                    <div class="aa-lost-password">
+                        <a href="/fp">Forgot your password?</a>
+                    </div>
+                    <div class="buttonGrp">
+                        <button type="submit" class="aa-browse-btn">Login</button>
+                    </div>
+                    <br>
+                    <div class="aa-register-now">
+                        Don't have an account?<a href="<spring:url value=" /register " />">Register
 							now!</a>
-					</div>
-				</form>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 
 <!-- Angular JS -->
@@ -297,4 +298,5 @@
 <script src="/js/custom.js" /></script>
 <script src="/js/controller.js" /></script>
 </body>
+
 </html>
