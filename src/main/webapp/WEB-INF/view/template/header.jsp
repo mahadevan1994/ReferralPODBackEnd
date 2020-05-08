@@ -216,7 +216,8 @@
 								</c:if>
 							</a>
 							<c:if test="${pageContext.request.userPrincipal.name != null}">
-								<div class="aa-cartbox-summary" style="width: 400px; display:none">
+								<div class="aa-cartbox-summary"
+									style="width: 400px; display: none">
 									<ul>
 										<li ng-repeat="item in cart.cartItems"><a
 											class="aa-cartbox-img"><img class="aa-cartbox-img-source"
@@ -234,6 +235,14 @@
 													class="aa-primary-btn" style="background: #fff">Remove</span>
 												</a>
 											</div></li>
+										<c:if test="${cart.discountPrice > 0.00}">
+											<li><div
+													style="text-align: center; padding-top: 10px; margin-top: 10px">
+													<span class="aa-cartbox-total-title">Discount
+														(Referral)</span><span class="aa-cartbox-total-price">$
+														{{calDiscount()}}</span>
+												</div></li>
+										</c:if>
 										<li><div
 												style="text-align: center; padding-top: 10px; margin-top: 10px">
 												<span class="aa-cartbox-total-title">Total</span> <span

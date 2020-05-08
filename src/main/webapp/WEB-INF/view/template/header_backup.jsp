@@ -151,6 +151,11 @@
 												ng-click="removeFromCart(item.cartItemId,'${_csrf.parameterName}=${_csrf.token}')">
 													<span class="fa fa-times"></span>
 											</a></li>
+											<c:if test="${cart.discountPrice > 0.00}">
+												<li><span class="aa-cartbox-total-title">Discount
+														(Referral)</span> <span class="aa-cartbox-total-price">$
+														{{calDiscount()}}</span></li>
+											</c:if>
 											<li><span class="aa-cartbox-total-title">Total</span> <span
 												class="aa-cartbox-total-price">$ {{calGrandTotal()}}</span>
 											</li>

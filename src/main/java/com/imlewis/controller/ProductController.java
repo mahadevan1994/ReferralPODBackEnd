@@ -165,11 +165,7 @@ public class ProductController {
 
         return "products";
     }
-    /*
-     * 		viewProduct.jsp		
-     * 	modelAttribute: product(Product), productCommentList(List<ProductComment>, productCategory(Category))
-     * 					productRelatedList
-     * */
+
     @RequestMapping("/p")
     public String viewProduct(@RequestParam(value = "id", required = true) Long productId, Model model,
     							HttpServletRequest request) throws IOException {

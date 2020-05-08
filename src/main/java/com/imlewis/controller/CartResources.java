@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +23,16 @@ import com.imlewis.model.Cart;
 import com.imlewis.model.CartItem;
 import com.imlewis.model.Customer;
 import com.imlewis.model.Product;
+import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
+import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
+import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
+import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 import com.imlewis.repository.CartItemRepository;
 import com.imlewis.repository.CartRepository;
 import com.imlewis.repository.CustomerRepository;
 import com.imlewis.repository.ProductRepository;
+import com.imlewis.service.CartService;
+import com.imlewis.service.ProductService;
 
 @Controller
 @RequestMapping("/rest/cart")
@@ -43,6 +50,18 @@ public class CartResources {
 	@Autowired
 	private CartItemRepository cartItemRepository;
 
+	@Autowired
+	ReferralMarketingUserCommunicationConfigService userCommunicationConfigService;
+
+	@Autowired
+	ReferralMarketingGenericReferralAddConfigService referralAddConfigService;
+
+	@Autowired
+	ProductService productService;
+	
+	@Autowired
+	CartService cartService;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody Cart getCart(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -56,6 +75,7 @@ public class CartResources {
 	@RequestMapping(value = "/{productId}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void saveItem(@RequestParam(value = "q", required = false) String quantity,
+			@RequestParam(value = "communicationId", required = false) String communicationId,
 			@PathVariable(value = "productId") Long productId, @AuthenticationPrincipal User activeUser) {
 		if (activeUser != null) {
 			if (quantity == null) {
@@ -76,7 +96,6 @@ public class CartResources {
 					cartItem.setQuantity(cartItem.getQuantity() + q);
 					cartItem.setTotalPriceDouble(product.getProductPrice() * cartItem.getQuantity());
 					cartItemRepository.save(cartItem);
-
 					return;
 				}
 			}
@@ -88,6 +107,29 @@ public class CartResources {
 			cartItem.setCart(cart);
 			cartItemRepository.save(cartItem);
 
+			if (!StringUtils.isEmpty(communicationId) && cart.getCartItems().size() == 1) {
+				ReferralMarketingUserCommunicationConfig userCommunicationConfigItem = userCommunicationConfigService
+						.getReferralMarketingUserCommunicationConfig(Long.valueOf(communicationId));
+				if (null != userCommunicationConfigItem) {
+					long referralConfigId = userCommunicationConfigItem.getReferralConfigurationId();
+					ReferralMarketingGenericReferralAddConfigItem addConfigItem = referralAddConfigService
+							.getAddConfigItem(referralConfigId);
+					if (null != addConfigItem) {
+						if ("giftItem".equalsIgnoreCase(addConfigItem.getBenefitType())) {
+							product = productService.getProductById(addConfigItem.getGiftSelect());
+							cartItem = new CartItem();
+							cartItem.setProduct(product);
+							cartItem.setQuantity(1);
+							cartItem.setTotalPriceDouble(product.getProductPrice());
+							cartItem.setCart(cart);
+							cartItemRepository.save(cartItem);
+						} else if ("discount".equalsIgnoreCase(addConfigItem.getBenefitType())) {
+							cart.setDiscountPrice(addConfigItem.getReferralAmount());
+							cartService.save(cart);
+						}
+					}
+				}
+			}
 		}
 	}
 

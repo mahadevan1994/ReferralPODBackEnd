@@ -2,18 +2,18 @@ $("#quantity").keypress(function (evt) {
     evt.preventDefault();
 });
 //
-//function testMe(csrf){
-//	var url = "/test"+"?"+csrf;
-//	$.ajax({
-//		"url" : url,
-//		"type":"post",
-//		"dataType":"json",
-//		"success":function(){
-//			alert("Good")
-//		}
-//	});
+// function testMe(csrf){
+// var url = "/test"+"?"+csrf;
+// $.ajax({
+// "url" : url,
+// "type":"post",
+// "dataType":"json",
+// "success":function(){
+// alert("Good")
+// }
+// });
 //
-//}
+// }
 
 function click_selected_quantity(el) {
     var productInfo = $("#product-info-" + $(el).attr("productId"));
@@ -37,7 +37,8 @@ function click_selected_quantity(el) {
     $(el).append(code);
 }
 
-//------------------------------------------- Angular -------------------------------------------------
+// ------------------------------------------- Angular
+// -------------------------------------------------
 var myApp = angular.module("myApp", []);
 
 myApp.controller("searchCtrl", function($scope, $http){
@@ -63,7 +64,7 @@ myApp.controller("overViewsCtrl", function($scope, $http){
 
 myApp.controller("registerCtrl", function($scope, $http){
 });
-//-------- findPassword.jsp -----------
+// -------- findPassword.jsp -----------
 myApp.controller("fpCtrl", function($scope, $http){
 	$scope.sendReady = false;
 	$scope.fpShow = true;
@@ -126,13 +127,13 @@ myApp.controller("cartCtrl", function ($scope, $http) {
         $http.delete('/rest/cart').success($scope.refreshCart());
     };
 
-    $scope.addToCart = function (productId, csrf) {
+    $scope.addToCart = function (productId, communicationId, csrf) {
         var quantity = parseInt($("#quantity").val(), 10);
         if(isNaN(quantity)){
             quantity = 1;
         }
 
-        $http.post('/rest/cart/' + productId +"?q=" + quantity + "&" + csrf).success(function () {
+        $http.post('/rest/cart/' + productId +"?q=" + quantity + "&communicationId"+ communicationId + "&" + csrf).success(function () {
         	$scope.refreshCart();
         	window.location.href = "/customer/cart";
         });
@@ -150,7 +151,20 @@ myApp.controller("cartCtrl", function ($scope, $http) {
             for(var i=0; i<$scope.cart.cartItems.length; i++){
                 grandTotal+=$scope.cart.cartItems[i].totalPriceDouble;
             }
+            if($scope.cart.discountPrice > 0.00) {
+            	grandTotal -= $scope.cart.discountPrice;
+            }
             return parseFloat(grandTotal).toFixed(2);
+        }
+    };
+    
+    $scope.calDiscount = function () {
+        var discount = 0;
+        if($scope.cart){
+            if($scope.cart.discountPrice > 0.00) {
+            	discount = $scope.cart.discountPrice;
+            }
+            return parseFloat(discount).toFixed(2);
         }
     };
 
@@ -159,33 +173,22 @@ myApp.controller("cartCtrl", function ($scope, $http) {
     }
 });
 
-//------------------------------------ noUiSlider ---------------------------------------------------
+// ------------------------------------ noUiSlider
+// ---------------------------------------------------
 /*
-var slider = document.getElementById('price-slider');
-
-noUiSlider.create(slider, {
-    start: [20, 50],
-    step: 10,
-    connect: true,
-    range: {
-        'min': 0,
-        'max': 100
-    }
-});
-
-var valueLower = document.getElementById('skip-value-lower');
-var valueUpper = document.getElementById('skip-value-upper');
-
-// When the slider value changes, update the input and span
-slider.noUiSlider.on('update', function( values, handle ) {
-    if ( handle ) {
-        valueUpper.value = values[handle];
-    } else {
-        valueLower.value = values[handle];
-    }
-});
-*/
-//---------------------------------------- Pagination -----------------------------------------------------
+ * var slider = document.getElementById('price-slider');
+ * 
+ * noUiSlider.create(slider, { start: [20, 50], step: 10, connect: true, range: {
+ * 'min': 0, 'max': 100 } });
+ * 
+ * var valueLower = document.getElementById('skip-value-lower'); var valueUpper =
+ * document.getElementById('skip-value-upper'); // When the slider value
+ * changes, update the input and span slider.noUiSlider.on('update', function(
+ * values, handle ) { if ( handle ) { valueUpper.value = values[handle]; } else {
+ * valueLower.value = values[handle]; } });
+ */
+// ---------------------------------------- Pagination
+// -----------------------------------------------------
 function pagination(page, pageTotal, productNumbers) {
     if (page == 0){
         // next page
@@ -254,7 +257,7 @@ function rePagination(productNumbers) {
     }
     pagination(page, pageTotal, productNumbers);
 }
-//--------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------
 function sortBy(el) {
     window.location.href = $(el).find(":selected").val();
 }
@@ -310,7 +313,8 @@ function PriceRangeRadio(el,lp) {
     var max = $(el).attr("max");
     PriceRangeLink(max, lp);
 }
-//------------------------------------------- Review --------------------------------------------------
+// ------------------------------------------- Review
+// --------------------------------------------------
 function add_review(name) {
     if(name == null || name == ''){
         alert("Please Login in");

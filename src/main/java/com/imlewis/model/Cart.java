@@ -14,8 +14,18 @@ public class Cart implements Serializable{
     @Id
     @GeneratedValue
     private Long cartId;
+    
+    private Double discountPrice;
+    
+    public Double getDiscountPrice() {
+		return discountPrice;
+	}
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	public void setDiscountPrice(Double discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
+	@OneToMany(mappedBy = "cart", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 
     @OneToOne

@@ -152,7 +152,7 @@
 															src="<c:url value="images/${product.productId}/0.png" />">
 														</a>
 														<a class="aa-add-card-btn" style="cursor: hand"
-															ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
+															ng-click="addToCart('${product.productId}','${sessionScope.communicationId_}','${_csrf.parameterName}=${_csrf.token}')">
 															<span class="fa fa-shopping-cart"></span>Add To Cart
 														</a>
 														<figcaption>
@@ -316,7 +316,7 @@
 														src="<c:url value="images/${product.productId}/0.png" />">
 													</a>
 													<a class="aa-add-card-btn" style="cursor: hand"
-														ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
+														ng-click="addToCart('${product.productId}','${sessionScope.communicationId_}','${_csrf.parameterName}=${_csrf.token}')">
 														<span class="fa fa-shopping-cart"></span>Add To Cart
 													</a>
 													<figcaption>
@@ -352,7 +352,7 @@
 														src="<c:url value="images/${product.productId}/0.png" />">
 													</a>
 													<a class="aa-add-card-btn" style="cursor: hand"
-														ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
+														ng-click="addToCart('${product.productId}','${sessionScope.communicationId_}','${_csrf.parameterName}=${_csrf.token}')">
 														<span class="fa fa-shopping-cart"></span>Add To Cart
 													</a>
 													<figcaption>
