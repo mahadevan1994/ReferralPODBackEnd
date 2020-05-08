@@ -83,7 +83,7 @@
 								class="redesign-header-links-col redesign-header-links-col-left text-left clearfix">
 								<div id="logo" class="redesign-header-logo" title="Nancy's">
 									<a href="#" id="logoFashion"><img
-										src="images/logos/commerce-and-shopping.svg" alt="Logo" /><span>Fashion</span></a>
+										src="../images/logos/commerce-and-shopping.svg" alt="Logo" /><span>Nancys</span></a>
 								</div>
 								<nav class="redesign-header-nav">
 									<ul class="redesign-header-nav-list">
@@ -216,7 +216,7 @@
 								</c:if>
 							</a>
 							<c:if test="${pageContext.request.userPrincipal.name != null}">
-								<div class="aa-cartbox-summary" style="width: 400px">
+								<div class="aa-cartbox-summary" style="width: 400px; display:none">
 									<ul>
 										<li ng-repeat="item in cart.cartItems"><a
 											class="aa-cartbox-img"><img class="aa-cartbox-img-source"

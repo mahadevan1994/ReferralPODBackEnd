@@ -1266,12 +1266,14 @@ img {
     display: block;
     float: left;
     height: 450px;
-    text-align: center;
+    text-align: left;
     margin: 0 0 20px 55px;
     /* width: 20.5%; */
     position: relative;
     overflow: hidden;
 }
+
+
 
 .aa-product-catg li:hover figure .aa-product-img {
     background-color: rgba(0, 0, 0, 0.5);
@@ -2320,11 +2322,6 @@ img {
     width: 100%;
 }
 
-.aa-product-catg-head h1 {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-weight: 500;
-}
-
 #aa-product-category .aa-product-catg-content .aa-product-catg-head .aa-product-catg-head-left {
     float: left;
 }
@@ -2823,8 +2820,10 @@ img {
 
 #cart-view .cart-view-area .cart-view-table .cart-view-total {
     width: 400px;
-    margin: 0 auto;
     text-align: center;
+}
+.cart_cartTotal{
+	font-size:20px
 }
 
 #cart-view .cart-view-area .cart-view-table .cart-view-total h4 {
@@ -3107,56 +3106,6 @@ img {
     display: inline;
     float: left;
     width: 100%;
-}
-
-.myAccountDiv {
-    display: flex;
-    font-size: 16px;
-}
-
-.myAccountDiv label {
-    margin-right: 30px;
-    width: 30%;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.myAccountHr {
-    margin-bottom: 5%;
-}
-
-.myAccountInfo h2 {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    color: #2c2c37;
-    margin-bottom: 3%;
-}
-
-.myAcctShipAddress {
-    width: 49%;
-    float: left;
-    /* border: 1px solid #baba; */
-    padding: 2%;
-    text-align: center;
-    margin-bottom: 5%;
-}
-
-.myAcctShipAddress h2 {
-    margin-bottom: 10%;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    color: #2c2c37;
-}
-
-.orderSummaryDiv {
-    margin-bottom: 10%;
-}
-
-.orderSummaryDiv h2 {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    color: #2c2c37;
-    margin-bottom: 3%;
 }
 
 
@@ -6082,4 +6031,19 @@ tr.orderConfirmation_items {
     background-color: #e01a2b;
     border-color: #e01a2b;
     color: #fff;
+}
+.cart-img{
+	width: 110; 
+	height: 134;
+}
+.product-subtotal{
+	margin-left: 400px;
+}
+.cart-product-remove{
+	margin-top: 70px;
+}
+.aa-cart-coupon-btn{
+	display: inline-flex; 
+	width: 100%; 
+	padding-top: 10px
 }

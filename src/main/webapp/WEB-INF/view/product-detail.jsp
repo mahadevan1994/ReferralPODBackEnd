@@ -51,157 +51,183 @@
 							<div class="col-md-7 col-sm-7 col-xs-12">
 								<div class="aa-product-view-content">
 									<h3>${product.productName}</h3>
-									<div class="aa-price-block">
-										<span class="aa-product-view-price">$${product.productPrice}</span>
-										<p class="aa-product-avilability">
-											Availability: <span id="stock">${product.unitInStock}</span>
-										</p>
-									</div>
-									<p>${product.productSummary}</p>
-									<div class="aa-prod-quantity">
-										<input type="number" style="width: 50px; cursor: default"
-											id="quantity" min="1" max="${product.unitInStock}" value="1">
-										<p class="aa-prod-category">
-											Category: <a
-												href="/pd/s?mc=${product.productCategory.mainCategoryName}&sc=${product.productCategory.subCategoryName}">
-												${product.productCategory.mainCategoryName} -
-												${product.productCategory.subCategoryName} </a>
-										</p>
-									</div>
-									<div>
-										<p>Views: ${product.productViews}</p>
-									</div>
-									<div class="aa-prod-view-bottom" ng-controller="cartCtrl">
-										<button id="aa-add-to-cart-btn" style="cursor: hand"
-											ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">Add
-											To Bag</button>
-										<!--
-                                        <a class="aa-add-to-cart-btn" href="#">Wishlist</a>
-                                        <a class="aa-add-to-cart-btn" href="#">Compare</a>-->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="aa-product-details-bottom">
-						<ul class="nav nav-tabs" id="myTab2">
-							<li><a href="#description" data-toggle="tab">Description</a></li>
-							<li><a href="#review" data-toggle="tab">Reviews</a></li>
-						</ul>
-
-						<!-- Tab panes -->
-						<div class="tab-content">
-							<div class="tab-pane fade in active" id="description">
-								${product.productDescription}</div>
-							<div class="tab-pane fade " id="review">
-								<div class="aa-product-review-area">
-									<h4>${productCommentList.size()}Reviews</h4>
-									<ul class="aa-review-nav">
-										<c:forEach items="${productCommentList}" var="productComment">
-											<li>
-												<div class="media">
-													<div class="media-body">
-														<h4 class="media-heading">
-															<strong>${productComment.customer.customerName}</strong>
-															- <span>${productComment.commentDate}</span>
-														</h4>
-														<div class="aa-product-rating">
-															<c:forEach begin="1"
-																end="${productComment.commentStarts}">
-																<span class="fa fa-star"></span>
-															</c:forEach>
-															<c:forEach begin="1"
-																end="${5-productComment.commentStarts}">
-																<span class="fa fa-star-o"></span>
-															</c:forEach>
-														</div>
-														<p>${productComment.commentCotents}</p>
+									<div class="rev-qa-sec" role="presentation">
+										<div data-el="reviews-summary" data-auto="reviews-summary">
+											<div>
+												<div class="grid-x revs-summary c-m-v-1" role="link">
+													<div class="cell c-small-font">
+														<span class="r no-revs" aria-hidden="true">
+															<div class="p-rev-recmd-csg">
+																<span style="color: grey;">&#9733</span> <span
+																	class="first-to-rev"> Be the first to <a
+																	href="javascript:void(0);" data-auto="review-count"
+																	data-type="reviews-link" class="revs" role="button"><u>Write
+																			a Review</u></a>
+																</span>
+															</div>
+														</span>
 													</div>
 												</div>
-											</li>
-										</c:forEach>
-									</ul>
-									<div class="aa-product-related-item">
-										<h3
-											onclick="add_review('${pageContext.request.userPrincipal.name}')"
-											style="cursor: hand;" onmouseover="this.style.color='red'"
-											onmouseout="this.style.color='black'">Add a review</h3>
-									</div>
-
-									<c:if test="${pageContext.request.userPrincipal.name != null}">
-										<div id="add-review-div" hidden>
-											<!-- review form -->
-											<form:form action="/pd/p?id=${product.productId}"
-												method="post" commandName="productComment">
-												<div class="aa-your-rating">
-													<p>Your Rating</p>
-													<span style="cursor: hand; color: red" starts="1"
-														id="starts-number-1" onclick="productCommentOnClick(this)"
-														class="fa fa-star-o"> </span> <span
-														style="cursor: hand; color: red" starts="2"
-														id="starts-number-2" onclick="productCommentOnClick(this)"
-														class="fa fa-star-o"> </span> <span
-														style="cursor: hand; color: red" starts="3"
-														id="starts-number-3" onclick="productCommentOnClick(this)"
-														class="fa fa-star-o"> </span> <span
-														style="cursor: hand; color: red" starts="4"
-														id="starts-number-4" onclick="productCommentOnClick(this)"
-														class="fa fa-star-o"> </span> <span
-														style="cursor: hand; color: red" starts="5"
-														id="starts-number-5" onclick="productCommentOnClick(this)"
-														class="fa fa-star-o"> </span>
-													<form:hidden path="commentStarts" id="commentStarts-hidden"
-														value="0" />
-													<form:hidden path="customer" />
-												</div>
-												<br>
-												<div class="form-group">
-													<label for="message">Your Review</label>
-													<form:textarea path="commentCotents" rows="3" id="message"
-														class="form-control" />
-												</div>
-
-												<button type="submit"
-													class="btn btn-default aa-review-submit">Submit</button>
-											</form:form>
+											</div>
 										</div>
-									</c:if>
+										<div class="aa-price-block">
+											<span class="aa-product-view-price">$${product.productPrice}</span>
+											<p class="aa-product-avilability">
+												Availability: <span id="stock">${product.unitInStock}</span>
+											</p>
+										</div>
+										<p>${product.productSummary}</p>
+										<div class="aa-prod-quantity">
+											<input type="number" style="width: 50px; cursor: default"
+												id="quantity" min="1" max="${product.unitInStock}" value="1">
+											<p class="aa-prod-category">
+												Category: <a
+													href="/pd/s?mc=${product.productCategory.mainCategoryName}&sc=${product.productCategory.subCategoryName}">
+													${product.productCategory.mainCategoryName} -
+													${product.productCategory.subCategoryName} </a>
+											</p>
+										</div>
+										<div>
+											<p>Views: ${product.productViews}</p>
+										</div>
+										<div class="aa-prod-view-bottom" ng-controller="cartCtrl">
+											<button id="aa-add-to-cart-btn" style="cursor: hand"
+												ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">Add
+												To Bag</button>
+											<!--
+                                        <a class="aa-add-to-cart-btn" href="#">Wishlist</a>
+                                        <a class="aa-add-to-cart-btn" href="#">Compare</a>-->
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- Related product -->
-					<div class="aa-product-related-item">
-						<h3>Related Products</h3>
-						<ul class="aa-product-catg aa-related-item-slider">
-							<!-- start single product item -->
-							<c:forEach var="product" items="${productRelated}">
-								<li>
-									<figure>
-										<a class="aa-product-img" href="/pd/p?id=${product.productId}">
-											<img style="width: 250px; height: 300px"
-											src="/images/${product.productId}/0.png">
-										</a>
-										<a class="aa-add-card-btn" style="cursor: hand"
-											ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
-											<span class="fa fa-shopping-cart"></span>Add To Cart
-										</a>
-										<figcaption>
-											<h4 class="aa-product-title">
-												<a href="/pd/p?id=${product.productId}">${product.productName}</a>
-											</h4>
-											<span class="aa-product-price">$${product.productPrice}</span><span
-												class="aa-product-price"><del>$999</del></span>
-										</figcaption>
-									</figure> <!-- product badge --> <span class="aa-badge aa-sale" href="#">SALE!</span>
-								</li>
-							</c:forEach>
-						</ul>
+						<div class="aa-product-details-bottom">
+							<ul class="nav nav-tabs" id="myTab2">
+								<li><a href="#description" data-toggle="tab">Description</a></li>
+								<li><a href="#review" data-toggle="tab">Reviews</a></li>
+							</ul>
+
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div class="tab-pane fade in active" id="description">
+									${product.productDescription}</div>
+								<div class="tab-pane fade " id="review">
+									<div class="aa-product-review-area">
+										<h4>${productCommentList.size()}Reviews</h4>
+										<ul class="aa-review-nav">
+											<c:forEach items="${productCommentList}" var="productComment">
+												<li>
+													<div class="media">
+														<div class="media-body">
+															<h4 class="media-heading">
+																<strong>${productComment.customer.customerName}</strong>
+																- <span>${productComment.commentDate}</span>
+															</h4>
+															<div class="aa-product-rating">
+																<c:forEach begin="1"
+																	end="${productComment.commentStarts}">
+																	<span class="fa fa-star"></span>
+																</c:forEach>
+																<c:forEach begin="1"
+																	end="${5-productComment.commentStarts}">
+																	<span class="fa fa-star-o"></span>
+																</c:forEach>
+															</div>
+															<p>${productComment.commentCotents}</p>
+														</div>
+													</div>
+												</li>
+											</c:forEach>
+										</ul>
+										<div class="aa-product-related-item">
+											<h3
+												onclick="add_review('${pageContext.request.userPrincipal.name}')"
+												style="cursor: hand;" onmouseover="this.style.color='red'"
+												onmouseout="this.style.color='black'">Add a review</h3>
+										</div>
+
+										<c:if test="${pageContext.request.userPrincipal.name != null}">
+											<div id="add-review-div" hidden>
+												<!-- review form -->
+												<form:form action="/pd/p?id=${product.productId}"
+													method="post" commandName="productComment">
+													<div class="aa-your-rating">
+														<p>Your Rating</p>
+														<span style="cursor: hand; color: red" starts="1"
+															id="starts-number-1"
+															onclick="productCommentOnClick(this)"
+															class="fa fa-star-o"> </span> <span
+															style="cursor: hand; color: red" starts="2"
+															id="starts-number-2"
+															onclick="productCommentOnClick(this)"
+															class="fa fa-star-o"> </span> <span
+															style="cursor: hand; color: red" starts="3"
+															id="starts-number-3"
+															onclick="productCommentOnClick(this)"
+															class="fa fa-star-o"> </span> <span
+															style="cursor: hand; color: red" starts="4"
+															id="starts-number-4"
+															onclick="productCommentOnClick(this)"
+															class="fa fa-star-o"> </span> <span
+															style="cursor: hand; color: red" starts="5"
+															id="starts-number-5"
+															onclick="productCommentOnClick(this)"
+															class="fa fa-star-o"> </span>
+														<form:hidden path="commentStarts"
+															id="commentStarts-hidden" value="0" />
+														<form:hidden path="customer" />
+													</div>
+													<br>
+													<div class="form-group">
+														<label for="message">Your Review</label>
+														<form:textarea path="commentCotents" rows="3" id="message"
+															class="form-control" />
+													</div>
+
+													<button type="submit"
+														class="btn btn-default aa-review-submit">Submit</button>
+												</form:form>
+											</div>
+										</c:if>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Related product -->
+						<div class="aa-product-related-item">
+							<h3>Related Products</h3>
+							<ul class="aa-product-catg aa-related-item-slider">
+								<!-- start single product item -->
+								<c:forEach var="product" items="${productRelated}">
+									<li>
+										<figure>
+											<a class="aa-product-img"
+												href="/pd/p?id=${product.productId}"> <img
+												style="width: 250px; height: 300px"
+												src="/images/${product.productId}/0.png">
+											</a>
+											<a class="aa-add-card-btn" style="cursor: hand"
+												ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
+												<span class="fa fa-shopping-cart"></span>Add To Cart
+											</a>
+											<figcaption>
+												<h4 class="aa-product-title">
+													<a href="/pd/p?id=${product.productId}">${product.productName}</a>
+												</h4>
+												<span class="aa-product-price">$${product.productPrice}</span><span
+													class="aa-product-price"><del>$999</del></span>
+											</figcaption>
+										</figure> <!-- product badge --> <span class="aa-badge aa-sale"
+										href="#">SALE!</span>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </section>
 <!-- / product category -->
 <%@include file="/WEB-INF/view/template/footer.jsp"%>
