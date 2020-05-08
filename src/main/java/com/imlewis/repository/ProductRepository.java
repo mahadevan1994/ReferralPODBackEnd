@@ -2,6 +2,7 @@ package com.imlewis.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
@@ -14,4 +15,6 @@ public interface ProductRepository extends CrudRepository<Product, Long>, Paging
 	
 	List<Product> findAllByProductCategory(Category category);
 	
+	@Query(value = "select * from PRODUCT where REFERRAL_GIFT = TRUE", nativeQuery = true)
+	List<Product> getAllByProductGifts();
 }

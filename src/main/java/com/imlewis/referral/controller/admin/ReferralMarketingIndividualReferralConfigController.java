@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
+import com.imlewis.service.ProductService;
 
 @Controller
 @RequestMapping("/admin/irf")
@@ -26,12 +27,16 @@ public class ReferralMarketingIndividualReferralConfigController {
 	@Autowired
 	private ReferralMarketingGenericReferralAddConfigService referralMarketingGenericReferralAddConfigService;
 
+	@Autowired
+	private ProductService productService;
+
 	@RequestMapping("/m")
 	public String individualReferralManagement(Model model) {
 		ReferralMarketingGenericReferralAddConfigItem addConfigItem = new ReferralMarketingGenericReferralAddConfigItem();
 		model.addAttribute("addConfiguration", addConfigItem);
 		model.addAttribute("savedConfiguration",
 				referralMarketingGenericReferralAddConfigService.getAllGenericReferralConfigItems());
+		model.addAttribute("giftItems", productService.getAllByProductGifts());
 		return "admin/referralMarketingIndividualReferralConfig";
 	}
 
@@ -78,6 +83,7 @@ public class ReferralMarketingIndividualReferralConfigController {
 		model.addAttribute("addConfiguration", addConfigItem);
 		model.addAttribute("savedConfiguration",
 				referralMarketingGenericReferralAddConfigService.getAllGenericReferralConfigItems());
+		model.addAttribute("giftItems", productService.getAllByProductGifts());
 		return "admin/referralMarketingIndividualReferralConfig";
 	}
 }

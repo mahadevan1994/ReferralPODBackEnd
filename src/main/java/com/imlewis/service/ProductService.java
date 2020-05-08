@@ -22,4 +22,6 @@ public interface ProductService {
 	void delete(Long productId);
 	
 	List<Product> sort(List<Product> products, String sortType);
+	
+	List<Product> getAllByProductGifts();
 }

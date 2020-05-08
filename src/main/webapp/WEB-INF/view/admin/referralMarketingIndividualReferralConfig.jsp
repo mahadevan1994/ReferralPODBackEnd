@@ -15,15 +15,47 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${savedConfiguration}" var="configuration">
-					<tr>
-						<td>${configuration.programType}</td>
-						<td>${configuration.benefitType}</td>
-						<td>${configuration.referralAmount}</td>
-						<td><a href="/admin/pd/s?id=${product.productId}"> <span
-								class="glyphicon glyphicon-pencil"></span></a> <a
-							href="/admin/pd/d?id=${product.productId}"> <span
-								class="glyphicon glyphicon-remove"></span></a></td>
-					</tr>
+					<c:if test="${configuration.benefitType != 'giftItem'}">
+						<tr>
+							<td>${configuration.programType}</td>
+							<td>${configuration.benefitType}</td>
+							<td>${configuration.referralAmount}</td>
+							<td><a
+								href="/admin/pd/s?id=${configuration.configurationId}"> <span
+									class="glyphicon glyphicon-pencil"></span></a> <a
+								href="/admin/pd/d?id=${configuration.configurationId}"> <span
+									class="glyphicon glyphicon-remove"></span></a></td>
+						</tr>
+					</c:if>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Program Type</th>
+					<th>Benefit Type</th>
+					<th>Gift Item Product Id</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${savedConfiguration}" var="configuration">
+					<c:if test="${configuration.benefitType == 'giftItem'}">
+						<tr>
+							<td>${configuration.programType}</td>
+							<td>${configuration.benefitType}</td>
+							<td>${configuration.giftSelect}</td>
+							<td><a
+								href="/admin/pd/s?id=${configuration.configurationId}"> <span
+									class="glyphicon glyphicon-pencil"></span></a> <a
+								href="/admin/pd/d?id=${configuration.configurationId}"> <span
+									class="glyphicon glyphicon-remove"></span></a></td>
+						</tr>
+					</c:if>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -39,23 +71,30 @@
 				commandName="addConfiguration" enctype="multipart/form-data">
 				<table>
 					<tr>
-						<td><label for="programType" id="pType">Program Type:</label></td>
-						<td><label class="checkbox-inline"><form:radiobutton
+						<td style="width: 20%;"><label for="programType" id="pType">Program
+								Type</label></td>
+						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
 									path="programType" id="programType" value="single"
 									checked="checked" class="prgType" />Single Incentive</label></td>
-						<!--<td><label class="checkbox-inline"><form:radiobutton path="programType" id="programType" value="double" />Dual Incentive</label></td> -->
+						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
+									path="programType" id="programType" value="double" />Dual
+								Incentive</label></td>
 					</tr>
 					<tr>
 						<td><br /></td>
 					</tr>
 					<tr>
-						<td><label for="benefitType" id="bType">Benefit Type:</label></td>
-						<td><label class="checkbox-inline"><form:radiobutton
+						<td style="width: 20%;"><label for="benefitType" id="bType">Benefit
+								Type</label></td>
+						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
 									path="benefitType" id="benefitType" value="loyalty" />Loyalty</label></td>
-						<td><label class="checkbox-inline"><form:radiobutton
+						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
 									path="benefitType" id="benefitType" value="voucher" />Voucher</label></td>
-						<td><label class="checkbox-inline"><form:radiobutton
+						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
 									path="benefitType" id="benefitType" value="discount" />Discount</label></td>
+						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
+									path="benefitType" id="benefitType" value="giftItem" />Gift
+								Item</label></td>
 					</tr>
 
 				</table>
@@ -63,13 +102,23 @@
 
 				<div id="referralMsgAmt">
 					<label for="referralMessage">Referral Message</label> <label
-						class="checkbox-inline"><form:textarea
+						class="checkbox-inline"><form:textarea cols="100"
 							path="referralMessage" id="referralMessage" value="" /></label><br /> <br />
 					<label for="referralAmount" id="referralAmountType"></label> <label
 						class="checkbox-inline"><form:input path="referralAmount"
 							id="referralAmount" value="" /></label>
 				</div>
-				<br />
+				<div id="giftItemSection">
+					<label for="referralMessage">Referral Message</label> <label
+						class="checkbox-inline"><form:textarea cols="100"
+							path="referralMessage" id="referralMessageGiftItem" value="" /></label><br />
+					<br /> <label for="giftSelect">Configured Gift Item</label>
+					<form:select path="giftSelect">
+						<c:forEach items="${giftItems}" var="giftItem">
+							<form:option value="${giftItem.productId}">${giftItem.productName}</form:option>
+						</c:forEach>
+					</form:select>
+				</div>
 				<input type="submit" value="Add" id="add" class="btn btn-default" />
 			</form:form>
 		</div>
@@ -78,6 +127,7 @@
 <script>
 	$("#add").prop("disabled", true);
 	$("#referralMsgAmt").hide();
+	$("#giftItemSection").hide();
 
 	function showConfigurationFields() {
 		var divElement = document.getElementById("addConfig");
@@ -94,9 +144,10 @@
 										function() {
 											var radioValue = $(this).attr(
 													"value");
-											$("#referralMsgAmt").show();
 											switch (radioValue) {
 											case "loyalty":
+												$("#referralMsgAmt").show();
+												$("#giftItemSection").hide();
 												$("#referralAmountType").text(
 														"Loyalty Points");
 												$("#referralMessage")
@@ -104,6 +155,8 @@
 																"Hello there, Loyalty points with <points> can be availed by registering with us.");
 												break;
 											case "voucher":
+												$("#referralMsgAmt").show();
+												$("#giftItemSection").hide();
 												$("#referralAmountType").text(
 														"Voucher Amount");
 												$("#referralMessage")
@@ -111,6 +164,8 @@
 																"Hello there, Voucher amount with <amount> will be emailed to your registered email id post the first order.");
 												break;
 											case "discount":
+												$("#referralMsgAmt").show();
+												$("#giftItemSection").hide();
 												$("#referralAmountType").text(
 														"Discount Amount");
 												$("#referralMessage")
@@ -118,9 +173,9 @@
 																"Hello there, Discount of <discount> is applicable on your first order.");
 												break;
 											case "giftItem":
-												$("#referralAmountType").text(
-														"Gift Item");
-												$("#referralMessage")
+												$("#referralMsgAmt").hide();
+												$("#giftItemSection").show();
+												$("#referralMessageGiftItem")
 														.text(
 																"Hello there, Gift Item <Gift Item Description> will be added to the cart post registration.");
 												break;

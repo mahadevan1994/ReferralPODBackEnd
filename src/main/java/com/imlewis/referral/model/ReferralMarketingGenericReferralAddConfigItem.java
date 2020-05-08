@@ -26,6 +26,8 @@ public class ReferralMarketingGenericReferralAddConfigItem implements Serializab
 	@NotNull(message = "Please enter the referral amount")
 	private double referralAmount;
 	
+	private Long giftSelect;
+	
 	public Long getConfigurationId() {
 		return configurationId;
 	}
@@ -55,5 +57,11 @@ public class ReferralMarketingGenericReferralAddConfigItem implements Serializab
 	}
 	public void setReferralAmount(double referralAmount) {
 		this.referralAmount = referralAmount;
+	}
+	public Long getGiftSelect() {
+		return giftSelect;
+	}
+	public void setGiftSelect(Long giftSelect) {
+		this.giftSelect = giftSelect;
 	}
 }
