@@ -3,13 +3,13 @@
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="container">
-		<form:form action="/admin/grf/s?" method="post"
+		<form:form action="/admin/grf/s?" method="post" 
 			commandName="genericReferral" enctype="multipart/form-data">
 			<div class="form-group">
 				<div class="minOrder">
 					<label for="minimumOrderCount">Minimum Order Count</label>
 					<form:errors path="minimumOrderCount" cssStyle="color: red" />
-					<form:input path="minimumOrderCount" id="minimumOrderCount"
+					<form:input type="number" path="minimumOrderCount" id="minimumOrderCount"
 						class="form-Control" required="required" />
 				</div>
 			</div>
@@ -17,7 +17,7 @@
 				<div class="totalBusi">
 					<label for="totalBusiness">Total Business (in $)</label>
 					<form:errors path="totalBusiness" cssStyle="color: red" />
-					<form:input path="totalBusiness" id="totalBusiness"
+					<form:input type="0.25" path="totalBusiness" id="totalBusiness"
 						class="form-Control" required="required" />
 				</div>
 			</div>
@@ -30,5 +30,5 @@
 			</div>
 		</form:form>
 	</div>
-</div>
+</div>    
 <%@include file="/WEB-INF/view/admin/template/footer.jsp"%>
