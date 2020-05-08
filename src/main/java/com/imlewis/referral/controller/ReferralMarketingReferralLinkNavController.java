@@ -2,6 +2,7 @@ package com.imlewis.referral.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import com.imlewis.model.Product;
 import com.imlewis.model.Slider;
 import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
 import com.imlewis.referral.model.ReferredUser;
+import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
 import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 import com.imlewis.referral.service.ReferralMarketingUserReferralConfigService;
 import com.imlewis.repository.ProductRepository;
@@ -47,6 +49,9 @@ public class ReferralMarketingReferralLinkNavController{
 	EmailSenderService emailSenderService;
 	@Autowired
 	ReferralMarketingUserCommunicationConfigService userCommunicationConfigService;
+	@Autowired
+	ReferralMarketingGenericReferralAddConfigService referralAddConfigService;
+	
 	
 	@RequestMapping(value = "/ambassador/{communicationId}", method = RequestMethod.GET)
 	public String benefitAmbassador(@PathVariable("communicationId") long communicationId, Model model) {
@@ -84,7 +89,7 @@ public class ReferralMarketingReferralLinkNavController{
 	}
 	
 	@RequestMapping(value = "/referred/{communicationId}", method = RequestMethod.GET)
-	public String benefitReferred(@PathVariable("communicationId") long communicationId, Model model) {
+	public String benefitReferred(@PathVariable("communicationId") long communicationId, Model model,HttpServletRequest request) {
 		
 		int isCommunicationIdPresent = communicationConfigService.isCommunicationIdPresent(communicationId);
 		
@@ -111,6 +116,7 @@ public class ReferralMarketingReferralLinkNavController{
 		if(condition) {
 			model.addAttribute("referralLinkError","The referral link has been expired");
 		}*/
+		request.getSession().setAttribute("communicationId_", communicationId);
 		
         model.addAttribute("referralLinkSuccess","Please get registered to get the referral benefit");
         return "referral/referralLikLandingPage";
@@ -123,8 +129,9 @@ public class ReferralMarketingReferralLinkNavController{
 			return "referral/ambassadorReferral";
 		}
 		ReferralMarketingUserCommunicationConfig userCommunicationConfigItem;
+		long communicationId = referredUser.getCommunicationId();
 		try {
-			userCommunicationConfigItem = userCommunicationConfigService.getReferralMarketingUserCommunicationConfig(referredUser.getCommunicationId());
+			userCommunicationConfigItem = userCommunicationConfigService.getReferralMarketingUserCommunicationConfig(communicationId);
 			emailSenderService.sendEmail(userCommunicationConfigItem, referredUser.getEmail());
 		} catch (Exception e) {
 			model.addAttribute("ambassadorReferralLinkError","Unable to send mail");

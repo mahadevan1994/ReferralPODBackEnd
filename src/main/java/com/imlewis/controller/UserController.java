@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.imlewis.model.Code;
 import com.imlewis.model.Customer;
+import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
+import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
+import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
+import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 import com.imlewis.repository.CodeRepository;
 import com.imlewis.repository.RoleRepository;
 import com.imlewis.service.CustomerService;
@@ -42,6 +47,10 @@ public class UserController {
 	private CodeRepository codeRepository;
 	@Autowired
 	private RoleRepository roleRepository;
+	@Autowired
+	ReferralMarketingUserCommunicationConfigService userCommunicationConfigService;
+	@Autowired
+	ReferralMarketingGenericReferralAddConfigService referralAddConfigService;
 	
 	public void setToSession(HttpServletRequest request, Customer customer){
 		request.getSession().setAttribute("customerName_", customer.getCustomerName());
@@ -99,7 +108,20 @@ public class UserController {
         	model.addAttribute("email_exists", "Email already exist!");
         	return "registerCustomer";
         }
-
+        long communicationId = 0;
+        long referralConfigId = 0;
+        if(!StringUtils.isEmpty(request.getSession().getAttribute("communicationId_"))) {
+        	communicationId = (long)request.getSession().getAttribute("communicationId_");
+        }
+        ReferralMarketingUserCommunicationConfig userCommunicationConfigItem = userCommunicationConfigService.getReferralMarketingUserCommunicationConfig(communicationId);
+        if(null != userCommunicationConfigItem) {
+        	referralConfigId = userCommunicationConfigItem.getReferralConfigurationId();
+        }
+        ReferralMarketingGenericReferralAddConfigItem addConfigItem = referralAddConfigService.getAddConfigItem(referralConfigId);
+        
+        if(null != addConfigItem && "loyalty".equalsIgnoreCase(addConfigItem.getBenefitType())){
+        	user.setLoyaltyPoints(addConfigItem.getReferralAmount());
+        }
         customerService.save(user);
         Customer customer = customerService.findByEmail(user.getEmail());
         
