@@ -143,7 +143,7 @@
 										<!-- start single product item -->
 										<c:forEach items="${products}" var="product">
 											<c:if
-												test="${category eq product.productCategory.mainCategoryName}">
+												test="${category eq product.productCategory.mainCategoryName && !product.referralGift}">
 												<li>
 													<figure>
 														<a class="aa-product-img"
@@ -163,8 +163,8 @@
 															<span class="aa-product-price">$${product.productPrice}</span><br>
 															<span class="aa-product-price"><del>$999</del></span>
 														</figcaption>
-													</figure> <!-- product badge -->
-													<span class="aa-badge aa-sale" href="#">SALE!</span>
+													</figure> <!-- product badge --> <span class="aa-badge aa-sale"
+													href="#">SALE!</span>
 												</li>
 											</c:if>
 										</c:forEach>
@@ -307,28 +307,30 @@
 								<ul class="aa-product-catg aa-popular-slider">
 									<!-- start single product item -->
 									<c:forEach items="${productPopular}" var="product">
-										<li>
-											<figure>
-												<a class="aa-product-img"
-													href="<c:url value=" /pd/p?id=${product.productId} " />">
-													<img style="width: 250px; height: 300px"
-													src="<c:url value="images/${product.productId}/0.png" />">
-												</a>
-												<a class="aa-add-card-btn" style="cursor: hand"
-													ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
-													<span class="fa fa-shopping-cart"></span>Add To Cart
-												</a>
-												<figcaption>
-													<h4 class="aa-product-title">
-														<a
-															href="<c:url value=" /pd/p?id=${product.productId} " />">${product.productName}</a>
-													</h4>
-													<span class="aa-product-price">$${product.productPrice}</span><span
-														class="aa-product-price"><del>$999</del></span>
-												</figcaption>
-											</figure> <!-- product badge -->
-											<span class="aa-badge aa-sale" href="#">SALE!</span>
-										</li>
+										<c:if test="${!product.referralGift}">
+											<li>
+												<figure>
+													<a class="aa-product-img"
+														href="<c:url value=" /pd/p?id=${product.productId} " />">
+														<img style="width: 250px; height: 300px"
+														src="<c:url value="images/${product.productId}/0.png" />">
+													</a>
+													<a class="aa-add-card-btn" style="cursor: hand"
+														ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
+														<span class="fa fa-shopping-cart"></span>Add To Cart
+													</a>
+													<figcaption>
+														<h4 class="aa-product-title">
+															<a
+																href="<c:url value=" /pd/p?id=${product.productId} " />">${product.productName}</a>
+														</h4>
+														<span class="aa-product-price">$${product.productPrice}</span><span
+															class="aa-product-price"><del>$999</del></span>
+													</figcaption>
+												</figure> <!-- product badge --> <span class="aa-badge aa-sale"
+												href="#">SALE!</span>
+											</li>
+										</c:if>
 									</c:forEach>
 								</ul>
 								<a class="aa-browse-btn" href="/pd/s">Browse all Product <span
@@ -341,28 +343,30 @@
 								<ul class="aa-product-catg aa-latest-slider">
 									<!-- start single product item -->
 									<c:forEach items="${productLatest}" var="product">
-										<li>
-											<figure>
-												<a class="aa-product-img"
-													href="<c:url value=" /pd/p?id=${product.productId} " />">
-													<img style="width: 250px; height: 300px"
-													src="<c:url value="images/${product.productId}/0.png" />">
-												</a>
-												<a class="aa-add-card-btn" style="cursor: hand"
-													ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
-													<span class="fa fa-shopping-cart"></span>Add To Cart
-												</a>
-												<figcaption>
-													<h4 class="aa-product-title">
-														<a
-															href="<c:url value=" /pd/p?id=${product.productId} " />">${product.productName}</a>
-													</h4>
-													<span class="aa-product-price">$${product.productPrice}</span><span
-														class="aa-product-price"><del>$999</del></span>
-												</figcaption>
-											</figure> <!-- product badge -->
-											<span class="aa-badge aa-sale" href="#">SALE!</span>
-										</li>
+										<c:if test="${!product.referralGift}">
+											<li>
+												<figure>
+													<a class="aa-product-img"
+														href="<c:url value=" /pd/p?id=${product.productId} " />">
+														<img style="width: 250px; height: 300px"
+														src="<c:url value="images/${product.productId}/0.png" />">
+													</a>
+													<a class="aa-add-card-btn" style="cursor: hand"
+														ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
+														<span class="fa fa-shopping-cart"></span>Add To Cart
+													</a>
+													<figcaption>
+														<h4 class="aa-product-title">
+															<a
+																href="<c:url value=" /pd/p?id=${product.productId} " />">${product.productName}</a>
+														</h4>
+														<span class="aa-product-price">$${product.productPrice}</span><span
+															class="aa-product-price"><del>$999</del></span>
+													</figcaption>
+												</figure> <!-- product badge --> <span class="aa-badge aa-sale"
+												href="#">SALE!</span>
+											</li>
+										</c:if>
 									</c:forEach>
 								</ul>
 								<a class="aa-browse-btn" href="#">Browse all Product <span

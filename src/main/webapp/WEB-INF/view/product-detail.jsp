@@ -200,27 +200,29 @@
 							<ul class="aa-product-catg aa-related-item-slider">
 								<!-- start single product item -->
 								<c:forEach var="product" items="${productRelated}">
-									<li>
-										<figure>
-											<a class="aa-product-img"
-												href="/pd/p?id=${product.productId}"> <img
-												style="width: 250px; height: 300px"
-												src="/images/${product.productId}/0.png">
-											</a>
-											<a class="aa-add-card-btn" style="cursor: hand"
-												ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
-												<span class="fa fa-shopping-cart"></span>Add To Cart
-											</a>
-											<figcaption>
-												<h4 class="aa-product-title">
-													<a href="/pd/p?id=${product.productId}">${product.productName}</a>
-												</h4>
-												<span class="aa-product-price">$${product.productPrice}</span><span
-													class="aa-product-price"><del>$999</del></span>
-											</figcaption>
-										</figure> <!-- product badge --> <span class="aa-badge aa-sale"
-										href="#">SALE!</span>
-									</li>
+									<c:if test="${!product.referralGift}">
+										<li>
+											<figure>
+												<a class="aa-product-img"
+													href="/pd/p?id=${product.productId}"> <img
+													style="width: 250px; height: 300px"
+													src="/images/${product.productId}/0.png">
+												</a>
+												<a class="aa-add-card-btn" style="cursor: hand"
+													ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
+													<span class="fa fa-shopping-cart"></span>Add To Cart
+												</a>
+												<figcaption>
+													<h4 class="aa-product-title">
+														<a href="/pd/p?id=${product.productId}">${product.productName}</a>
+													</h4>
+													<span class="aa-product-price">$${product.productPrice}</span><span
+														class="aa-product-price"><del>$999</del></span>
+												</figcaption>
+											</figure> <!-- product badge --> <span class="aa-badge aa-sale"
+											href="#">SALE!</span>
+										</li>
+									</c:if>
 								</c:forEach>
 							</ul>
 						</div>

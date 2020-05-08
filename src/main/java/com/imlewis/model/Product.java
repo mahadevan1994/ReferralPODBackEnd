@@ -47,7 +47,17 @@ public class Product implements Serializable, Comparable<Product>{
     @Min(value = 0, message = "Product price must no be less then zero.")
     private double productPrice;
     
-    @Transient
+    private boolean referralGift = false;
+    
+    public boolean isReferralGift() {
+		return referralGift;
+	}
+
+	public void setReferralGift(boolean referralGift) {
+		this.referralGift = referralGift;
+	}
+
+	@Transient
     private MultipartFile productImage;
 
     @OneToMany(mappedBy = "product")

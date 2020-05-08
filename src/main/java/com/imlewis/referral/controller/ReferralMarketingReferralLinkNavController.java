@@ -63,6 +63,7 @@ public class ReferralMarketingReferralLinkNavController{
 			List<Slider> sliderList = (List<Slider>) sliderRepository.findAll();
 	        List<Product> productList = productRepository.findAll(new PageRequest(0, 16)).getContent();
 	        List<String> mainCategoryNameList = categoryService.getAllMainCategory();
+	        mainCategoryNameList.remove("Gift");
 	        List<Product> productPopularList = productRepository.findAll
 	        		(new PageRequest(0, 8, Direction.DESC, "productViews")).getContent();
 
@@ -96,6 +97,7 @@ public class ReferralMarketingReferralLinkNavController{
 		List<Slider> sliderList = (List<Slider>) sliderRepository.findAll();
         List<Product> productList = productRepository.findAll(new PageRequest(0, 16)).getContent();
         List<String> mainCategoryNameList = categoryService.getAllMainCategory();
+        mainCategoryNameList.remove("Gift");
         List<Product> productPopularList = productRepository.findAll
         		(new PageRequest(0, 8, Direction.DESC, "productViews")).getContent();
 

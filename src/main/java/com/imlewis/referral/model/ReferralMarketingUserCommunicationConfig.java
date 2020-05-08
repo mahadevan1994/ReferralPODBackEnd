@@ -1,7 +1,6 @@
 package com.imlewis.referral.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;

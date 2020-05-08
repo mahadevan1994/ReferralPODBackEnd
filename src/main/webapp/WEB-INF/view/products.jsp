@@ -75,30 +75,35 @@ function getProfileName() {
 							<!-- start single product item -->
 							<c:set var="counter" value="0" scope="page" />
 							<c:forEach items="${products}" var="product">
-								<c:set var="counter" value="${counter + 1}" scope="page" />
-								<li id="product-li-number-${counter}">
-									<figure>
-										<a class="aa-product-img" href="/pd/p?id=${product.productId}">
-											<img style="width: 250px; height: 300px"
-											src="/images/${product.productId}/0.png">
-										</a>
-										<a class="aa-add-card-btn" style="cursor: hand"
-											ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
-											<span class="fa fa-shopping-cart"></span>Add To Cart
-										</a>
-										<figcaption>
-											<h4 class="aa-product-title">
-												<a href="/pd/p?id=${product.productId}">${product.productName}</a>
-											</h4>
-											<h6 class="aa-product-descrip">${product.productSummary}</h6>
-											<h6 class="aa-product-price">$${product.productPrice}</h6>
-											<h6 class="aa-product-price"><del>$999</del></h6> 
-											
-										</figcaption>
-									</figure> <!-- product badge --> <span class="aa-badge aa-sale" href="#">SALE!</span>
-									<!--<span class="aa-badge aa-sold-out" href="#">Sold Out!</span>
+								<c:if test="${!product.referralGift}">
+									<c:set var="counter" value="${counter + 1}" scope="page" />
+									<li id="product-li-number-${counter}">
+										<figure>
+											<a class="aa-product-img"
+												href="/pd/p?id=${product.productId}"> <img
+												style="width: 250px; height: 300px"
+												src="/images/${product.productId}/0.png">
+											</a>
+											<a class="aa-add-card-btn" style="cursor: hand"
+												ng-click="addToCart('${product.productId}','${_csrf.parameterName}=${_csrf.token}')">
+												<span class="fa fa-shopping-cart"></span>Add To Cart
+											</a>
+											<figcaption>
+												<h4 class="aa-product-title">
+													<a href="/pd/p?id=${product.productId}">${product.productName}</a>
+												</h4>
+												<h6 class="aa-product-descrip">${product.productSummary}</h6>
+												<h6 class="aa-product-price">$${product.productPrice}</h6>
+												<h6 class="aa-product-price">
+													<del>$999</del>
+												</h6>
+
+											</figcaption>
+										</figure> <!-- product badge --> <span class="aa-badge aa-sale"
+										href="#">SALE!</span> <!--<span class="aa-badge aa-sold-out" href="#">Sold Out!</span>
                                     <span class="aa-badge aa-hot" href="#">HOT!</span>-->
-								</li>
+									</li>
+								</c:if>
 							</c:forEach>
 						</ul>
 					</div>
@@ -182,7 +187,7 @@ function getProfileName() {
 							- $80<br>
 							<div class="pricing">
 								<div class="PriceBtn">
-									<h4 onclick="customPriceRage()">Custom Price Range </h4>
+									<h4 onclick="customPriceRage()">Custom Price Range</h4>
 								</div>
 								<div id="custom-price-range-div" hidden>
 									<br> <input id="skip-value-lower" class="aa-filter-btn"
@@ -190,8 +195,8 @@ function getProfileName() {
 										type="number" min="1" placeholder="min" /> <input
 										id="skip-value-upper" class="aa-filter-btn"
 										style="background-color: white; color: black; text-align: center; cursor: default"
-										type="number" min="1" placeholder="max" />
-									<a class="aa-filter-btnGo" 
+										type="number" min="1" placeholder="max" /> <a
+										class="aa-filter-btnGo"
 										onclick="customPriceRageGo('<my:replaceParam name='lp' value='' />')">Go</a>
 								</div>
 

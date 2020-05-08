@@ -15,6 +15,7 @@
                 <th>SubCategory</th>
                 <th>Summary</th>
                 <th>Price</th>
+                <th>Is Gift Item</th>
                 <th></th>
             </tr>
             </thead>
@@ -28,6 +29,7 @@
                     <td>${product.productCategory.subCategoryName}</td>
                     <td>${product.productSummary}</td>
                     <td>${product.productPrice}</td>
+                    <td>${product.referralGift}</td>
                     <td>
                         <a href="/pd/p/view?id=${product.productId}">
                             <span class="glyphicon glyphicon-info-sign"></span></a>
