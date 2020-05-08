@@ -2320,6 +2320,11 @@ img {
     width: 100%;
 }
 
+.aa-product-catg-head h1 {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
 #aa-product-category .aa-product-catg-content .aa-product-catg-head .aa-product-catg-head-left {
     float: left;
 }
@@ -3102,6 +3107,56 @@ img {
     display: inline;
     float: left;
     width: 100%;
+}
+
+.myAccountDiv {
+    display: flex;
+    font-size: 16px;
+}
+
+.myAccountDiv label {
+    margin-right: 30px;
+    width: 30%;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.myAccountHr {
+    margin-bottom: 5%;
+}
+
+.myAccountInfo h2 {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #2c2c37;
+    margin-bottom: 3%;
+}
+
+.myAcctShipAddress {
+    width: 49%;
+    float: left;
+    /* border: 1px solid #baba; */
+    padding: 2%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.myAcctShipAddress h2 {
+    margin-bottom: 10%;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #2c2c37;
+}
+
+.orderSummaryDiv {
+    margin-bottom: 10%;
+}
+
+.orderSummaryDiv h2 {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #2c2c37;
+    margin-bottom: 3%;
 }
 
 
