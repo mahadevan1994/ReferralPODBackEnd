@@ -38,7 +38,7 @@ import com.imlewis.service.EmailSenderService;
  */
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private CustomerService customerService;
 	@Autowired
@@ -51,130 +51,133 @@ public class UserController {
 	ReferralMarketingUserCommunicationConfigService userCommunicationConfigService;
 	@Autowired
 	ReferralMarketingGenericReferralAddConfigService referralAddConfigService;
-	
-	public void setToSession(HttpServletRequest request, Customer customer){
+
+	public void setToSession(HttpServletRequest request, Customer customer) {
 		request.getSession().setAttribute("customerName_", customer.getCustomerName());
-        request.getSession().setAttribute("customerId_", customer.getCustomerId());
-        request.getSession().setAttribute("cartId_", customer.getCart().getCartId());
+		request.getSession().setAttribute("customerId_", customer.getCustomerId());
+		request.getSession().setAttribute("cartId_", customer.getCart().getCartId());
 	}
-	
+
 	@RequestMapping(value = "/rp", method = RequestMethod.POST)
-	public String resetPasswordPost(@Valid @ModelAttribute("user") Customer user, HttpServletRequest request, Model model) {
-        
-        Customer customer = customerService.findByEmail(user.getEmail());
-        customer.setPassword(user.getPassword());
-        
-        Authentication authentication = new UsernamePasswordAuthenticationToken(customer.getEmail(), customer.getPassword());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        
-        setToSession(request, customer);
-        
-        customerService.save(customer);
-        // delete reset password code in DB
-        List<Code> codes = codeRepository.findByCodeTypeAndCustomer(1, customer);
-        codeRepository.delete(codes);
-        
-        model.addAttribute("title", "Password Reset");
-        model.addAttribute("msg", "Your password has been reset!");
-        return "processSuccess";
-    }
-	
+	public String resetPasswordPost(@Valid @ModelAttribute("user") Customer user, HttpServletRequest request,
+			Model model) {
+
+		Customer customer = customerService.findByEmail(user.getEmail());
+		customer.setPassword(user.getPassword());
+
+		Authentication authentication = new UsernamePasswordAuthenticationToken(customer.getEmail(),
+				customer.getPassword());
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+
+		setToSession(request, customer);
+
+		customerService.save(customer);
+		// delete reset password code in DB
+		List<Code> codes = codeRepository.findByCodeTypeAndCustomer(1, customer);
+		codeRepository.delete(codes);
+
+		model.addAttribute("title", "Password Reset");
+		model.addAttribute("msg", "Your password has been reset!");
+		return "processSuccess";
+	}
+
 	@RequestMapping(value = "/rp/{codeStr}", method = RequestMethod.GET)
-	public String resetPassword(@PathVariable String codeStr, Model model){
+	public String resetPassword(@PathVariable String codeStr, Model model) {
 		Code code = codeRepository.findByCodeStr(codeStr);
-		if(code != null){
+		if (code != null) {
 			Customer customer = code.getCustomer();
 			customer.setPassword("");
-			model.addAttribute("user",customer);
+			model.addAttribute("user", customer);
 
 			return "resetPW";
 		}
 		return "404";
 	}
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerCustomerPost(@Valid @ModelAttribute("user") Customer user, BindingResult result,
 			HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		// if user already login, then redirect to home page.
-		if(session.getAttribute("customerName_") != null){
+		if (session.getAttribute("customerName_") != null) {
 			return "redirect:/";
 		}
-		
-        if(result.hasErrors()){
-            return "registerCustomer";
-        }
-        if(customerService.findByEmail(user.getEmail())!= null){
-        	model.addAttribute("email_exists", "Email already exist!");
-        	return "registerCustomer";
-        }
-        long communicationId = 0;
-        long referralConfigId = 0;
-        if(!StringUtils.isEmpty(request.getSession().getAttribute("communicationId_"))) {
-        	communicationId = (long)request.getSession().getAttribute("communicationId_");
-        }
-        ReferralMarketingUserCommunicationConfig userCommunicationConfigItem = userCommunicationConfigService.getReferralMarketingUserCommunicationConfig(communicationId);
-        if(null != userCommunicationConfigItem) {
-        	referralConfigId = userCommunicationConfigItem.getReferralConfigurationId();
-        }
-        ReferralMarketingGenericReferralAddConfigItem addConfigItem = referralAddConfigService.getAddConfigItem(referralConfigId);
-        
-        if(null != addConfigItem && "loyalty".equalsIgnoreCase(addConfigItem.getBenefitType())){
-        	user.setLoyaltyPoints(addConfigItem.getReferralAmount());
-        }
-        customerService.save(user);
-        Customer customer = customerService.findByEmail(user.getEmail());
-        
-        Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        
-        setToSession(request, customer);
-        
-        model.addAttribute("title", "Registration Successful!");
-        model.addAttribute("msg", "Your Account has been activated!<strong>Please Logout and Login again!</strong>");
-        return "processSuccess";
-    }
-	
-	@RequestMapping("/register")
-    public String register(HttpServletRequest request, Model model){
-		HttpSession session = request.getSession();
-		// if user already login, then redirect to home page.
-		if(session.getAttribute("customerName_") != null){
-			return "redirect:/";
-		}
-		
-        Customer user = new Customer();
-        model.addAttribute("user", user);
 
-        return "registerCustomer";
-    }
-	
-	@RequestMapping("/all")
-    public Iterable<Customer> all(HttpServletRequest request, Model model){
-		
-        return customerService.findAll();
-    }
-	
-	@RequestMapping("/login")
-	public String login(@RequestParam(value = "error", required = false) String error,
-			HttpServletRequest request, Model model) {
+		if (result.hasErrors()) {
+			return "registerCustomer";
+		}
+		if (customerService.findByEmail(user.getEmail()) != null) {
+			model.addAttribute("email_exists", "Email already exist!");
+			return "registerCustomer";
+		}
+		if (!StringUtils.isEmpty(request.getSession().getAttribute("communicationId_"))) {
+			long communicationId = (long) request.getSession().getAttribute("communicationId_");
+			ReferralMarketingUserCommunicationConfig userCommunicationConfigItem = userCommunicationConfigService
+					.getReferralMarketingUserCommunicationConfig(communicationId);
+			if (null != userCommunicationConfigItem) {
+				long referralConfigId = userCommunicationConfigItem.getReferralConfigurationId();
+				ReferralMarketingGenericReferralAddConfigItem addConfigItem = referralAddConfigService
+						.getAddConfigItem(referralConfigId);
+				if (null != addConfigItem && "loyalty".equalsIgnoreCase(addConfigItem.getBenefitType())) {
+					user.setLoyaltyPoints(addConfigItem.getReferralAmount());
+				}
+			}
+			request.getSession().removeAttribute("communicationId_");
+		}
+
+		customerService.save(user);
+		Customer customer = customerService.findByEmail(user.getEmail());
+
+		Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+
+		setToSession(request, customer);
+
+		model.addAttribute("title", "Registration Successful!");
+		model.addAttribute("msg", "Your Account has been activated!<strong>Please Logout and Login again!</strong>");
+		return "processSuccess";
+	}
+
+	@RequestMapping("/register")
+	public String register(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		// if user already login, then redirect to home page.
-		if(session.getAttribute("customerName_") != null){
+		if (session.getAttribute("customerName_") != null) {
 			return "redirect:/";
 		}
-    	if (error != null) {
+
+		Customer user = new Customer();
+		model.addAttribute("user", user);
+
+		return "registerCustomer";
+	}
+
+	@RequestMapping("/all")
+	public Iterable<Customer> all(HttpServletRequest request, Model model) {
+
+		return customerService.findAll();
+	}
+
+	@RequestMapping("/login")
+	public String login(@RequestParam(value = "error", required = false) String error, HttpServletRequest request,
+			Model model) {
+		HttpSession session = request.getSession();
+		// if user already login, then redirect to home page.
+		if (session.getAttribute("customerName_") != null) {
+			return "redirect:/";
+		}
+		if (error != null) {
 			model.addAttribute("error", "* Invalid username or password");
 		}
-    	return "login";
+		return "login";
 	}
-	
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    if (auth != null){    
-	        new SecurityContextLogoutHandler().logout(request, response, auth);
-	    }
-	    return "redirect:/login";
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return "redirect:/login";
 	}
 }
