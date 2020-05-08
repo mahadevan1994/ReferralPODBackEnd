@@ -20,6 +20,12 @@
             console.dir(RR.data.JSON.placements);
         };
     </script>
+    <c:if test="${not empty referralLinkError}">
+        <div style="font-size:3rem;font-weight:bold;color:red;text-align: center">${referralLinkError}</div>
+    </c:if>
+    <c:if test="${not empty referralLinkSuccess}">
+        <div style="font-size:3rem;font-weight:bold;color:green;text-align: center">${referralLinkSuccess}</div>
+    </c:if>
     <!-- / slider -->
     <!-- Start Promo section -->
     <section id="aa-promo">
@@ -32,7 +38,7 @@
                             <div class="col-md-5 no-padding">
                                 <div class="aa-promo-left">
                                     <div class="aa-promo-banner">
-                                        <img style="object-fit: cover;" src="img/for-women-450x450.jpg" alt="img">
+                                        <img style="object-fit: cover;" src="../img/for-women-450x450.jpg" alt="img">
                                         <div class="aa-prom-content">
                                             <span>75% Off</span>
                                             <h4>
@@ -47,7 +53,7 @@
                                 <div class="aa-promo-right">
                                     <div class="aa-single-promo-right">
                                         <div class="aa-promo-banner">
-                                            <img style="object-fit: cover;" src="img/for-men-300x220.jpg" alt="img">
+                                            <img style="object-fit: cover;" src="../img/for-men-300x220.jpg" alt="img">
                                             <div class="aa-prom-content">
                                                 <span>Exclusive Item</span>
                                                 <h4>
@@ -58,7 +64,7 @@
                                     </div>
                                     <div class="aa-single-promo-right">
                                         <div class="aa-promo-banner">
-                                            <img src="img/for-shoes.jpg" alt="img">
+                                            <img src="../img/for-shoes.jpg" alt="img">
                                             <div class="aa-prom-content">
                                                 <span>On Sale</span>
                                                 <h4>
@@ -69,7 +75,7 @@
                                     </div>
                                     <div class="aa-single-promo-right">
                                         <div class="aa-promo-banner">
-                                            <img src="img/for-kids.jpg" alt="img">
+                                            <img src="../img/for-kids.jpg" alt="img">
                                             <div class="aa-prom-content">
                                                 <span>New Arrivals</span>
                                                 <h4>
@@ -80,7 +86,7 @@
                                     </div>
                                     <div class="aa-single-promo-right">
                                         <div class="aa-promo-banner">
-                                            <img style="object-fit: cover;" src="img/for-bags.jpg" alt="img">
+                                            <img style="object-fit: cover;" src="../img/for-bags.jpg" alt="img">
                                             <div class="aa-prom-content">
                                                 <span>25% Off</span>
                                                 <h4>
@@ -176,20 +182,20 @@
                                                                 <div class="simpleLens-gallery-container" id="demo-1">
                                                                     <div class="simpleLens-container">
                                                                         <div class="simpleLens-big-image-container">
-                                                                            <a class="simpleLens-lens-image" data-lens-image="img/view-slider/large/polo-shirt-1.png">
-                                                                                <img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
+                                                                            <a class="simpleLens-lens-image" data-lens-image="../img/view-slider/large/polo-shirt-1.png">
+                                                                                <img src="../img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
                                                                             </a>
                                                                         </div>
                                                                     </div>
                                                                     <div class="simpleLens-thumbnails-container">
-                                                                        <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="img/view-slider/large/polo-shirt-1.png" data-big-image="img/view-slider/medium/polo-shirt-1.png">
-                                                                            <img src="img/view-slider/thumbnail/polo-shirt-1.png">
+                                                                        <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="../img/view-slider/large/polo-shirt-1.png" data-big-image="../img/view-slider/medium/polo-shirt-1.png">
+                                                                            <img src="../img/view-slider/thumbnail/polo-shirt-1.png">
                                                                         </a>
-                                                                        <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="img/view-slider/large/polo-shirt-3.png" data-big-image="img/view-slider/medium/polo-shirt-3.png">
-                                                                            <img src="img/view-slider/thumbnail/polo-shirt-3.png">
+                                                                        <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="../img/view-slider/large/polo-shirt-3.png" data-big-image="../img/view-slider/medium/polo-shirt-3.png">
+                                                                            <img src="../img/view-slider/thumbnail/polo-shirt-3.png">
                                                                         </a>
-                                                                        <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="img/view-slider/large/polo-shirt-4.png" data-big-image="img/view-slider/medium/polo-shirt-4.png">
-                                                                            <img src="img/view-slider/thumbnail/polo-shirt-4.png">
+                                                                        <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="../img/view-slider/large/polo-shirt-4.png" data-big-image="../img/view-slider/medium/polo-shirt-4.png">
+                                                                            <img src="../img/view-slider/thumbnail/polo-shirt-4.png">
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -255,7 +261,7 @@
                     <div class="row">
                         <div class="aa-banner-area">
                             <a href="#"><img
-							src="<spring:url value="img/banner-footer-1170x170.jpg" />"
+							src="<spring:url value="../img/banner-footer-1170x170.jpg" />"
 							alt="fashion banner img"></a>
                         </div>
                     </div>
