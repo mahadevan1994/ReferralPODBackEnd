@@ -2,9 +2,12 @@ package com.imlewis.referral.controller;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,8 @@ import com.imlewis.service.EmailSenderService;
 
 @Controller
 public class ReferralMarketingReferralLinkNavController{
+	
+	Logger logger = LoggerFactory.getLogger(ReferralMarketingReferralLinkNavController.class);
 	
 	@Autowired
 	private ReferralMarketingUserCommunicationConfigService communicationConfigService;
@@ -73,9 +78,21 @@ public class ReferralMarketingReferralLinkNavController{
 	}
 	
 	@RequestMapping(value = "/sendReferral", method = RequestMethod.POST)
-	public String sendReferral(@Valid @ModelAttribute("user") ReferredUser referredUser, Model model) {
-		ReferralMarketingUserCommunicationConfig userCommunicationConfigItem = userCommunicationConfigService.getReferralMarketingUserCommunicationConfig(referredUser.getCommunicationId());
-		emailSenderService.sendEmail(userCommunicationConfigItem, referredUser.getEmail());
-        return "home";
+	public String sendReferral(@Valid @ModelAttribute("user") ReferredUser referredUser, Model model, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("error","Error Occurred");
+			return "referral/ambassadorReferral";
+		}
+		ReferralMarketingUserCommunicationConfig userCommunicationConfigItem;
+		try {
+			userCommunicationConfigItem = userCommunicationConfigService.getReferralMarketingUserCommunicationConfig(referredUser.getCommunicationId());
+			emailSenderService.sendEmail(userCommunicationConfigItem, referredUser.getEmail());
+		} catch (Exception e) {
+			model.addAttribute("error","Unable to send mail");
+			logger.error("Error while sending mail", e);
+			return "referral/ambassadorReferral";
+		}
+		model.addAttribute("success","Mail sent successfully");
+        return "referral/ambassadorReferral";
 	}
 }

@@ -16,6 +16,12 @@
 								method="post" modelAttribute="user">
 								<c:set var="now" value="<%= new java.util.Date()%>" />
 								<div class="form-group">
+									<c:if test="${not empty error}">
+								        <div style="font-size:3rem;font-weight:bold;color:red;text-align: center">${error}</div>
+								    </c:if>
+								    <c:if test="${not empty success}">
+								        <div style="font-size:3rem;font-weight:bold;color:green;text-align: center">${success}</div>
+								    </c:if>
 									<label for="email">Email<span style="color: red">*</span></label>
 									<form:errors path="email" cssStyle="color: red" />
 									<form:input type="email" path="email" id="email"

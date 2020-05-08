@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.apache.velocity.app.VelocityEngine;
@@ -26,7 +27,6 @@ import com.imlewis.model.Customer;
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
 import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
-import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 
 @Service
 public class EmailSenderServiceImpl implements EmailSenderService{
@@ -38,9 +38,6 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 	
 	@Autowired
 	private ReferralMarketingGenericReferralAddConfigService addConfigService;
-	
-	@Autowired
-	private ReferralMarketingUserCommunicationConfigService communicationConfigService;
 	
 	@Value("${fromAddress}")
 	private String fromAddress;
@@ -147,7 +144,7 @@ public class EmailSenderServiceImpl implements EmailSenderService{
 			}
 			mimeMessageHelper.setText(geContentFromTemplate(model,benefitType), true);
 			getMailSender().send(mimeMessageHelper.getMimeMessage());
-		} catch (Exception e) {
+		} catch (MessagingException e) {
 			logger.error("Sending email failed!", e);
 		}
 	}
