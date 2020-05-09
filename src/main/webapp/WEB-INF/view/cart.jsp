@@ -3,13 +3,13 @@
 <!-- Cart view section -->
 <section id="cart-view" ng-controller="cartCtrl" ng-init="refreshCart()">
 	<div>
-		<div class="container">
+		<div class="container cartContainer">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="cart-view-area" style="width: 110%">
 						<div class="cart-view-table">
 							<div class="row">
-								<div class="col-sm-8">
+								<div class="col-sm-12">
 									<form action="">
 
 										<div ng-repeat="item in cart.cartItems"
@@ -66,27 +66,33 @@
 												</div>
 											</div>
 										</div>
-										<div>
+										<div class="row">
 
 											<div class="aa-cart-coupon aa-cart-coupon-btn">
-												<input class="aa-coupon-code" type="text"
+												<div class="col-lg-5 col-lg-offset-2">
+													<input class="aa-coupon-code" type="text"
 													placeholder="Coupon: 123"
-													style="width: 50%; text-align: center"> <input
+													style="width: 90%; text-align: center"> 
+												</div>
+												<div class="col-lg-4">
+													<input
 													type="submit" value="Apply Coupon"
-													style="width: 50%; height: 44px; vertical-align: initial; font-size: 15px; background: #e01a2b; border: 1px solid #e01a2b; color: #fff;">
+													style="width: 40%; height: 44px; vertical-align: initial; font-size: 15px; background: #e01a2b; border: 1px solid #e01a2b; color: #fff; margin-left:30px;">
+												</div>
+												
 											</div>
-											<a href="<spring:url value="/"/>"> <input
-												class="aa-cart-view-btn" type="text"
-												style="cursor: hand; color: #000" value="Keep Shopping">
-											</a>
+											
+											
 										</div>
-
+										
 
 									</form>
 								</div>
 								<!-- Cart Total view -->
-								<h4 class="cart_cartTotal">Cart Totals</h4>
-								<div class="cart-view-total col-sm-4">
+								
+							</div>
+							<h4 class="cart_cartTotal">Cart Totals</h4>
+								<div class="cart-view-total">
 
 									<table class="aa-totals-table" style="border: none">
 										<tbody>
@@ -106,20 +112,31 @@
 											</c:if>
 
 											<tr>
-												<th>Total</th>
+												<th>Total Cart Value</th>
 												<td>$
 													<p id="cart-grandTotal" style="display: inline">{{calGrandTotal()}}</p>
 												</td>
 											</tr>
 										</tbody>
 									</table>
-									<a href="/checkout" class="aa-cart-view-btn"
-										style="background: #e01a2b;"> <span
-										class="glyphicon-shopping-cart glyphicon"></span> Proceed to
-										Checkout
-									</a>
+									<div class="row">
+										<div class="col-lg-6">
+											<a href="<spring:url value="/"/>"> <input
+											class="aa-cart-view-btn keepShoppingBtn" type="text"
+											style="cursor: hand; color: #000" value="Keep Shopping">
+											</a>
+										</div>
+										
+										<div class="col-lg-6">
+											<a href="/checkout" class="aa-cart-view-btn"
+											style="background: #e01a2b;"> <span
+											class="glyphicon-shopping-cart glyphicon"></span> Proceed to
+											Checkout
+											</a>
+										</div>
+									</div>
+									
 								</div>
-							</div>
 						</div>
 					</div>
 				</div>
