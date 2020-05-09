@@ -580,6 +580,9 @@ img {
 
 .aa-cartbox-summary {
     background-color: #f8f8f8;
+    width: 400px;
+    position: absolute;
+    margin-top: 30px;
 }
 
 #aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary {
@@ -5603,7 +5606,7 @@ button {
 }
 
 .redesign-header #search-bag-wrapper {
-    width: 602px;
+    /* width: 602px; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -217,7 +217,7 @@
 							</a>
 							<c:if test="${pageContext.request.userPrincipal.name != null}">
 								<div class="aa-cartbox-summary"
-									style="width: 400px; display: none">
+									style="display: none">
 									<ul>
 										<li ng-repeat="item in cart.cartItems"><a
 											class="aa-cartbox-img"><img class="aa-cartbox-img-source"
