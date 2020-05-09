@@ -24,7 +24,7 @@ public class ReferralMarketingGenericReferralAddConfigItem implements Serializab
 	private String benefitType;
 	private String referralMessage;
 	@NotNull(message = "Please enter the referral amount")
-	private double referralAmount;
+	private int referralAmount;
 	
 	private Long giftSelect;
 	
@@ -52,10 +52,10 @@ public class ReferralMarketingGenericReferralAddConfigItem implements Serializab
 	public void setReferralMessage(String referralMessage) {
 		this.referralMessage = referralMessage;
 	}
-	public double getReferralAmount() {
+	public int getReferralAmount() {
 		return referralAmount;
 	}
-	public void setReferralAmount(double referralAmount) {
+	public void setReferralAmount(int referralAmount) {
 		this.referralAmount = referralAmount;
 	}
 	public Long getGiftSelect() {

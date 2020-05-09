@@ -124,7 +124,7 @@ public class CartResources {
 							cartItem.setCart(cart);
 							cartItemRepository.save(cartItem);
 						} else if ("discount".equalsIgnoreCase(addConfigItem.getBenefitType())) {
-							cart.setDiscountPrice(addConfigItem.getReferralAmount());
+							cart.setDiscountPrice((double)addConfigItem.getReferralAmount());
 							cartService.save(cart);
 						}
 					}
