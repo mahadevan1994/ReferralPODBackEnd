@@ -59,7 +59,7 @@
 			<div class="form-group">
 				<label for="referralGift">Referral Gift</label>
 				<form:errors path="referralGift" cssStyle="color: red" />
-				<form:radiobutton path="referralGift" id="referralGift" value="true" />
+				<form:checkbox path="referralGift" id="referralGift" value="true" />
 			</div>
 
 			<input type="submit" value="submit" class="btn btn-default">

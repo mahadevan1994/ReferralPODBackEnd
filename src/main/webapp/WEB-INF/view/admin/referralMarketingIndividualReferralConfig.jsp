@@ -19,7 +19,7 @@
 						<tr>
 							<td>${configuration.programType}</td>
 							<td>${configuration.benefitType}</td>
-							<td>${configuration.referralAmount}</td>
+							<td>$ ${configuration.referralAmount}</td>
 							<td><a
 								href="/admin/pd/s?id=${configuration.configurationId}"> <span
 									class="glyphicon glyphicon-pencil"></span></a> <a
@@ -104,18 +104,17 @@
 					<label for="referralMessage">Referral Message</label> <label
 						class="checkbox-inline"><form:textarea cols="100"
 							path="referralMessage" id="referralMessage" value="" /></label><br /> <br />
-					<label for="referralAmount" id="referralAmountType"></label> <label
-						class="checkbox-inline"><form:input path="referralAmount"
-							id="referralAmount" value="" /></label>
+					<div id="referralAmt">
+						<label for="referralAmount" id="referralAmountType"></label> <label
+							class="checkbox-inline"><form:input path="referralAmount"
+								id="referralAmount" value="" /></label>
+					</div>
 				</div>
 				<div id="giftItemSection">
-					<label for="referralMessage">Referral Message</label> <label
-						class="checkbox-inline"><form:textarea cols="100"
-							path="referralMessage" id="referralMessageGiftItem" value="" /></label><br />
-					<br /> <label for="giftSelect">Configured Gift Item</label>
+					<label for="giftSelect">Configured Gift Item</label>
 					<form:select path="giftSelect">
 						<c:forEach items="${giftItems}" var="giftItem">
-							<form:option value="${giftItem.productId}">${giftItem.productName}</form:option>
+							<form:option value="${giftItem.productId}">${giftItem.productSummary}</form:option>
 						</c:forEach>
 					</form:select>
 				</div>
@@ -142,42 +141,32 @@
 						$('input[type="radio"]')
 								.click(
 										function() {
-											var radioValue = $(this).attr(
-													"value");
+											var radioValue = $(this).attr("value");
+											debugger;
 											switch (radioValue) {
 											case "loyalty":
 												$("#referralMsgAmt").show();
 												$("#giftItemSection").hide();
-												$("#referralAmountType").text(
-														"Loyalty Points");
-												$("#referralMessage")
-														.text(
-																"Hello there, Loyalty points with <points> can be availed by registering with us.");
+												$("#referralAmountType").text("Loyalty Points");
+												$("#referralMessage").text("Hello there, Loyalty points with <points> can be availed by registering with us.");
 												break;
 											case "voucher":
 												$("#referralMsgAmt").show();
 												$("#giftItemSection").hide();
-												$("#referralAmountType").text(
-														"Voucher Amount");
-												$("#referralMessage")
-														.text(
-																"Hello there, Voucher amount with <amount> will be emailed to your registered email id post the first order.");
+												$("#referralAmountType").text("Voucher Amount");
+												$("#referralMessage").text("Hello there, Voucher amount with <amount> will be emailed to your registered email id post the first order.");
 												break;
 											case "discount":
 												$("#referralMsgAmt").show();
 												$("#giftItemSection").hide();
-												$("#referralAmountType").text(
-														"Discount Amount");
-												$("#referralMessage")
-														.text(
-																"Hello there, Discount of <discount> is applicable on your first order.");
+												$("#referralAmountType").text("Discount Amount");
+												$("#referralMessage").text("Hello there, Discount of <discount> is applicable on your first order.");
 												break;
 											case "giftItem":
-												$("#referralMsgAmt").hide();
+												$("#referralMsgAmt").show();
+												$("#referralAmt").hide();
 												$("#giftItemSection").show();
-												$("#referralMessageGiftItem")
-														.text(
-																"Hello there, Gift Item <Gift Item Description> will be added to the cart post registration.");
+												$("#referralMessage").text("Hello there, Gift Item <giftItemDescription> will be added to the cart post registration.");
 												break;
 											}
 											$("#add").prop("disabled", false);
