@@ -5,7 +5,7 @@
 
     <div class="container">
 
-        <form:form action="/admin/urf/s?" method="post" 
+        <form:form action="/admin/urf/s?" method="post" onsubmit="return validate()" 
             commandName="userReferral" enctype="multipart/form-data" name="userReferralForm">
             <div class="form-group" style="margin: 20px 0; padding: 15px 0;">
                 <div style="width: 30%; float: left; vertical-align: middle;">
@@ -27,8 +27,8 @@
                 </div>
                 <div style="width: 70%; float: right">
                     <form:errors path="referralFrequency" cssStyle="color: red" />
-                    <form:input type="number" path="referralFrequency" id="referralFrequency"
-                        class="form-Control" required="required" name="referralFrequency"/>
+                    <form:input  path="referralFrequency" id="referralFrequency"
+                        class="form-Control" name="referralFrequency"/>
                         <p id="refFreq" style="color: red;"></p>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 </div>
                 <div style="width: 70%; float: right">
                     <form:errors path="referralEnablementDate" cssStyle="color: red" />
-                    <form:input type="date" path="referralEnablementDate" id="referralEnablementDate" class="form-Control" required="required"/>
+                    <form:input type="date" path="referralEnablementDate" id="referralEnablementDate" class="form-Control" />
                     <p id="refdate" style="color: red;"></p>
                 </div>
             </div>
@@ -50,8 +50,8 @@
                 </div>
                 <div style="width: 70%; float: right">
                     <form:errors path="referralinkExpiry" cssStyle="color: red" />
-                    <form:input type="number" path="referralinkExpiry" id="referralinkExpiry"
-                        class="form-Control" required="required" />
+                    <form:input  path="referralinkExpiry" id="referralinkExpiry"
+                        class="form-Control"/>
                         <p id="reflinkexp" style="color: red;"></p>
                 </div>
             </div>
@@ -62,9 +62,9 @@
                 </div>
                 <div style="width: 70%; float: right">
                 <form:errors path="referralBenifitExpiry" cssStyle="color: red" />
-                    <form:input type="number" id="referralBenifitExpiry" path="referralBenifitExpiry"
-                        class="form-Control" required="required" />
-                        <p id="refBnftexp" style="color: red;"></p>
+                    <form:input id="referralBenifitExpiry" path="referralBenifitExpiry"
+                        class="form-Control" />
+                       <p id="refBnftexp" style="color: red;"></p>
                 </div>
             </div>
             <div
@@ -82,4 +82,5 @@
         </form:form>
     </div>
 </div>
+<script type="text/javascript" src="/js/validation.js" ></script>
 <%@include file="/WEB-INF/view/admin/template/footer.jsp"%>
