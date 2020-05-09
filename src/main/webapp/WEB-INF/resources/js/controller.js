@@ -133,7 +133,7 @@ myApp.controller("cartCtrl", function ($scope, $http) {
             quantity = 1;
         }
 
-        $http.post('/rest/cart/' + productId +"?q=" + quantity + "&communicationId"+ communicationId + "&" + csrf).success(function () {
+        $http.post('/rest/cart/' + productId +"?q=" + quantity + "&communicationId="+ communicationId + "&" + csrf).success(function () {
         	$scope.refreshCart();
         	window.location.href = "/customer/cart";
         });

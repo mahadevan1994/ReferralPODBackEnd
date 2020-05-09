@@ -107,7 +107,7 @@ public class CartResources {
 			cartItem.setCart(cart);
 			cartItemRepository.save(cartItem);
 
-			if (!StringUtils.isEmpty(communicationId) && cart.getCartItems().size() == 1) {
+			if (!StringUtils.isEmpty(communicationId)) {
 				ReferralMarketingUserCommunicationConfig userCommunicationConfigItem = userCommunicationConfigService
 						.getReferralMarketingUserCommunicationConfig(Long.valueOf(communicationId));
 				if (null != userCommunicationConfigItem) {
