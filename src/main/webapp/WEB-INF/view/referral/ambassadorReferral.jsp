@@ -25,9 +25,8 @@
 									<label for="email">Email<span style="color: red">*</span></label>
 									<form:errors path="email" cssStyle="color: red" />
 									<form:input type="email" path="email" id="email"
-										class="form-Control" />
-									<form:input type="hidden" path="communicationId" id="communicationId"
-									class="form-Control" />
+										class="form-Control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required="required"/>
+									<form:input type="hidden" path="communicationId" id="communicationId" />
 								</div>
 								<input type="submit" value="Submit" id="register-submit"
 									class="btn btn-default">
