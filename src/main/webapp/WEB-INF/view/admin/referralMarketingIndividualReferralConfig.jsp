@@ -17,13 +17,15 @@
 				<c:forEach items="${savedConfiguration}" var="configuration">
 					<c:if test="${configuration.benefitType != 'giftItem'}">
 						<tr>
-							<td>${configuration.programType}</td>
+							<td>${configuration.programType}<br />
+							<c:if test="${configuration.programType == 'dual'}">
+							Incentive Loyalty - ${configuration.dualReferralAmount} 
+							</c:if>
+							</td>
 							<td>${configuration.benefitType}</td>
-							<td>$${configuration.referralAmount}</td>
+							<td>${configuration.referralAmount}</td>
 							<td><a
-								href="/admin/pd/s?id=${configuration.configurationId}"> <span
-									class="glyphicon glyphicon-pencil"></span></a> <a
-								href="/admin/pd/d?id=${configuration.configurationId}"> <span
+								href="/admin/irf/d?id=${configuration.configurationId}"> <span
 									class="glyphicon glyphicon-remove"></span></a></td>
 						</tr>
 					</c:if>
@@ -46,13 +48,15 @@
 				<c:forEach items="${savedConfiguration}" var="configuration">
 					<c:if test="${configuration.benefitType == 'giftItem'}">
 						<tr>
-							<td>${configuration.programType}</td>
+							<td>${configuration.programType}<br />
+							<c:if test="${configuration.programType == 'dual'}">
+							Incentive Loyalty - ${configuration.dualReferralAmount} 
+							</c:if>
+							</td>
 							<td>${configuration.benefitType}</td>
 							<td>${configuration.giftSelect}</td>
 							<td><a
-								href="/admin/pd/s?id=${configuration.configurationId}"> <span
-									class="glyphicon glyphicon-pencil"></span></a> <a
-								href="/admin/pd/d?id=${configuration.configurationId}"> <span
+								href="/admin/irf/d?id=${configuration.configurationId}"> <span
 									class="glyphicon glyphicon-remove"></span></a></td>
 						</tr>
 					</c:if>
@@ -67,39 +71,40 @@
 		<hr class="horizontalLine">
 		<div id="addConfig" style="display: none">
 
-			<form:form action="/admin/irf/s?" method="post"
+			<form:form action="/admin/irf/s" method="post"
 				commandName="addConfiguration" enctype="multipart/form-data">
 				<table>
 					<tr>
-						<td style="width: 20%;"><label for="programType" id="pType">Program
+						<td style="width: 120px;"><label for="programType" id="pType">Program
 								Type</label></td>
-						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
-									path="programType" id="programType" value="single"
-									checked="checked" class="prgType" />Single Incentive</label></td>
-						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
-									path="programType" id="programType" value="double" />Dual
+						<td style="width: 240px;"><label class="checkbox-inline"><form:radiobutton
+									path="programType" value="single" checked="checked"
+									class="programType" />Single Incentive</label></td>
+						<td style="width: 240px;"><label class="checkbox-inline"><form:radiobutton
+									path="programType" value="dual" class="programType" />Dual
 								Incentive</label></td>
 					</tr>
+				</table>
+				<div id="dualSegment">
+					<label for="dualReferralAmount" id="dualReferralAmount">Dual
+						Incentive Loyalty</label> <label class="checkbox-inline"><form:input
+							path="dualReferralAmount" id="dualReferralAmount" value="" /></label>
+				</div>
+				<table>
 					<tr>
-						<td><br /></td>
-					</tr>
-					<tr>
-						<td style="width: 20%;"><label for="benefitType" id="bType">Benefit
+						<td style="width: 120px;"><label for="benefitType" id="bType">Benefit
 								Type</label></td>
-						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
-									path="benefitType" id="benefitType" value="loyalty" />Loyalty</label></td>
-						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
-									path="benefitType" id="benefitType" value="voucher" />Voucher</label></td>
-						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
-									path="benefitType" id="benefitType" value="discount" />Discount</label></td>
-						<td style="width: 20%;"><label class="checkbox-inline"><form:radiobutton
-									path="benefitType" id="benefitType" value="giftItem" />Gift
+						<td style="width: 120px;"><label class="checkbox-inline"><form:radiobutton
+									path="benefitType" class="benefitType" value="loyalty" />Loyalty</label></td>
+						<td style="width: 120px;"><label class="checkbox-inline"><form:radiobutton
+									path="benefitType" class="benefitType" value="voucher" />Voucher</label></td>
+						<td style="width: 120px;"><label class="checkbox-inline"><form:radiobutton
+									path="benefitType" class="benefitType" value="discount" />Discount</label></td>
+						<td style="width: 120px;"><label class="checkbox-inline"><form:radiobutton
+									path="benefitType" class="benefitType" value="giftItem" />Gift
 								Item</label></td>
 					</tr>
-
 				</table>
-				<br />
-
 				<div id="referralMsgAmt">
 					<label for="referralMessage">Referral Message</label> <label
 						class="checkbox-inline"><form:textarea cols="100"
@@ -124,9 +129,9 @@
 	</div>
 </div>
 <script>
-	$("#add").prop("disabled", true);
 	$("#referralMsgAmt").hide();
 	$("#giftItemSection").hide();
+	$("#dualSegment").hide();
 
 	function showConfigurationFields() {
 		var divElement = document.getElementById("addConfig");
@@ -138,39 +143,62 @@
 	$(document)
 			.ready(
 					function() {
-						$('input[type="radio"]')
+						$('.benefitType')
 								.click(
 										function() {
-											var radioValue = $(this).attr("value");
+											var radioValue = $(this).attr(
+													"value");
 											debugger;
 											switch (radioValue) {
 											case "loyalty":
 												$("#referralMsgAmt").show();
 												$("#giftItemSection").hide();
-												$("#referralAmountType").text("Loyalty Points");
-												$("#referralMessage").text("Hello there, Loyalty points with <points> can be availed by registering with us.");
+												$("#referralAmountType").text(
+														"Loyalty Points");
+												$("#referralMessage")
+														.text(
+																"Hello there, Loyalty points with <points> can be availed by registering with us.");
 												break;
 											case "voucher":
 												$("#referralMsgAmt").show();
 												$("#giftItemSection").hide();
-												$("#referralAmountType").text("Voucher Amount");
-												$("#referralMessage").text("Hello there, Voucher amount with <amount> will be emailed to your registered email id post the first order.");
+												$("#referralAmountType").text(
+														"Voucher Amount");
+												$("#referralMessage")
+														.text(
+																"Hello there, Voucher amount with <amount> will be emailed to your registered email id post the first order.");
 												break;
 											case "discount":
 												$("#referralMsgAmt").show();
 												$("#giftItemSection").hide();
-												$("#referralAmountType").text("Discount Amount");
-												$("#referralMessage").text("Hello there, Discount of <discount> is applicable on your first order.");
+												$("#referralAmountType").text(
+														"Discount Amount");
+												$("#referralMessage")
+														.text(
+																"Hello there, Discount of <discount> is applicable on your first order.");
 												break;
 											case "giftItem":
 												$("#referralMsgAmt").show();
 												$("#referralAmt").hide();
 												$("#giftItemSection").show();
-												$("#referralMessage").text("Hello there, Gift Item <giftItemDescription> will be added to the cart post registration.");
+												$("#referralMessage")
+														.text(
+																"Hello there, Gift Item <giftItemDescription> will be added to the cart post registration.");
 												break;
 											}
-											$("#add").prop("disabled", false);
 										});
+						$('.programType').click(function() {
+							var radioValue = $(this).attr("value");
+							debugger;
+							switch (radioValue) {
+							case "single":
+								$("#dualSegment").hide();
+								break;
+							case "dual":
+								$("#dualSegment").show();
+								break;
+							}
+						});
 					});
 </script>
 <%@include file="/WEB-INF/view/admin/template/footer.jsp"%>

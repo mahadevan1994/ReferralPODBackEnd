@@ -27,4 +27,8 @@ public class ReferralMarketingGenericReferralAddConfigServiceImpl
 	public void save(ReferralMarketingGenericReferralAddConfigItem referralMarketingGenericReferralAddConfigItem) {
 		referralMarketingGenericReferralAddConfigRepository.save(referralMarketingGenericReferralAddConfigItem);
 	}
+
+	public void delete(Long configurationId) {
+		referralMarketingGenericReferralAddConfigRepository.delete(configurationId);
+	}
 }

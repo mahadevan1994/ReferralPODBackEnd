@@ -29,10 +29,10 @@ import com.imlewis.referral.model.ReferralMarketingCustomerVoucherConfig;
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
 import com.imlewis.referral.service.ReferralMarketingCustomerVoucherConfigService;
+import com.imlewis.referral.service.ReferralMarketingDualIncentiveService;
 import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
 import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 import com.imlewis.repository.CodeRepository;
-import com.imlewis.repository.RoleRepository;
 import com.imlewis.service.CustomerService;
 import com.imlewis.service.EmailSenderService;
 
@@ -49,13 +49,13 @@ public class UserController {
 	@Autowired
 	private CodeRepository codeRepository;
 	@Autowired
-	private RoleRepository roleRepository;
-	@Autowired
 	ReferralMarketingUserCommunicationConfigService userCommunicationConfigService;
 	@Autowired
 	ReferralMarketingGenericReferralAddConfigService referralAddConfigService;
 	@Autowired
 	ReferralMarketingCustomerVoucherConfigService referralMarketingCustomerVoucherConfigService;
+	@Autowired
+	private ReferralMarketingDualIncentiveService referralMarketingDualIncentiveService;
 
 	public void setToSession(HttpServletRequest request, Customer customer) {
 		request.getSession().setAttribute("customerName_", customer.getCustomerName());
@@ -126,6 +126,7 @@ public class UserController {
 						.getAddConfigItem(referralConfigId);
 				if (null != addConfigItem && "loyalty".equalsIgnoreCase(addConfigItem.getBenefitType())) {
 					user.setLoyaltyPoints(addConfigItem.getReferralAmount());
+					referralMarketingDualIncentiveService.checkAndApplyLoyalty(Long.valueOf(communicationId));
 				} else if(null != addConfigItem && "voucher".equalsIgnoreCase(addConfigItem.getBenefitType())) {
 					//send voucher email
 					String voucherCode = RandomStringUtils.randomAlphanumeric(10);
@@ -143,6 +144,7 @@ public class UserController {
 							"Nancy's Business Team";
 					String subject = "Your Voucher is here!!";
 					emailSenderService.sendMail(user.getEmail(), subject, emailBody);
+					referralMarketingDualIncentiveService.checkAndApplyLoyalty(Long.valueOf(communicationId));
 				} else if(null != addConfigItem && ("discount".equalsIgnoreCase(addConfigItem.getBenefitType()) || "giftItem".equalsIgnoreCase(addConfigItem.getBenefitType()))){
 					user.setReferralId(communicationId);
 				}

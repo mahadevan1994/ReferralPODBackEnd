@@ -25,6 +25,8 @@ public class ReferralMarketingGenericReferralAddConfigItem implements Serializab
 	private String referralMessage;
 	@NotNull(message = "Please enter the referral amount")
 	private int referralAmount;
+	@NotNull(message = "Please enter the loyalty points for dual incentive program")
+	private int dualReferralAmount;
 	
 	private Long giftSelect;
 	
@@ -63,5 +65,11 @@ public class ReferralMarketingGenericReferralAddConfigItem implements Serializab
 	}
 	public void setGiftSelect(Long giftSelect) {
 		this.giftSelect = giftSelect;
+	}
+	public int getDualReferralAmount() {
+		return dualReferralAmount;
+	}
+	public void setDualReferralAmount(int dualReferralAmount) {
+		this.dualReferralAmount = dualReferralAmount;
 	}
 }

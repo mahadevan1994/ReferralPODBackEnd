@@ -26,6 +26,7 @@ import com.imlewis.referral.model.ReferralMarketingCustomerVoucherConfig;
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
 import com.imlewis.referral.service.ReferralMarketingCustomerVoucherConfigService;
+import com.imlewis.referral.service.ReferralMarketingDualIncentiveService;
 import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
 import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 import com.imlewis.repository.CartItemRepository;
@@ -65,6 +66,9 @@ public class CartResources {
 
 	@Autowired
 	ReferralMarketingCustomerVoucherConfigService referralMarketingCustomerVoucherConfigService;
+
+	@Autowired
+	private ReferralMarketingDualIncentiveService referralMarketingDualIncentiveService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody Cart getCart(HttpServletRequest request) {
@@ -127,9 +131,13 @@ public class CartResources {
 							cartItem.setQuantity(1);
 							cartItem.setCart(cart);
 							cartItemRepository.save(cartItem);
+
+							referralMarketingDualIncentiveService.checkAndApplyLoyalty(Long.valueOf(communicationId));
 						} else if ("discount".equalsIgnoreCase(addConfigItem.getBenefitType())) {
 							cart.setDiscountPrice((double)addConfigItem.getReferralAmount());
 							cartService.save(cart);
+
+							referralMarketingDualIncentiveService.checkAndApplyLoyalty(Long.valueOf(communicationId));
 						}
 					}
 				}

@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
@@ -84,6 +87,13 @@ public class ReferralMarketingIndividualReferralConfigController {
 		model.addAttribute("savedConfiguration",
 				referralMarketingGenericReferralAddConfigService.getAllGenericReferralConfigItems());
 		model.addAttribute("giftItems", productService.getAllByProductGifts());
+		return "admin/referralMarketingIndividualReferralConfig";
+	}
+
+	@RequestMapping("/d")
+	public String deleteConfiguration(@RequestParam(value = "id", required = true) Long configurationId, Model model,
+			HttpServletRequest request) {
+		referralMarketingGenericReferralAddConfigService.delete(configurationId);
 		return "admin/referralMarketingIndividualReferralConfig";
 	}
 }
