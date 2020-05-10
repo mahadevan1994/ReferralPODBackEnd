@@ -55,7 +55,8 @@ public class Customer implements Serializable {
 	private Date registerDate;
 
 	private boolean enabled;
-
+	private long referralId;
+	
 	@OneToOne
 	@JoinColumn(name = "cartId")
 	@JsonIgnore
@@ -185,5 +186,13 @@ public class Customer implements Serializable {
 			uniqueCustomerOrderList.add(customerOrder.getCustomerOrderId());
 		}
 		return orderValue;
+	}
+
+	public long getReferralId() {
+		return referralId;
+	}
+
+	public void setReferralId(long referralId) {
+		this.referralId = referralId;
 	}
 }

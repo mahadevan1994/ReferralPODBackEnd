@@ -115,6 +115,7 @@ public class UserController {
 			model.addAttribute("email_exists", "Email already exist!");
 			return "registerCustomer";
 		}
+		user.setReferralId(0);
 		if (!StringUtils.isEmpty(request.getSession().getAttribute("communicationId_"))) {
 			long communicationId = (long) request.getSession().getAttribute("communicationId_");
 			ReferralMarketingUserCommunicationConfig userCommunicationConfigItem = userCommunicationConfigService
@@ -125,7 +126,7 @@ public class UserController {
 						.getAddConfigItem(referralConfigId);
 				if (null != addConfigItem && "loyalty".equalsIgnoreCase(addConfigItem.getBenefitType())) {
 					user.setLoyaltyPoints(addConfigItem.getReferralAmount());
-				} else if("voucher".equalsIgnoreCase(addConfigItem.getBenefitType())) {
+				} else if(null != addConfigItem && "voucher".equalsIgnoreCase(addConfigItem.getBenefitType())) {
 					//send voucher email
 					String voucherCode = RandomStringUtils.randomAlphanumeric(10);
 					ReferralMarketingCustomerVoucherConfig referralMarketingCustomerVoucherConfig = new ReferralMarketingCustomerVoucherConfig();
@@ -142,6 +143,8 @@ public class UserController {
 							"Nancy's Business Team";
 					String subject = "Your Voucher is here!!";
 					emailSenderService.sendMail(user.getEmail(), subject, emailBody);
+				} else if(null != addConfigItem && ("discount".equalsIgnoreCase(addConfigItem.getBenefitType()) || "giftItem".equalsIgnoreCase(addConfigItem.getBenefitType()))){
+					user.setReferralId(communicationId);
 				}
 			}
 			request.getSession().removeAttribute("communicationId_");

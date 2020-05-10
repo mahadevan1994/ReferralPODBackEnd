@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,7 +62,7 @@ public class CartResources {
 	
 	@Autowired
 	CartService cartService;
-	
+
 	@Autowired
 	ReferralMarketingCustomerVoucherConfigService referralMarketingCustomerVoucherConfigService;
 
@@ -112,9 +111,10 @@ public class CartResources {
 			cartItem.setCart(cart);
 			cartItemRepository.save(cartItem);
 
-			if (!StringUtils.isEmpty(communicationId)) {
+			long customerReferralId = customer.getReferralId();
+			if (customerReferralId > 0) {
 				ReferralMarketingUserCommunicationConfig userCommunicationConfigItem = userCommunicationConfigService
-						.getReferralMarketingUserCommunicationConfig(Long.valueOf(communicationId));
+						.getReferralMarketingUserCommunicationConfig(customerReferralId);
 				if (null != userCommunicationConfigItem) {
 					long referralConfigId = userCommunicationConfigItem.getReferralConfigurationId();
 					ReferralMarketingGenericReferralAddConfigItem addConfigItem = referralAddConfigService
@@ -125,7 +125,6 @@ public class CartResources {
 							cartItem = new CartItem();
 							cartItem.setProduct(product);
 							cartItem.setQuantity(1);
-							cartItem.setTotalPriceDouble(product.getProductPrice());
 							cartItem.setCart(cart);
 							cartItemRepository.save(cartItem);
 						} else if ("discount".equalsIgnoreCase(addConfigItem.getBenefitType())) {

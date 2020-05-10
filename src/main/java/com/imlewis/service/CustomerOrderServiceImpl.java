@@ -18,6 +18,7 @@ import com.imlewis.repository.CartItemRepository;
 import com.imlewis.repository.CustomerOrderItemRepository;
 import com.imlewis.repository.CustomerOrderRepository;
 import com.imlewis.repository.CustomerOrderShippingAddressRepository;
+import com.imlewis.repository.CustomerRepository;
 import com.imlewis.repository.ShippingAddressRepository;
 
 @Service
@@ -35,7 +36,9 @@ public class CustomerOrderServiceImpl implements CustomerOrderService{
     private CustomerOrderItemRepository customerOrderItemRepository;
     @Autowired
     private CartItemRepository cartItemRepository;
-	
+    @Autowired
+    private CustomerRepository customerRepository;
+    
 	public double getCustomerOrderGrandTotalByCart(Cart cart) {
         double grandTotal = 0;
         List<CartItem> cartItems = cart.getCartItems();
@@ -68,8 +71,9 @@ public class CustomerOrderServiceImpl implements CustomerOrderService{
 		customerOrderShippingAddress.setState(shippingAddress.getState());
 		customerOrderShippingAddress.setZipCode(shippingAddress.getZipCode());
 		
+		Customer customer = cart.getCustomer();
 		// initiate customer order
-		customerOrder.setCustomer(cart.getCustomer());
+		customerOrder.setCustomer(customer);
 		customerOrder.setOrderDate(new Date());
 		customerOrder.setOrderTotalPrice(cart.getGrandTotal());
 		// for mapping orderItem table
@@ -96,6 +100,8 @@ public class CustomerOrderServiceImpl implements CustomerOrderService{
 		
 		customerOrderShippingAddress.setCustomerOrder(customerOrder);
 		customerOrderShippingAddressRepository.save(customerOrderShippingAddress);
+		customer.setReferralId(0);
+		customerRepository.save(customer);
 	}
 	
 	public List<CustomerOrder> getAllCustomerOrderByCustomer(Customer customer){
