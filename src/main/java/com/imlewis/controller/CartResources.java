@@ -120,7 +120,6 @@ public class CartResources {
 							cartItem = new CartItem();
 							cartItem.setProduct(product);
 							cartItem.setQuantity(1);
-							cartItem.setTotalPriceDouble(product.getProductPrice());
 							cartItem.setCart(cart);
 							cartItemRepository.save(cartItem);
 						} else if ("discount".equalsIgnoreCase(addConfigItem.getBenefitType())) {
