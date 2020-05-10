@@ -43,7 +43,9 @@ public class CustomerOrderServiceImpl implements CustomerOrderService{
         for (CartItem item : cartItems) {
             grandTotal += item.getTotalPriceDouble();
         }
-
+        if(grandTotal > 0){
+        	grandTotal -= cart.getDiscountPrice();
+        }
         return grandTotal;
     }
 	

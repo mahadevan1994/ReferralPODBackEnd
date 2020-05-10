@@ -68,6 +68,18 @@
                                     </tr>
                                 </c:forEach>
 
+								<c:if test="${cart.discountPrice > 0}">
+									<tr>
+	                                    <td></td>
+	                                    <td></td>
+	                                    <td class="text-right orderConfirmation_GTotal">
+	                                        <h4><strong>Discount (Referral)</strong></h4>
+	                                    </td>
+	                                    <td class="text-center text-danger">
+	                                        <h4><strong>$${cart.discountPrice}</strong></h4>
+	                                    </td>
+	                                </tr>
+                                </c:if>
                                 <tr>
                                     <td></td>
                                     <td></td>

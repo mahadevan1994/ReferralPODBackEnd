@@ -19,7 +19,7 @@
 						<tr>
 							<td>${configuration.programType}</td>
 							<td>${configuration.benefitType}</td>
-							<td>$ ${configuration.referralAmount}</td>
+							<td>$${configuration.referralAmount}</td>
 							<td><a
 								href="/admin/pd/s?id=${configuration.configurationId}"> <span
 									class="glyphicon glyphicon-pencil"></span></a> <a

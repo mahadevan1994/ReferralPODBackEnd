@@ -151,7 +151,7 @@ myApp.controller("cartCtrl", function ($scope, $http) {
             for(var i=0; i<$scope.cart.cartItems.length; i++){
                 grandTotal+=$scope.cart.cartItems[i].totalPriceDouble;
             }
-            if($scope.cart.discountPrice > 0.00) {
+            if(grandTotal > 0 && $scope.cart.discountPrice > 0.00) {
             	grandTotal -= $scope.cart.discountPrice;
             }
             return parseFloat(grandTotal).toFixed(2);

@@ -101,16 +101,12 @@
                                         <th>Subtotal</th>
                                         <td>$ {{calGrandTotal()}}</td>
                                     </tr>-->
-
-											<c:if test="${cart.discountPrice > 0.00}">
-												<tr>
-													<th>Discount (Referral)</th>
-													<td>$
-														<p id="cart-grandTotal" style="display: inline">{{calDiscount()}}</p>
-													</td>
-												</tr>
-											</c:if>
-
+											<tr>
+												<th>Discount (Referral)</th>
+												<td>$
+													<p id="cart-grandTotal" style="display: inline">{{calDiscount()}}</p>
+												</td>
+											</tr>
 											<tr>
 												<th>Total Cart Value</th>
 												<td>$
