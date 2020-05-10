@@ -80,6 +80,18 @@
 	                                    </td>
 	                                </tr>
                                 </c:if>
+                                <c:if test="${cart.voucherAmount > 0}">
+									<tr>
+	                                    <td></td>
+	                                    <td></td>
+	                                    <td class="text-right orderConfirmation_GTotal">
+	                                        <h4><strong>Voucher Amount (Referral)</strong></h4>
+	                                    </td>
+	                                    <td class="text-center text-danger">
+	                                        <h4><strong>$${cart.voucherAmount}</strong></h4>
+	                                    </td>
+	                                </tr>
+                                </c:if>
                                 <tr>
                                     <td></td>
                                     <td></td>

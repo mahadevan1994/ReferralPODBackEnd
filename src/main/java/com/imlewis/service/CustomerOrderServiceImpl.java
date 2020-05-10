@@ -43,8 +43,11 @@ public class CustomerOrderServiceImpl implements CustomerOrderService{
         for (CartItem item : cartItems) {
             grandTotal += item.getTotalPriceDouble();
         }
-        if(grandTotal > 0){
+        if(null != cart && null != cart.getDiscountPrice() && grandTotal > 0){
         	grandTotal -= cart.getDiscountPrice();
+        }
+        if(null != cart && null != cart.getVoucherAmount() && grandTotal > 0){
+        	grandTotal -= cart.getVoucherAmount();
         }
         return grandTotal;
     }
@@ -72,6 +75,7 @@ public class CustomerOrderServiceImpl implements CustomerOrderService{
 		// for mapping orderItem table
 		customerOrderRepository.save(customerOrder);
 		cart.setGrandTotal(0);
+		cart.setVoucherAmount(null);
 		cartService.save(cart);
 		// dump cartItem to orderItem, empty cart
 		for(CartItem cartItem : cart.getCartItems()){

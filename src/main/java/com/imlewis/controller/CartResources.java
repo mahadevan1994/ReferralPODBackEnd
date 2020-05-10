@@ -23,8 +23,10 @@ import com.imlewis.model.Cart;
 import com.imlewis.model.CartItem;
 import com.imlewis.model.Customer;
 import com.imlewis.model.Product;
+import com.imlewis.referral.model.ReferralMarketingCustomerVoucherConfig;
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
+import com.imlewis.referral.service.ReferralMarketingCustomerVoucherConfigService;
 import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
 import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 import com.imlewis.repository.CartItemRepository;
@@ -61,6 +63,9 @@ public class CartResources {
 	
 	@Autowired
 	CartService cartService;
+	
+	@Autowired
+	ReferralMarketingCustomerVoucherConfigService referralMarketingCustomerVoucherConfigService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody Cart getCart(HttpServletRequest request) {
@@ -120,6 +125,7 @@ public class CartResources {
 							cartItem = new CartItem();
 							cartItem.setProduct(product);
 							cartItem.setQuantity(1);
+							cartItem.setTotalPriceDouble(product.getProductPrice());
 							cartItem.setCart(cart);
 							cartItemRepository.save(cartItem);
 						} else if ("discount".equalsIgnoreCase(addConfigItem.getBenefitType())) {
@@ -155,5 +161,21 @@ public class CartResources {
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Server error.")
 	public void handleServertErrors(Exception e) {
+	}
+	
+	@RequestMapping(value = "/voucher", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	public void applyVoucher(@RequestParam(value = "voucherCode", required = false) String voucherCode, @AuthenticationPrincipal User activeUser) {
+		if (activeUser != null) {
+			Customer customer = customerRepository.findByEmail(activeUser.getUsername());
+			Cart cart = customer.getCart();
+			ReferralMarketingCustomerVoucherConfig referralMarketingCustomerVoucherConfig = referralMarketingCustomerVoucherConfigService.findByVoucherCode((voucherCode));
+			if(null != referralMarketingCustomerVoucherConfig && referralMarketingCustomerVoucherConfig.getRedeemStatus().equalsIgnoreCase("NO")) {
+				cart.setVoucherAmount((double)referralMarketingCustomerVoucherConfig.getReferralAmount());
+				referralMarketingCustomerVoucherConfig.setRedeemStatus("YES");
+				referralMarketingCustomerVoucherConfigService.save(referralMarketingCustomerVoucherConfig);
+			}
+			cartService.save(cart);
+		}
 	}
 }

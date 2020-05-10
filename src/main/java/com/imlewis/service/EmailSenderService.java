@@ -10,4 +10,6 @@ public interface EmailSenderService {
 	void sendEmail(Customer customer, int communicationId);
 	
 	void sendEmail(ReferralMarketingUserCommunicationConfig userCommunicationConfigItem, String referredEmail);
+	
+	void sendMail(String toAddress, String subject, String msgBody);
 }

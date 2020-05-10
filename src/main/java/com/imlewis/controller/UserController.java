@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,8 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.imlewis.model.Code;
 import com.imlewis.model.Customer;
+import com.imlewis.referral.model.ReferralMarketingCustomerVoucherConfig;
 import com.imlewis.referral.model.ReferralMarketingGenericReferralAddConfigItem;
 import com.imlewis.referral.model.ReferralMarketingUserCommunicationConfig;
+import com.imlewis.referral.service.ReferralMarketingCustomerVoucherConfigService;
 import com.imlewis.referral.service.ReferralMarketingGenericReferralAddConfigService;
 import com.imlewis.referral.service.ReferralMarketingUserCommunicationConfigService;
 import com.imlewis.repository.CodeRepository;
@@ -51,6 +54,8 @@ public class UserController {
 	ReferralMarketingUserCommunicationConfigService userCommunicationConfigService;
 	@Autowired
 	ReferralMarketingGenericReferralAddConfigService referralAddConfigService;
+	@Autowired
+	ReferralMarketingCustomerVoucherConfigService referralMarketingCustomerVoucherConfigService;
 
 	public void setToSession(HttpServletRequest request, Customer customer) {
 		request.getSession().setAttribute("customerName_", customer.getCustomerName());
@@ -120,6 +125,23 @@ public class UserController {
 						.getAddConfigItem(referralConfigId);
 				if (null != addConfigItem && "loyalty".equalsIgnoreCase(addConfigItem.getBenefitType())) {
 					user.setLoyaltyPoints(addConfigItem.getReferralAmount());
+				} else if("voucher".equalsIgnoreCase(addConfigItem.getBenefitType())) {
+					//send voucher email
+					String voucherCode = RandomStringUtils.randomAlphanumeric(10);
+					ReferralMarketingCustomerVoucherConfig referralMarketingCustomerVoucherConfig = new ReferralMarketingCustomerVoucherConfig();
+					referralMarketingCustomerVoucherConfig.setVoucherCode(voucherCode);
+					referralMarketingCustomerVoucherConfig.setRedeemStatus("NO");
+					referralMarketingCustomerVoucherConfig.setReferralAmount(addConfigItem.getReferralAmount());
+					referralMarketingCustomerVoucherConfigService.save(referralMarketingCustomerVoucherConfig);
+					String emailBody = "Hello there,\r\n" + 
+							"\r\n" + 
+							"Voucher amount " + addConfigItem.getReferralAmount() + " can be redeemed with us.\r\n" + 
+							"\r\n" + "Vocuher Code:" + voucherCode + "\r\n" + 
+							"\r\n" +
+							"Regards,\r\n" + 
+							"Nancy's Business Team";
+					String subject = "Your Voucher is here!!";
+					emailSenderService.sendMail(user.getEmail(), subject, emailBody);
 				}
 			}
 			request.getSession().removeAttribute("communicationId_");

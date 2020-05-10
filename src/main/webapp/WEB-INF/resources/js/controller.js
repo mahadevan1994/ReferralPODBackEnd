@@ -144,6 +144,14 @@ myApp.controller("cartCtrl", function ($scope, $http) {
             $scope.refreshCart();
         });
     };
+    
+    $scope.applyVoucher = function (csrf) {
+    	var voucherCode = $("#aa-coupon-code").val();
+        $http.post('/rest/cart/voucher' + "?voucherCode=" + voucherCode + "&" + csrf).success(function () {
+        	$scope.refreshCart();
+        	window.location.href = "/customer/cart";
+        });
+    };
 
     $scope.calGrandTotal = function () {
         var grandTotal = 0;
@@ -154,6 +162,11 @@ myApp.controller("cartCtrl", function ($scope, $http) {
             if(grandTotal > 0 && $scope.cart.discountPrice > 0.00) {
             	grandTotal -= $scope.cart.discountPrice;
             }
+            
+            if(grandTotal > 0 && $scope.cart.voucherAmount > 0.00) {
+            	grandTotal -= $scope.cart.voucherAmount;
+            }
+            
             return parseFloat(grandTotal).toFixed(2);
         }
     };
@@ -165,6 +178,16 @@ myApp.controller("cartCtrl", function ($scope, $http) {
             	discount = $scope.cart.discountPrice;
             }
             return parseFloat(discount).toFixed(2);
+        }
+    };
+    
+    $scope.calVoucherAmount = function () {
+        var voucherAmount = 0;
+        if($scope.cart){
+            if($scope.cart.voucherAmount > 0.00) {
+            	voucherAmount = $scope.cart.voucherAmount;
+            }
+            return parseFloat(voucherAmount).toFixed(2);
         }
     };
 

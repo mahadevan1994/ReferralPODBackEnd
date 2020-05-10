@@ -70,16 +70,19 @@
 
 											<div class="aa-cart-coupon aa-cart-coupon-btn">
 												<div class="col-lg-5 col-lg-offset-2">
-													<input class="aa-coupon-code" type="text"
+													<input id="aa-coupon-code" type="text"
 													placeholder="Coupon: 123"
 													style="width: 90%; text-align: center"> 
 												</div>
 												<div class="col-lg-4">
-													<input
-													type="submit" value="Apply Coupon"
-													style="width: 40%; height: 44px; vertical-align: initial; font-size: 15px; background: #e01a2b; border: 1px solid #e01a2b; color: #fff; margin-left:30px;">
+													<a href="#"
+														ng-click="applyVoucher('${_csrf.parameterName}=${_csrf.token}')">
+														<div
+															style="width: 52%; height: 35px; vertical-align: initial; font-size: 19px; background: #e01a2b; border: 1px solid #e01a2b; color: #fff; margin-left: 30px;">
+															Apply Voucher</div>
+													</a>
 												</div>
-												
+
 											</div>
 											
 											
@@ -105,6 +108,12 @@
 												<th>Discount (Referral)</th>
 												<td>$
 													<p id="cart-grandTotal" style="display: inline">{{calDiscount()}}</p>
+												</td>
+											</tr>
+											<tr>
+												<th>Voucher Amount (Referral)</th>
+												<td>$
+													<p id="cart-grandTotal" style="display: inline">{{calVoucherAmount()}}</p>
 												</td>
 											</tr>
 											<tr>

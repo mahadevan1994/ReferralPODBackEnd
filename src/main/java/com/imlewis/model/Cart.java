@@ -24,6 +24,16 @@ public class Cart implements Serializable{
 	public void setDiscountPrice(Double discountPrice) {
 		this.discountPrice = discountPrice;
 	}
+	
+	private Double voucherAmount;
+
+	public Double getVoucherAmount() {
+		return voucherAmount;
+	}
+
+	public void setVoucherAmount(Double voucherAmount) {
+		this.voucherAmount = voucherAmount;
+	}
 
 	@OneToMany(mappedBy = "cart", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;

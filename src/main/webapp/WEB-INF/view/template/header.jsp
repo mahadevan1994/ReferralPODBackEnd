@@ -243,6 +243,14 @@
 														{{calDiscount()}}</span>
 												</div></li>
 										</c:if>
+										<c:if test="${cart.voucherAmount > 0.00}">
+											<li><div
+													style="text-align: center; padding-top: 10px; margin-top: 10px">
+													<span class="aa-cartbox-total-title">Voucher Amount
+														(Referral)</span><span class="aa-cartbox-total-price">$
+														{{calVoucherAmountt()}}</span>
+												</div></li>
+										</c:if>
 										<li><div
 												style="text-align: center; padding-top: 10px; margin-top: 10px">
 												<span class="aa-cartbox-total-title">Total</span> <span
