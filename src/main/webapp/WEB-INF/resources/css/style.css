@@ -531,7 +531,7 @@ img {
 #aa-header .aa-header-bottom .aa-cartbox .aa-cart-link .aa-cart-title {
     color: #555;
     display: block;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #aa-header .aa-header-bottom .aa-cartbox .aa-cart-link .aa-cart-notify {
@@ -5958,7 +5958,7 @@ button {
 .aa-cart-view-btn {
     float: right;
     border: none;
-    color: #fff;
+    color: #000;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -6046,7 +6046,7 @@ tr.orderConfirmation_items {
 	height: 134;
 }
 .product-subtotal{
-	margin-left: 400px;
+	/* margin-left: 400px; */
 }
 .cart-product-remove{
 	margin-top: 70px;
@@ -6055,4 +6055,17 @@ tr.orderConfirmation_items {
 	display: inline-flex; 
 	width: 100%; 
 	padding-top: 10px
+}
+.myAccountInfo h2,.myAcctShipAddress h2,.orderSummaryDiv h2{
+    color:#000;
+}
+.cart_itemName a{
+    font-weight: 600;
+    font-size: 16px;
+}
+.cart_Items{
+    padding: 20px 10px;
+    border-bottom: 1px solid #999;
+    display: inline-flex; 
+    margin: 20px 0;
 }

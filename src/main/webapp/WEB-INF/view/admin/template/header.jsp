@@ -63,7 +63,7 @@
 					</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="<spring:url value="/admin/homePageSettings" />">HomePage</a></li>
+					<li><a href="<spring:url value="/" />">HomePage</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="/admin/cu/m">Users</a></li>

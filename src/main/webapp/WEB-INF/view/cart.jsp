@@ -12,26 +12,25 @@
 								<div class="col-sm-12">
 									<form action="">
 
-										<div ng-repeat="item in cart.cartItems"
-											style="display: inline-flex; padding-top: 10px">
+										<div ng-repeat="item in cart.cartItems" class="col-lg-12 cart_Items">
 											<input type="hidden"
 												id="product-info-{{item.product.productId}}"
 												stock="{{item.product.unitInStock}}"
 												quantity="{{item.quantity}}"
-												productPrice="{{item.product.productPrice}}">
-											<div>
+												productPrice="{{item.product.productPrice}}"/>
+											<div class="col-lg-3">
 												<a href="/pd/p?id={{item.product.productId}}"> <img
 													src="/images/{{item.product.productId}}/0.png" alt="img"
 													class="cart-img">
 												</a>
 											</div>
-											<div style="margin-left: 25px">
+											<div class="cart_itemName col-lg-4">
 												<a class="aa-cart-title"
 													href="/pd/p?id={{item.product.productId}}">{{item.product.productName}}</a>
 
 												<p>$ {{item.product.productPrice}}</p>
 											</div>
-											<div style="margin-left: 85px">
+											<div class="cart_itemQuantity col-lg-2">
 												<p style="color: red"
 													id="quantity-error-cart-{{item.cartItemId}}"></p>
 												<select productId="{{item.product.productId}}"
@@ -51,18 +50,18 @@
 
 											</div>
 
-											<div class="product-subtotal">
+											<div class="product-subtotal col-lg-3">
 												<div>
 													<p>$ {{converDouble(item.product.productPrice)}}</p>
 
 													<p id="total-{{item.product.productId}}"
-														style="display: inline">SubTotal $
+														style="display: inline; font-weight:600;">SubTotal $
 														{{converDouble(item.totalPriceDouble)}}</p>
 												</div>
 												<div class="cart-product-remove">
 													<a href="#"
 														ng-click="removeFromCart(item.cartItemId,'${_csrf.parameterName}=${_csrf.token}')">
-														Remove </a>
+														Remove Item</a>
 												</div>
 											</div>
 										</div>
@@ -127,8 +126,7 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<a href="<spring:url value="/"/>"> <input
-											class="aa-cart-view-btn keepShoppingBtn" type="text"
-											style="cursor: hand; color: #000" value="Keep Shopping">
+											class="aa-cart-view-btn keepShoppingBtn" type="text" value="Keep Shopping">
 											</a>
 										</div>
 										

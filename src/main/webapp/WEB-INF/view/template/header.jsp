@@ -82,35 +82,35 @@
 							<div
 								class="redesign-header-links-col redesign-header-links-col-left text-left clearfix">
 								<div id="logo" class="redesign-header-logo" title="Nancy's">
-									<a href="#" id="logoFashion"><img
+									<a href="/" id="logoFashion"><img
 										src="../images/logos/commerce-and-shopping.svg" alt="Logo" /><span>Nancys</span></a>
 								</div>
 								<nav class="redesign-header-nav">
 									<ul class="redesign-header-nav-list">
 										<li class="redesign-header-nav-list-item"><a
 											title="Stores"
-											href="https://l.Nancys.com/stores.html?cm_sp=navigation-_-top_nav-_-stores&amp;lid=glbtopnav_stores-us">Stores</a></li>
+											href="">Stores</a></li>
 										<li class="redesign-header-nav-list-item"><a
 											title="Deals"
-											href="/shop/coupons-deals?cm_sp=navigation-_-top_nav-_-deals&amp;lid=glbtopnav_deals-us">Deals</a></li>
+											href="">Deals</a></li>
 										<li id="header-wishlist-label"
 											class="redesign-header-nav-list-item"><a title="Lists"
-											href="/wishlist/home?cm_sp=navigation-_-top_nav-_-lists&amp;lid=glbtopnav_lists-us&amp;pageSource=nav">Lists</a></li>
+											href="">Lists</a></li>
 										<li class="redesign-header-nav-list-item dropdown"><span
 											id="giftsLink" tabindex="0">GIFTS</span>
 											<div class="dropdown-caret icon-ui-carrot-down-bk-small"></div>
 											<ul class="dropdown-list dropdown-list-align-left"
 												role="group" aria-labelledby="giftsLink">
 												<li class="dropdown-item"><a title="Gift Cards"
-													href="/shop/gift-cards?id=1405&amp;cm_sp=navigation-_-top_nav-_-gift_cards&amp;lid=glbtopnav_gift_cards-us">Gift
+													href="">Gift
 														Cards</a></li>
 												<li class="dropdown-item"><a title="Gift Ideas"
-													href="/social/mothers-day-gift-guide/?&amp;cm_sp=navigation-_-top_nav-_-gift_ideas&amp;lid=glbtopnav_gift_ideas-us">Gift
+													href="">Gift
 														Ideas</a></li>
 											</ul></li>
 										<li class="redesign-header-nav-list-item"><a
 											title="Wedding Registry"
-											href="/social/registry-top-reasons/?cm_sp=navigation-_-top_nav-_-wedding_registry&amp;lid=glbtopnav_wedding_registry-us">Wedding
+											href="">Wedding
 												Registry</a></li>
 									</ul>
 								</nav>
